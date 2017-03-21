@@ -86,7 +86,6 @@ class Dog(Animals,Dog_F):
     def jiao(self):
         print("%s 叫"%(self.Name))
 
-
 dog1 = Dog("小强")
 dog1.piao()
 """
