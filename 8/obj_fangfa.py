@@ -8,7 +8,7 @@ class Foo:
     def ord_func(self):
         """ 定义普通方法，至少有一个self参数 """
 
-        # print self.name
+        print(self.name)
         print('普通方法')
 
     @classmethod
@@ -25,7 +25,7 @@ class Foo:
 
 
 # 调用普通方法
-f = Foo()
+f = Foo("Alex")
 f.ord_func()
 
 # 调用类方法
