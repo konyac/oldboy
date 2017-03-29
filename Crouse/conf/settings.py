@@ -3,7 +3,7 @@
 """
 设置每个对象保存的文件路径
 """
-import os,sys
+import os
 BaseDir = os.path.dirname(os.path.dirname(__file__))
 teacher_db_dir = os.path.join(BaseDir,"db","teacher_list")
 course_db_dir = os.path.join(BaseDir,"db","course_list")

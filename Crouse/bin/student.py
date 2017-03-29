@@ -12,8 +12,8 @@ def course_info(student_obj):
 
 
 def select_course(student_obj):
-    course_list = pickle.load(open(settings.course_db_dir,"rb"))
-    for num,item in enumerate(course_list,1):
+    course_list = pickle.load(open(settings.course_db_dir,"rb"))#获取已有课程对象
+    for num,item in enumerate(course_list,1):#序列化
         print(num,item.course_name,item.cost,item.teacher.name)
 
     while True:
@@ -25,9 +25,9 @@ def select_course(student_obj):
             student_obj.course_list.append(selected_course_obj)
     pickle.dump(student_obj,open(os.path.join(settings.Base_studens_dir,student_obj.username),"wb"))
 def login(user,pwd):
-    if os.path.exists(os.path.join(settings.Base_studens_dir,user)):
-        student_obj = pickle.load(open(os.path.join(settings.Base_studens_dir,user),"rb"))
-        if student_obj.login(user,pwd):
+    if os.path.exists(os.path.join(settings.Base_studens_dir,user)):#判断学生是否存在
+        student_obj = pickle.load(open(os.path.join(settings.Base_studens_dir,user),"rb"))#获取学生的对象
+        if student_obj.login(user,pwd):#密码是否正确
             while True:
                 inp = input("1. 选课 2.上课 3.查看课程信息 (其他退出)\n>>>")
                 if inp == "1":

@@ -5,23 +5,23 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 from lib.models import *
 from conf import settings
 
-def create_course(admin_obj):
-    teacher_list = pickle.load(open(settings.teacher_db_dir,"rb"))
-    for num,item in enumerate(teacher_list,1):
+def create_course(admin_obj):#创建课程，需要管理员参数
+    teacher_list = pickle.load(open(settings.teacher_db_dir,"rb"))#获取老师对象
+    for num,item in enumerate(teacher_list,1):#序列化，老师列表
         print(num,item.name,item.age,item.create_time,item.create_admin.username)
-    course_list = []
+    course_list = []#临时选课表
     while True:
         name = input("请输入课程名(q退出)：")
         if name == "q":
             break
         cost = input("请输入课时费：")
         num =  input("选择老师（序号）：")
-        obj = Course(name,cost,teacher_list[int(num) - 1],admin_obj)
-        course_list.append(obj)
-    if os.path.exists(settings.course_db_dir):
-        exists_list = pickle.load(open(settings.course_db_dir,"rb"))
-        course_list.extend(exists_list)
-    pickle.dump(course_list,open(settings.course_db_dir,"wb"))
+        obj = Course(name,cost,teacher_list[int(num) - 1],admin_obj)#创建一个课程对象
+        course_list.append(obj)#加入到临时课标中
+    if os.path.exists(settings.course_db_dir):#课程表保存文件是否存在
+        exists_list = pickle.load(open(settings.course_db_dir,"rb"))#取出已存在的列表
+        course_list.extend(exists_list)#将已存在的加入到新课表后面
+    pickle.dump(course_list,open(settings.course_db_dir,"wb"))#将新课表写入课表文件中
 def create_teacher(admin_obj):
     teacher_list = []
     while True:
