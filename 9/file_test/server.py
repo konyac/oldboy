@@ -10,6 +10,8 @@ while True:
     conn, address = sk.accept()
     conn.sendall(bytes("欢迎", encoding="utf-8"))
     file_size = str(conn.recv(1024), encoding="utf-8")
+    conn.sendall(bytes("ack", encoding='utf-8'))  # 回复确认 解决粘包问题
+    print(file_size)
     file_len = 0
     while True:
         if int(file_size) == file_len:
