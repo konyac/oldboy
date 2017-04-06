@@ -43,9 +43,16 @@ def register(user, pwd):
 def command():
     sk.sendall(bytes("comm", encoding="utf-8"))
     while True:
+
         ret = str(sk.recv(1024), encoding="utf-8")
-        inp = input(ret)
-        sk.sendall(bytes(inp,encoding="utf-8"))
+        if ret == "#":
+            inp = input(ret+"(q退出)：")
+            sk.sendall(bytes(inp,encoding="utf-8"))
+            out=str(sk.recv(1024),encoding="gbk")
+            if out=="exit":
+                break
+            print(out)
+            sk.sendall(bytes("over",encoding="utf-8"))
 
 def main():
     while True:
@@ -63,9 +70,9 @@ def main():
             if login(user, pwd):
                 print("登陆成功")
                 while True:
-                    inp("1、执行命令.2、上次文件(q退出)\n>>>")
+                    inp=input("1、执行命令.2、上次文件(q退出)\n>>>")
                     if inp == "1":
-                        pass
+                        command()
                     elif inp == "2":
                         pass
                     else:

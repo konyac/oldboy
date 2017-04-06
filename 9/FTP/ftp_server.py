@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-import socketserver, os
+import socketserver, os, subprocess
 
 
 class Myserver(socketserver.BaseRequestHandler):
@@ -39,6 +39,13 @@ class Myserver(socketserver.BaseRequestHandler):
                 while True:
                     conn.sendall(bytes("#:",encoding="utf-8"))
                     ret = str(conn.recv(1024),encoding="utf-8")
+                    if ret=="q":
+                        conn.sendall(bytes("exit",encoding="utf-8"))
+                        break
+                    out = subprocess.check_output(ret,shell=True)
+                    conn.sendall(out)
+                    conn.recv(1024)
+
 
 
             else:
