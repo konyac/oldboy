@@ -50,7 +50,7 @@ class Handler(object):
 
     def index(self):
         obj =  DbHelper.singleton()
-        print id(obj)
+        print(id(obj))
         obj.create()
         return 'index'
 
@@ -73,6 +73,6 @@ def RunServer(environ, start_response):
 
 if __name__ == '__main__':
     httpd = make_server('', 8001, RunServer)
-    print "Serving HTTP on port 8001..."
+    print( "Serving HTTP on port 8001...")
     httpd.serve_forever()
 
