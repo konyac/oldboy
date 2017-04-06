@@ -13,15 +13,20 @@ class Myserver(socketserver.BaseRequestHandler):
                 conn.sendall(bytes("acc", encoding="utf-8"))
                 account = str(conn.recv(1024), encoding="utf-8")
                 u, p = account.split("$")
-                with open(ac_path, "r") as f:
-                    for line in f:
-                        if line.split("$")[0] == u:
-                            ret = "0"
-                            break
-                        else:
-                            ret = "1"
-                if ret == "1":
+                if os.path.exists(ac_path):
+                    with open(ac_path, "r") as f:
+                        for line in f:
+                            if line.split("$")[0] == u:
+                                ret = "0"
+                                break
+                            else:
+                                ret = "1"
+                    if ret == "1":
+                        with open(ac_path, "a") as f:
+                            f.write(account)
+                else:
                     with open(ac_path, "a") as f:
+                        ret = "1"
                         f.write(account)
                 conn.sendall(bytes(ret, encoding="utf-8"))
             elif ret == "login":
@@ -37,12 +42,12 @@ class Myserver(socketserver.BaseRequestHandler):
                 conn.sendall(bytes(ret, encoding="utf-8"))
             elif ret == "comm":
                 while True:
-                    conn.sendall(bytes("#:",encoding="utf-8"))
-                    ret = str(conn.recv(1024),encoding="utf-8")
-                    if ret=="q":
-                        conn.sendall(bytes("exit",encoding="utf-8"))
+                    conn.sendall(bytes("#", encoding="utf-8"))
+                    ret = str(conn.recv(1024), encoding="utf-8")
+                    if ret == "q":
+                        conn.sendall(bytes("exit", encoding="utf-8"))
                         break
-                    out = subprocess.check_output(ret,shell=True)
+                    out = subprocess.check_output(ret, shell=True)
                     conn.sendall(out)
                     conn.recv(1024)
 
