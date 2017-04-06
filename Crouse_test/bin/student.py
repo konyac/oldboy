@@ -58,7 +58,6 @@ def curriculum_info(student_obj):
 
 
 def study_curriculum(student_obj):
-
     for i, item in enumerate(student_obj.curriculum, 1):
         print(i, item.curriculum_name, item.curriculum_teacher, item.curriculum_cost)
     while True:
@@ -72,7 +71,8 @@ def study_curriculum(student_obj):
             else:
                 print("还没选课")
                 continue
-    pickle.dump(student_obj, open(os.path.join(settings.Student_dir,student_obj.username), "wb"))
+    pickle.dump(student_obj, open(os.path.join(settings.Student_dir, student_obj.username), "wb"))
+
 
 def select_curriculum(student_obj):
     print("所有课程")
@@ -90,7 +90,7 @@ def select_curriculum(student_obj):
                 continue
             else:
                 print("已有课程，不用在选")
-    pickle.dump(student_obj, open(os.path.join(settings.Student_dir,student_obj.username), "wb"))
+    pickle.dump(student_obj, open(os.path.join(settings.Student_dir, student_obj.username), "wb"))
 
 
 def main():
