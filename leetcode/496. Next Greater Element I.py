@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 """
+下一个最大的数
+第一个列表元素都在第二个列表里
+第一个元素在第二个列表中之后最近的一个大的元素
+1、我的方法是先设定一个列表起始ret为-1，每循环一次加一个-1。然后拿第一个列表中元素去第二个列表中比较，切片的应用，从他目前的位置往后面循环。找到大的然后设置最后的ret中-1 为这个值.如果没有就还是是-1
 You are given two arrays (without duplicates) nums1 and nums2 where nums1’s elements are subset of nums2. Find all the next greater numbers for nums1's elements in the corresponding places of nums2.
 
 The Next Greater Number of a number x in nums1 is the first greater number to its right in nums2. If it does not exist, output -1 for this number.

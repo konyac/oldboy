@@ -43,7 +43,6 @@ def register(user, pwd):
 def command():
     sk.sendall(bytes("comm", encoding="utf-8"))
     while True:
-
         ret = str(sk.recv(1024), encoding="utf-8")
         if ret == "#":
             inp = input(ret+"(q退出)：")
