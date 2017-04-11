@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-import socket, select
+import socket, select,sys
 
 sk1 = socket.socket()
 sk1.bind(("127.0.0.1", 8001))
@@ -48,3 +48,4 @@ while True:
             except Exception as ex:
                 inputs.remove(sk)
 
+    sys.stderr
