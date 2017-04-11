@@ -43,9 +43,12 @@ while True:
             #老用户发消息了
             try:
                 data_bytes = sk.recv(1024)
-                data_str = str(data_bytes,encoding="utf-8")
-                sk.sendall(bytes(data_str+"好",encoding="utf-8"))
             except Exception as ex:
+                #如果用户终端了连接
                 inputs.remove(sk)
-
-    sys.stderr
+            else:
+                #用户正常发消息
+                data_str = str(data_bytes, encoding="utf-8")
+                sk.sendall(bytes(data_str + "好", encoding="utf-8"))
+    for sk in e_list:
+        inputs.remove(sk)
