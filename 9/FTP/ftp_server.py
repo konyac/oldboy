@@ -6,6 +6,7 @@ import socketserver, os, subprocess
 class Myserver(socketserver.BaseRequestHandler):
     def handle(self):
         ac_path = os.path.join(os.path.dirname(__file__), "account", "ac")
+        db_path = os.path.join(os.path.dirname(__file__), "account", "db")
         conn = self.request
         while True:
             ret = str(conn.recv(1024), encoding="utf-8")
@@ -47,9 +48,14 @@ class Myserver(socketserver.BaseRequestHandler):
                     if ret == "q":
                         conn.sendall(bytes("exit", encoding="utf-8"))
                         break
-                    out = subprocess.check_output(ret, shell=True)
-                    conn.sendall(out)
+                    out = subprocess.getoutput(ret)
+                    out_len = len(out)
+                    conn.sendall(bytes(str(out_len),encoding="utf-8"))#输出的长度
+
+                    conn.sendall(bytes(out,encoding="utf-8"))
                     conn.recv(1024)
+
+
 
 
 

@@ -45,13 +45,30 @@ def command():
     while True:
         ret = str(sk.recv(1024), encoding="utf-8")
         if ret == "#":
-            inp = input(ret+"(q退出)：")
-            sk.sendall(bytes(inp,encoding="utf-8"))
-            out=str(sk.recv(1024),encoding="gbk")
-            if out=="exit":
+            inp = input(ret + "(q退出)：")
+            sk.sendall(bytes(inp, encoding="utf-8"))
+
+            out_len = str(sk.recv(1024), encoding="utf-8")
+            if out_len == "exit":
+                print(out_len)
                 break
-            print(out)
-            sk.sendall(bytes("over",encoding="utf-8"))
+            print(out_len)
+            out_str = bytes()
+            out_str_len = 0
+            while out_str_len < int(out_len):
+                out = sk.recv(1024)
+                out_str += out
+                out_str_len += len(out)
+            print(str(out_str, encoding="utf-8"))
+            sk.sendall(bytes("over", encoding="utf-8"))
+
+
+def send():
+    sk.sendall(bytes("send", encoding="utf-8"))
+    while True:
+        pass
+
+
 
 def main():
     while True:
@@ -69,11 +86,11 @@ def main():
             if login(user, pwd):
                 print("登陆成功")
                 while True:
-                    inp=input("1、执行命令.2、上次文件(q退出)\n>>>")
+                    inp = input("1、执行命令.2、上次文件(q退出)\n>>>")
                     if inp == "1":
                         command()
                     elif inp == "2":
-                        pass
+                        send()
                     else:
                         break
 
