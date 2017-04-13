@@ -32,14 +32,14 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
                 break
             self.instruction_distributor(data)
 
-    def     instruction_distributor(self, instruction):
+    def instruction_distributor(self, instruction):
         print("in1", instruction)
         instructions = instruction.split("|")
         print("in2", instructions)
         function_str = instructions[0]
         if hasattr(self, function_str):
             func = getattr(self, function_str)
-            func()
+            func(instructions[1])
         else:
             print("Invalid instruction")
 
@@ -47,7 +47,8 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         self.login_user.used_storage = 0
 
     def ls(self, user_data):
-        directory_path = "%s\%s%s" % (settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd)+"\\")
+        directory_path = "%s\\%s%s" % (
+        settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd) + "\\")
         print("cwd>>>", directory_path)
         print(">>>", self.login_user.cwd)
         if platform.system() == "Windows":
@@ -56,12 +57,14 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             cmd = "ls %s" % directory_path
         print(cmd)
         cmd_call = subprocess.getoutput(cmd)
+        print(cmd_call)
         cmd_result = bytes(cmd_call, encoding="gbk")
 
         self.request.send(cmd_result)
 
     def dir(self, user_data):
-        directory_path = "%s\%s%s" % (settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd)+"\\")
+        directory_path = "%s\\%s%s" % (
+        settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd) + "\\")
         cmd = "dir"
         cmd_call = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
         cmd_result = cmd_call.stdout.read()
@@ -115,7 +118,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
 
     def get_file_abs_path(self, filename):
         return "%s/%s%s%s" % (
-        settings.USER_HOME, self.login_user.username, "/".join(self.login_user.cwd) + "/", filename)
+            settings.USER_HOME, self.login_user.username, "/".join(self.login_user.cwd) + "/", filename)
 
     def file_get(self, user_data):
         print("client try to get a file")
@@ -144,14 +147,22 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
                     print("file transfer completed")
                     f.close()
         else:
-            response_msg = {"response":"302"}
+            response_msg = {"response": "302"}
             self.request.send(json.dumps(response_msg).encode())
-    def user_auth(self,data):
+
+    def user_auth(self, data):
         auth_info = json.loads(data)
         if auth_info["username"] in settings.USER_ACCOUNT:
             if settings.USER_ACCOUNT[auth_info["username"]]["password"] == auth_info["password"]:
-                self.login_user = user.User(auth_info["username"],settings.USER_ACCOUNT[auth_info["username"]])
+                self.login_user = user.User(auth_info["username"], settings.USER_ACCOUNT[auth_info["username"]])
                 response_code = "200"
+                print(response_code)
+                try:
+                    # print(settings.USER_HOME,self.login_user)
+                    os.makedirs("%s\\%s" % (settings.USER_HOME, self.login_user.username))
+                except OSError:
+                    print("hhh")
+                    pass
             else:
                 response_code = "201"
             self.request.send("response|{0}".format(response_code).encode())

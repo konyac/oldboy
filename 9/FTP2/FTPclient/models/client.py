@@ -12,7 +12,7 @@ import copy
 
 class Client:
     def __init__(self, sys_argv):
-        self.USER_HOME = "%s/var/users" % BASE_DIR
+        self.USER_HOME = "%s\\var\\users" % BASE_DIR
         self.args = sys_argv
         self.argv_parse()
         self.response_code = {
@@ -56,7 +56,7 @@ class Client:
     def connect(self, host, port):
         try:
             self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.sock.connect((host, port))
+            self.sock.connect((host, int(port)))
         except socket.error as e:
             sys.exit("Failed to connect server: %s" % e)
 
@@ -91,7 +91,35 @@ class Client:
     def instruction_ls(self, instructions):
         self.sock.send(("ls|%s" % json.dumps({})).encode())
         server_response = self.sock.recv(1024)
-        print(str(server_response,encoding="gbk"))
+        print(str(server_response, encoding="gbk"))
+
+    def instruction_cd(self, instructions):
+        print("instr:", instructions)
+        if len(instructions) == 1:
+            print("gg")
+        elif len(instructions) == 2:
+            path = instructions[1]
+            if path.startswith("/"):
+                try_path = path.split("/")
+            else:
+                try_path = self.cwd
+                print("try_path", try_path)
+                split_path = path.split("/")
+                try_path.extend(split_path)
+                print(try_path)
+            self.sock.send(("cd|%s" % json.dumps({"cwd": try_path})).encode())
+            server_response = json.loads(self.sock.recv(1024).decode())
+            if server_response["response"] == "601":
+                print("self.cwd", server_response["cwd"])
+                if server_response["cwd"][-1] =="..":
+                    server_response["cwd"].pop(-1)
+                    server_response["cwd"].pop(-1)
+
+
+
+                self.cwd = server_response["cwd"]
+            elif server_response["response"] == "602":
+                print("directory doesn't exist")
 
     def auth(self):
         retry_count = 0
@@ -110,9 +138,9 @@ class Client:
                 self.login_user = username
                 self.cwd = [""]
                 try:
-                    os.makedirs("%s%s" % (self.USER_HOME, self.login_user))
+                    os.makedirs("%s\\%s" % (self.USER_HOME, self.login_user))
                 except OSError:
-                    print("hhh")
+                    print("bbb")
                     pass
                 return True
             else:

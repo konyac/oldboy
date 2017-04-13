@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 import socketserver
 from conf import settings
-from models import threading_socket_server
+from modules import threading_socket_server
 
 
 class ArgvHandle:
