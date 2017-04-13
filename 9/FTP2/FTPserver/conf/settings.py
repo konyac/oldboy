@@ -10,7 +10,7 @@ USER_HOME = "%s\\var\\users" % BASE_DIR
 USER_ACCOUNT = {
     "alex":{
         "password":"c4ca4238a0b923820dcc509a6f75849b",
-        "storage_limit":2097152,
+        "storage_limit":11112097152,
     },
     "cui":{
         "password":"c4ca4238a0b923820dcc509a6f75849b",

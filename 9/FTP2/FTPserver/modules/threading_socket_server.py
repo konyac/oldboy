@@ -65,7 +65,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
     def dir(self, user_data):
         directory_path = "%s\\%s%s" % (
         settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd) + "\\")
-        cmd = "dir"
+        cmd = "dir %s" % directory_path
         cmd_call = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
         cmd_result = cmd_call.stdout.read()
         self.request.send(cmd_result)
@@ -81,17 +81,19 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         else:
             self.request.send(json.dumps({"response": "602"}).encode())
 
-    def file_put(self, user_data):
+    def put(self, user_data):
         json_data = json.loads(user_data)
+        print(json_data)
         if not self.login_user.used_storage:
             self.calculate_storage()
         if self.login_user.used_storage + json_data["file_size"] > self.login_user.storage_limit:
             self.request.send(json.dumps({"response": "303"}).encode())
 
         else:
-            self.request.send(json.dumps({"response": "303"}).encode())
+            self.request.send(json.dumps({"response": "301"}).encode())
+            print(self.login_user.used_storage)
 
-        file_abs_path = self.get_file_abs_path(json_data["file name"])
+        file_abs_path = self.get_file_abs_path(json_data["file_name"])
         total_file_size = int(json_data["file_size"])
 
         has_received = 0
@@ -102,7 +104,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             if is_continue == "2004":
                 has_file_size = os.stat(file_abs_path).st_size
                 self.request.sendall(bytes(str(has_file_size), encoding="utf-8"))
-                has_received -= has_file_size
+                has_received = has_file_size
                 f = open(file_abs_path, "ab")
             else:
                 f = open(file_abs_path, "wb")
@@ -113,12 +115,13 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             data = self.request.recv(1024)
             f.write(data)
             has_received += len(data)
+            self.login_user.used_storage += has_received
         print("ending")
         f.close()
 
     def get_file_abs_path(self, filename):
-        return "%s/%s%s%s" % (
-            settings.USER_HOME, self.login_user.username, "/".join(self.login_user.cwd) + "/", filename)
+        return "%s\\%s\\%s\\%s" % (
+            settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd) + "\\", filename)
 
     def file_get(self, user_data):
         print("client try to get a file")
