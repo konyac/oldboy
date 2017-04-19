@@ -1,11 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-def square_of_sum(L):
-    ret = []
-    for i in L:
-        ret.append(i*i)
-    return sum(ret)
+def toUppers(L):
+    return [i.upper() for i in L if isinstance(i, str)]
 
 
-print(square_of_sum([1, 2, 3, 4, 5]))
-print(square_of_sum([-5, 0, 5, 15, 25]))
+print(toUppers(['Hello', 'world', 101]))
