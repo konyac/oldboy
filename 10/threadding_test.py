@@ -16,6 +16,8 @@ def worker(num):
 
 for i in range(20):
     t = threading.Thread(target=worker, args=(i,),name ="t. %d" % i)
-    t.setDaemon(False)
+    t.setDaemon(True)
     t.start()
+    # print(t.isDaemon())
 # time.sleep(1)
+print("end")

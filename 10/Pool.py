@@ -10,7 +10,6 @@ def end_call(arg):
     print("end_call",arg)
 
 if __name__ == "__main__":
-
     p = Pool(5)
 
     # print(p.map(myFun,range(10)))
