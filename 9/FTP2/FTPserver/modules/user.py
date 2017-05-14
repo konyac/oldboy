@@ -6,4 +6,4 @@ class User:
         self.username = username
         self.storage_limit = data["storage_limit"]
         self.cwd = [""]
-        self.user_storage = None
+        self.used_storage = None

@@ -12,7 +12,7 @@ import copy
 
 class Client:
     def __init__(self, sys_argv):
-        self.USER_HOME = "%s/var/users" % BASE_DIR
+        self.USER_HOME = "%s\\var\\users" % BASE_DIR
         self.args = sys_argv
         self.argv_parse()
         self.response_code = {
@@ -24,6 +24,7 @@ class Client:
             "303": "storage full",
             "601": "changed directory ",
             "602": "failed to find directory",
+            "2002": "ACK(可以开始上传)",
             "2003": "file exist",
             "2004": "continue put",
         }
@@ -56,7 +57,7 @@ class Client:
     def connect(self, host, port):
         try:
             self.sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.sock.connect((host, port))
+            self.sock.connect((host, int(port)))
         except socket.error as e:
             sys.exit("Failed to connect server: %s" % e)
 
@@ -91,7 +92,87 @@ class Client:
     def instruction_ls(self, instructions):
         self.sock.send(("ls|%s" % json.dumps({})).encode())
         server_response = self.sock.recv(1024)
-        print(str(server_response,encoding="gbk"))
+        print(str(server_response, encoding="gbk"))
+
+    def instruction_cd(self, instructions):
+        print("instr:", instructions)
+        if len(instructions) == 1:
+            print("gg")
+        elif len(instructions) == 2:
+            path = instructions[1]
+            if path.startswith("/"):
+                try_path = path.split("/")
+            else:
+                try_path = self.cwd
+                print("try_path", try_path)
+                split_path = path.split("/")
+                try_path.extend(split_path)
+                print(try_path)
+            self.sock.send(("cd|%s" % json.dumps({"cwd": try_path})).encode())
+            server_response = json.loads(self.sock.recv(1024).decode())
+            if server_response["response"] == "601":
+                print("self.cwd", server_response["cwd"])
+                if server_response["cwd"][-1] == "..":
+                    server_response["cwd"].pop(-1)
+                    server_response["cwd"].pop(-1)
+
+                self.cwd = server_response["cwd"]
+            elif server_response["response"] == "602":
+                print("directory doesn't exist")
+
+    def bar(self, num=1, sum=100):
+        rate = float(num)/float(sum)
+        rate_num = int(rate*100)
+        temp = "\r%d %%" % (rate_num)
+        sys.stdout.write(temp)
+        sys.stdout.flush()
+
+    def instruction_put(self, instructions):
+        file_is = ""
+        if len(instructions) == 1:
+            print("gg")
+            pass
+        elif os.path.isfile(os.path.join(os.path.dirname(os.path.dirname(__file__)), instructions[1])):
+            file_is = os.path.join(os.path.join(os.path.dirname(os.path.dirname(__file__)), instructions[1]))
+        elif os.path.isfile(instructions[1]):
+            file_is = instructions[1]
+        if file_is != "":
+            file_bytes_size = os.stat(file_is).st_size
+            file_name = os.path.basename(file_is)
+            print(file_bytes_size,file_name)
+            put_str = "put|%s" % json.dumps({"file_name": file_name, "file_size": file_bytes_size})
+            print(put_str)
+            self.sock.send(put_str.encode())
+            server_response = json.loads(self.sock.recv(1024).decode())
+            if server_response["response"] == "303":
+                print(self.response_code["303"])
+            elif server_response["response"] == "301":
+                has_send = 0
+                print(self.response_code["301"])
+                server_response = str(self.sock.recv(1024), encoding="utf-8")
+                if server_response == "2003":
+                    inp = input(self.response_code["2003"] + "续传?Y/N")
+                    if inp.upper() == "Y":
+                        self.sock.send(bytes("2004", encoding="utf-8"))
+                        has_file_size = int(str(self.sock.recv(1024), encoding="utf-8"))
+                        has_send = has_file_size
+                        f = open(file_is, "rb")
+                        f.seek(has_file_size)
+                    else:
+                        f = open(file_is, "rb")
+
+                else:
+                    print(self.response_code["2002"])
+                    f = open(file_is, "rb")
+                while has_send < file_bytes_size:
+                    data = f.read(1024)
+                    self.sock.sendall(data)
+                    has_send += len(data)
+                    self.bar(has_send, file_bytes_size)
+                f.close()
+                print("上传成功")
+
+
 
     def auth(self):
         retry_count = 0
@@ -110,9 +191,9 @@ class Client:
                 self.login_user = username
                 self.cwd = [""]
                 try:
-                    os.makedirs("%s%s" % (self.USER_HOME, self.login_user))
+                    os.makedirs("%s\\%s" % (self.USER_HOME, self.login_user))
                 except OSError:
-                    print("hhh")
+                    print("bbb")
                     pass
                 return True
             else:

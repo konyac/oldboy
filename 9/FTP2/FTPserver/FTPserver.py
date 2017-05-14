@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-import sys,os
+import sys
 from modules import main
 
 if __name__ =="__main__":
