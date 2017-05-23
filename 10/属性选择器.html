@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>属性选择器</title>
+    <style>
+        h2[htit]{
+            color:red;
+        }
+        p[duanl="duanluo1"]{
+            color:green;
+            font-size: 55px;
+            border: 6px;
+        }
+        p[duanl~="du"]{
+            color:sienna;
+        }
+        h2[x|=biao]{
+            color: fuchsia;
+            font-size: 33px;
+        }
+        p[duanl^=bun]{
+            font-size: 44px;
+        }
+        p[duanl$=xx]{
+            font-size: 4px;
+        }
+        p[duanl*=unx]{
+            font-size: 99px;
+        }
+        p:before{
+            content: "段落开始：：：";
+        }
+        p:after{
+            content: "：段落结束";
+        }
+    </style>
+</head>
+<body>
+    <div div1="content">
+        <h2 htit="biaoti">标题2</h2>
+        <h2 htit="biaoti1">标题2-1</h2>
+        <h2 x="biao-ti1">标题2xx1</h2>
+        <p duanl="du dluo1">段落</p>
+        <p duanl="duanluo1">段落1123</p>
+        <p duanl="duanluo2">段落1123</p>
+        <p duanl="bunxx">段落1123</p>
+        <h3 htit="pipei">标题3</h3>
+    </div>
+</body>
+</html>
