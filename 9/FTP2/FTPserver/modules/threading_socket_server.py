@@ -14,7 +14,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         "200": "Pass authentication!",
         "201": "Wrong username or password",
         "300": "Ready to send file to client",
-        "301": "Client ready to recevie file",
+        "301": "Client ready to receive file",
         "302": "File doesn't exist",
         "2002": "ACK(可以开始上传)",
         "2003": "file exist",
@@ -39,7 +39,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         function_str = instructions[0]
         if hasattr(self, function_str):
             func = getattr(self, function_str)
-            func(instructions[1])
+            func()
         else:
             print("Invalid instruction")
 
@@ -47,7 +47,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         self.login_user.used_storage = 0
 
     def ls(self, user_data):
-        directory_path = "%s\\%s%s" % (
+        directory_path = "%s\%s%s" % (
         settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd) + "\\")
         print("cwd>>>", directory_path)
         print(">>>", self.login_user.cwd)
@@ -57,15 +57,13 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             cmd = "ls %s" % directory_path
         print(cmd)
         cmd_call = subprocess.getoutput(cmd)
-        print(cmd_call)
         cmd_result = bytes(cmd_call, encoding="gbk")
 
         self.request.send(cmd_result)
 
     def dir(self, user_data):
-        directory_path = "%s\\%s%s" % (
-        settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd) + "\\")
-        cmd = "dir %s" % directory_path
+        directory_path = "%s\%s%s" % (settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd) + "\\")
+        cmd = "dir"
         cmd_call = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
         cmd_result = cmd_call.stdout.read()
         self.request.send(cmd_result)
@@ -81,19 +79,17 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         else:
             self.request.send(json.dumps({"response": "602"}).encode())
 
-    def put(self, user_data):
+    def file_put(self, user_data):
         json_data = json.loads(user_data)
-        print(json_data)
         if not self.login_user.used_storage:
             self.calculate_storage()
         if self.login_user.used_storage + json_data["file_size"] > self.login_user.storage_limit:
             self.request.send(json.dumps({"response": "303"}).encode())
 
         else:
-            self.request.send(json.dumps({"response": "301"}).encode())
-            print(self.login_user.used_storage)
+            self.request.send(json.dumps({"response": "303"}).encode())
 
-        file_abs_path = self.get_file_abs_path(json_data["file_name"])
+        file_abs_path = self.get_file_abs_path(json_data["file name"])
         total_file_size = int(json_data["file_size"])
 
         has_received = 0
@@ -104,7 +100,7 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             if is_continue == "2004":
                 has_file_size = os.stat(file_abs_path).st_size
                 self.request.sendall(bytes(str(has_file_size), encoding="utf-8"))
-                has_received = has_file_size
+                has_received -= has_file_size
                 f = open(file_abs_path, "ab")
             else:
                 f = open(file_abs_path, "wb")
@@ -115,13 +111,12 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
             data = self.request.recv(1024)
             f.write(data)
             has_received += len(data)
-            self.login_user.used_storage += has_received
         print("ending")
         f.close()
 
     def get_file_abs_path(self, filename):
-        return "%s\\%s\\%s\\%s" % (
-            settings.USER_HOME, self.login_user.username, "\\".join(self.login_user.cwd) + "\\", filename)
+        return "%s/%s%s%s" % (
+    settings.USER_HOME, self.login_user.username, "/".join(self.login_user.cwd) + "/", filename)
 
     def file_get(self, user_data):
         print("client try to get a file")
@@ -152,21 +147,12 @@ class MyTCPHandler(socketserver.BaseRequestHandler):
         else:
             response_msg = {"response": "302"}
             self.request.send(json.dumps(response_msg).encode())
-
     def user_auth(self, data):
         auth_info = json.loads(data)
         if auth_info["username"] in settings.USER_ACCOUNT:
             if settings.USER_ACCOUNT[auth_info["username"]]["password"] == auth_info["password"]:
                 self.login_user = user.User(auth_info["username"], settings.USER_ACCOUNT[auth_info["username"]])
                 response_code = "200"
-                print(response_code)
-                try:
-                    # print(settings.USER_HOME,self.login_user)
-                    os.makedirs("%s\\%s" % (settings.USER_HOME, self.login_user.username))
-                except OSError:
-                    print("hhh")
-                    pass
             else:
                 response_code = "201"
             self.request.send("response|{0}".format(response_code).encode())
-

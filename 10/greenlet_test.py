@@ -2,7 +2,7 @@
 # _*_ coding:utf-8 _*_
 # from gevent import monkey; monkey.patch_all()
 import gevent
-import requests,json
+import requests
 
 def f(url):
     print('GET: %s' % url)
