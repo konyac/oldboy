@@ -9,15 +9,18 @@
             display: block;
             visibility: hidden;
         }
+        .left{
+            float: left;
+        }
         .bd{
             width: 200px;
             height: 30px;
-            border: solid #000000;
+            background-color: #c0cddf;
+            border: solid #000000 1px;
         }
         .jian{
             height: 30px;
             width: 30px;
-            float: left;
             border: none;
             text-align: center;
             line-height: 30px;
@@ -25,34 +28,27 @@
         .jia{
             height: 30px;
             width: 30px;
-            float: left;
             border: none;
             text-align: center;
             line-height: 30px;
         }
         .shu input{
+            padding: 0;
             height: 30px;
-            /*float: left;*/
-            width: 140px;
+            width: 138px;
             border: none;
-        }
-        .shu{
-            float: left;
-            width: 140px;
-            /*height: 30px;*/
-            border: none;
-            border-right: solid black;
-            border-left: solid black;
+            border-right: solid black 1px;
+            border-left: solid black 1px;
         }
     </style>
 </head>
 <body>
     <div class="bd clearfix">
-        <div class="jian">-</div>
-        <div class="shu">
+        <div class="jian left">-</div>
+        <div class="shu left">
             <input type="text">
         </div>
-        <div class="jia">+</div>
+        <div class="jia left">+</div>
     </div>
 
 </body>
