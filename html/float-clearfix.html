@@ -1,0 +1,71 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+    <!--<style>-->
+        <!--body{-->
+            <!--margin: 0;-->
+        <!--}-->
+        <!--.c{-->
+            <!--background-color: #c0cddf;-->
+        <!--}-->
+        <!--.c:after{-->
+            <!--content: " ";-->
+            <!--clear: both;-->
+            <!--display: block;-->
+        <!--}-->
+        <!--.item{-->
+            <!--width: 30px;-->
+            <!--height: 70px;-->
+            <!--background-color: red;-->
+            <!--float: left;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<div class="c">-->
+        <!--<div class="item">c1</div>-->
+        <!--<div class="item">c2</div>-->
+        <!--&lt;!&ndash;<div class="c3" style="clear: both">c3</div>&ndash;&gt;-->
+    <!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*.clearfix:after{*/
+            /*content: '111';*/
+            /*display: block;*/
+            /*clear: both;*/
+            /*visibility: hidden; !* 将块内的内容隐藏visiability隐藏占高度，display：none隐藏不占高度*!*/
+            /*height: 0;*/
+        /*}*/
+        /*.clearfix:after{*/
+            /*content: " ";*/
+            /*display: block;*/
+            /*clear: both;*/
+        /*}*/
+        .c{
+            background-color:red;
+            overflow: hidden;
+        }
+        .c .item{
+            float:left;
+            width:30px;
+            height: 70px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div class='c clearfix'>
+        <div class='item'>123</div>
+        <div class='item'>456</div>
+    </div>
+</body>
+</html>

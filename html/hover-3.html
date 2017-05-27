@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .bottom{
+            height: 40px;
+            width: 500px;
+            background-color: brown;
+            border: 1px solid black;
+            position: relative;
+            /*z-index: 1;*/
+        }
+        .wrapper{
+            background-color: black;
+            height: 100px;
+            width: 100px;
+            opacity: 0.6;
+            position: absolute;
+            bottom: 0;
+            top: 400px;;
+            right: 0;
+            left: 0;
+            visibility: hidden;
+            /*display: none;*/
+            /*z-index: 2;*/
+        }
+        .content{
+            background-color: chartreuse;
+            width: 200px;
+            height: 200px;
+            position: fixed;
+            top:50%;
+            left: 50%;
+            margin-left: -100px;
+            margin-top: -100px;
+            visibility: hidden;
+            /*display: none;*/
+            /*z-index: 3;*/
+        }
+        .ss:hover .content{
+            visibility: visible;
+            /*display: block;*/
+        }
+        .bottom{
+            cursor: pointer;
+        }
+
+        .bottom:hover+.wrapper{
+            /*display: block;*/
+            visibility: visible;
+        }
+    </style>
+</head>
+<body>
+    <div class="ss">
+        <div class="bottom">
+            <span>asddddd</span>
+        </div>
+        <div class="wrapper">水电费</div>
+        <div class="content">范德萨</div>
+    </div>
+
+
+</body>
+</html>
