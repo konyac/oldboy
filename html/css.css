@@ -1,0 +1,49 @@
+body{
+    margin:0;
+}
+ul{
+    list-style: none;
+}
+.pg-header{
+    height: 44px;
+    background-color: #2459a2;
+    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+}
+.head-contend{
+    margin: 0 auto;
+    width: 1016px;
+}
+.pg-header .logo{
+    background: url("http://dig.chouti.com/images/logo.png") no-repeat;
+    float: left;
+    width: 121px;
+    height: 23px;
+    margin-top: 11px;
+
+}
+.pg-header .nav{
+    /*list-style: none;*/
+    float: left;
+    height: 44px;
+
+    margin-top: 0;
+    text-align: center;
+    padding-left: 10px;
+}
+.nav li{
+    float: left;
+    line-height: 39px;
+    /*border:solid red;*/
+
+}
+.nav li:hover{
+    background-color: #c0cddf;
+    border-bottom: solid red 5px;
+}
+.nav li a{
+    padding:0 20px;
+    text-decoration: none;
+    color: white;
+}
+
+

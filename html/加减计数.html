@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .clearfix:after{
+            content: " ";
+            display: block;
+            visibility: hidden;
+        }
+        .bd{
+            width: 200px;
+            height: 30px;
+            border: solid #000000;
+        }
+        .jian{
+            height: 30px;
+            width: 30px;
+            float: left;
+            border: none;
+            text-align: center;
+            line-height: 30px;
+        }
+        .jia{
+            height: 30px;
+            width: 30px;
+            float: left;
+            border: none;
+            text-align: center;
+            line-height: 30px;
+        }
+        .shu input{
+            height: 30px;
+            /*float: left;*/
+            width: 140px;
+            border: none;
+        }
+        .shu{
+            float: left;
+            width: 140px;
+            /*height: 30px;*/
+            border: none;
+            border-right: solid black;
+            border-left: solid black;
+        }
+    </style>
+</head>
+<body>
+    <div class="bd clearfix">
+        <div class="jian">-</div>
+        <div class="shu">
+            <input type="text">
+        </div>
+        <div class="jia">+</div>
+    </div>
+
+</body>
+</html>

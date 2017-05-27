@@ -4,7 +4,7 @@
 # date = file.read()
 # file.close()
 # print(date)
-with open("test.txt", "r",encoding="utf-8") as f:
+with open("output.txt", "r",encoding="utf-8") as f:
     # print(f.tell())
     print(f.read(2))
     print(f.tell())
