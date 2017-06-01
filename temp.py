@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
-def toUppers(L):
-    return [i.upper() for i in L if isinstance(i, str)]
+a = "这是字符串"
+print(a[2:])
+b = [11, 22]
+b.append(1)
+print(b)
 
-
-print(toUppers(['Hello', 'world', 101]))
