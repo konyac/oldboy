@@ -23,11 +23,50 @@
         text_sub = text_all.slice(1, text_all.length);
         new_text = text_sub + text_first;
         text.innerText = new_text;
-    }, 500)
-    var str="Hello world!"
-    document.write(str.lastIndexOf("Hello") + "<br />")
-    document.write(str.lastIndexOf("World") + "<br />")
+    }, 500);
+    var str="Hello world!";
+    document.write(str.lastIndexOf("Hello") + "<br />");
+    document.write(str.lastIndexOf("World") + "<br />");
     document.write(str.lastIndexOf("world"))
+//    function f1(args) {
+//        console.log(args)
+//    }
+//    f1("hello-111");
+//    (function f2(args) {
+//        console.log(args)
+//        console.log(111)
+//        document.write("akkkss")
+//    })("hahahah")
+//    function f1() {
+//        console.log(args);
+//        var args = "alex"
+//    }
+//    f1();
+//    function Foo(name,age) {
+//        this.Name = name;
+//        this.Age = age;
+//        this.func = function (args) {
+//            return this.Name + args;
+//        }
+//    }
+//    obj1 = new Foo("alex",18);
+//    console.log(obj1.func("sb"));
+//    console.log(obj1.Name);
+    function Foo(name,age) {
+        this.Name = name;
+        this.Age = age;
+    }
+    Foo.prototype = {
+        func:function (args) {
+            return this.Name+args;
+        },
+        GetInfo:function () {
+            return this.Name+this.Age;
+        }
+    };
+    obj1 = new Foo("alex",22);
+    console.log(obj1.func("dasb"));
+    console.log(obj1.GetInfo());
 
 </script>
 </body>

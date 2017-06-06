@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <table>
+    <div>
+        <input type="button" value="全选" ondblclick="f1();">
+        <input type="button" value="取消" onclick="f1();">
+        <!--<input type="button" value="取消" onclick="f2();">-->
+        <input type="button" value="反选" onclick="f3();">
+    </div>
+    <thead style="border: 1px solid gray;">
+        <tr>
+            <td>序号</td>
+            <td> 用户名</td>
+            <td> 年龄</td>
+        </tr>
+    </thead>
+    <tbody id="tb">
+        <tr>
+            <td><input class="c1" type="checkbox"></td>
+            <td>alex</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td><input class="c1" type="checkbox"></td>
+            <td>alex</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td><input class="c1" type="checkbox"></td>
+            <td>alex</td>
+            <td>19</td>
+        </tr>
+        <tr>
+            <td><input class="c1" type="checkbox"></td>
+            <td>alex</td>
+            <td>19</td>
+        </tr>
+    </tbody>
+</table>
+    <script type="text/javascript">
+    // 第二种
+    function f1() {
+//        var class_inpu = document.getElementById("tb");
+        var checks = document.getElementsByClassName("c1");
+        for (var i=0;i<checks.length;i++){
+            if (checks[i].classList.length >1){
+               checks[i].checked = false;
+                checks[i].className = "c1"
+            }
+            else if(checks[i].classList.length === 1){
+                checks[i].checked = true;
+                checks[i].className = "c1 c2"
+            }
+        }
+    }
+    function f3() {
+//        var class_inpu = document.getElementById("tb");
+        var checks = document.getElementsByClassName("c1");
+        for (var i = 0; i < checks.length; i++) {
+            if (checks[i].checked){
+               checks[i].checked = false;
+            }else{
+                checks[i].checked = true;
+            }
+        }
+    }
+//    第二种
+//    function f1() {
+//        var class_inpu = document.getElementById("tb");
+//        var checks = class_inpu.getElementsByClassName("c1")
+//        for (var i=0;i<checks.length;i++){
+//            checks[i].checked = true;
+//        };
+//    }
+//    function f2() {
+//        var class_inpu = document.getElementById("tb");
+//        var checks = class_inpu.getElementsByClassName("c1")
+//        for (var i=0;i<checks.length;i++){
+//            checks[i].checked = false ;
+//        };
+//    }
+
+</script>
+
+</body>
+</html>

@@ -14,3 +14,4 @@ exec(func in namespace)
 result = namespace['hellocute']()
 
 print(result)
+

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        123
+        <div class="c1">asdf</div>
+        <div class="c1" id="i1">
+            <p>asdf</p>
+            <div name="n1">
+                <span>asd</span>
+            </div>
+            <div name="n1">
+                <a>dfs</a>
+                <a>asdf</a>
+            </div>
+        </div>
+        <div class="c1">asdf</div>
+    </div>
+
+    <script>
+        var li = document.getElementById("i1");
+        father_ele = li.parentElement;
+//        sons = father_ele.children;
+        sons = father_ele.childNodes;
+        for (var i=0;i<sons.length;i++){
+            var current_node = sons[i];
+            if(current_node.nodeType===3){
+                console.log(sons[i]);
+            }
+        }
+    </script>
+</body>
+</html>

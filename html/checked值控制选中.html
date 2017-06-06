@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="i1">
+        <ul>
+            <li><input type="checkbox" value="1">篮球</li>
+            <li><input type="checkbox" value="2">排球</li>
+            <li><input type="checkbox" value="3">足球</li>
+        </ul>
+    </div>
+    <div id="i2">
+        <ul>
+            <li><input type="checkbox" value="11">篮球</li>
+            <li><input type="checkbox" value="22">排球</li>
+            <li><input type="checkbox" value="33">足球</li>
+        </ul>
+    </div>
+    <input type="button" value="全部选中i1" onclick="f1()">
+    <input type="button" value="全部取消i1" onclick="f2()">
+
+    <script type="text/javascript">
+        var ch = document.getElementById("i1").getElementsByTagName("input");
+        function f1() {
+            for(var i=0;i<ch.length;i++){
+                ch[i].checked = true;
+            }
+        }
+        function f2() {
+            for(var i=0;i<ch.length;i++){
+                ch[i].checked = false;
+            }
+        }
+    </script>
+
+</body>
+</html>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+
+    <!--<div id="i1">-->
+        <!--<ul>-->
+            <!--<li><input type="checkbox" value="1"> 篮球</li>-->
+            <!--<li><input type="checkbox" value="2"> z球</li>-->
+            <!--<li><input type="checkbox" value="3"> p球</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<div id="i2">-->
+        <!--<ul>-->
+            <!--<li><input type="checkbox" value="11"> 篮球</li>-->
+            <!--<li><input type="checkbox" value="22"> z球</li>-->
+            <!--<li><input type="checkbox" value="33"> p球</li>-->
+        <!--</ul>-->
+    <!--</div>-->
+    <!--<input type="button" value="全部选中 i1" onclick="Clic()">-->
+    <!--<input type="button" value="全部取消 i1" onclick="Clic2()">-->
+
+<!--<script type="text/javascript">-->
+    <!--var tag_name = document.getElementById("i1").getElementsByTagName("input");-->
+    <!--function Clic() {-->
+       <!--for (var i=0;i<tag_name.length;i++){-->
+        <!--tag_name[i].checked = true-->
+        <!--}-->
+    <!--}-->
+    <!--function Clic2() {-->
+       <!--for ( var i in tag_name){-->
+        <!--tag_name[i].checked = false-->
+        <!--}-->
+    <!--}-->
+
+
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->
