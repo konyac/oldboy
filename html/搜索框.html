@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .gg{
+            color: gray;
+        }
+        .bb{
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="请输入搜索内容">
+    <p>当鼠标进入时移除内容</p>
+    <p>当鼠标退出时添加内容</p>
+    <input type="text" class="gg" value="请输入搜索内容 " onfocus="Focus(this)" onblur="Blur(this)">
+    <script>
+        function Focus(args) {
+            args.className="bb";
+            var current_val = args.value;
+            if(current_val === "请输入搜索内容 "){
+                args.value="";
+            }
+        }
+        function Blur(args) {
+            var current_val = args.value;
+            if (current_val==="请输入搜索内容 "||current_val.trim().length===0){
+                args.value="请输入搜索内容 ";
+                args.className="gg"
+            }
+
+
+        }
+    </script>
+</body>
+</html>

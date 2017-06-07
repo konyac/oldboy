@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        ul{
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+        ul li{
+            text-align: center;
+            height: 38px;
+            line-height: 38px;
+        }
+        .hide{
+            display: none;
+        }
+        .menu{
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 220px;
+            background-color: #c0cddf;
+        }
+        .menu .title{
+            text-align: center;
+            height: 44px;
+            line-height: 44px;
+            background-color: #2b542c;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <div class="item" style="margin-top: 20px">
+            <div class="title" onclick="f1(this)">菜单一</div>
+            <div class="contend">
+                <ul>
+                    <li>菜单1</li>
+                    <li>菜单1</li>
+                    <li>菜单1</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="item">
+            <div class="title" onclick="f1(this)">菜单二</div>
+            <div class="contend">
+                <ul>
+                    <li>菜单2</li>
+                    <li>菜单2</li>
+                    <li>菜单2</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="item">
+            <div class="title" onclick="f1(this)">菜单二</div>
+            <div class="contend">
+                <ul>
+                    <li>菜单3</li>
+                    <li>菜单3</li>
+                    <li>菜单3</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+////        点击自己开关和闭合
+//        function f1(args) {
+//            if(args.nextElementSibling.classList.length>1){
+//                args.nextElementSibling.classList.remove("hide")
+//            }else {
+//                args.nextElementSibling.classList.add("hide")
+//            }
+//        }
+        function f1(args) {
+            if (args.nextElementSibling.classList.length > 1) {
+                args.nextElementSibling.classList.remove("hide")
+            } else {
+                args.nextElementSibling.classList.add("hide")
+            }
+        }
+//            var menu = args.parentElement.parentElement;
+//            var sons = menu.children;
+//            for(var i in sons){
+//                if (sons[i]!=args.parentElement){
+//                    if(sons[i].children[1].classList.length===1)
+//                    sons[i].children[1].classList.add("hide")
+//                }else {
+//                    args.nextElementSibling.classList.remove("hide")
+//                }
+//            }
+//        }
+    </script>
+</body>
+</html>

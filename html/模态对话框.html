@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bg{
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color:rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        .c1{
+            width: 400px;
+            height: 300px;
+            background-color: #eeeeee;
+           position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -150px;
+            margin-left: -200px;
+            z-index: 3;
+        }
+        .c2{
+            width: 300px;
+            height:200px;
+            margin:50px auto;
+        }
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="body">
+        <input id="rg" type="button" value="注册" onclick="f1()">
+        <input id="lg" type="button" value="登陆">
+    </div>
+    <div id="bg" class="bg hide"></div>
+    <div id="c1" class="c1 hide">
+        <div id="c2" class="c2 hide">
+            <p>用户名</p><input type="text">
+            <p>密码</p><input type="password"><br>
+            <input type="button" value="确定">
+            <input type="button" value="取消" onclick="f2()">
+        </div>
+    </div>
+    <script>
+        function f1() {
+            document.getElementById("bg").classList.remove("hide");
+            document.getElementById("c1").classList.remove("hide");
+            document.getElementById("c2").classList.remove("hide");
+        }
+        function f2() {
+            document.getElementById("bg").classList.add("hide");
+            document.getElementById("c1").classList.add("hide");
+            document.getElementById("c2").classList.add("hide");
+
+        }
+
+    </script>
+</body>
+</html>

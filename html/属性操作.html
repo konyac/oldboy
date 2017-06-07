@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="i1">
+        <div class="c1" alex="sb">123</div>
+        <div class="c1">123</div>
+        <div class="c1" alex="sb">123</div>
+        <div class="c1">123</div>
+        <div class="c1" alex="sb">123</div>
+    </div>
+    <div id="i2">
+        <input type="text">
+        <input type="password">
+        <input type="checkbox">
+        <input type="button">
+    </div>
+    <script>
+        var ch = document.getElementById("i1").children;
+        for(var i in ch){
+            if(ch[i].getAttribute("alex")==="sb"){
+                ch.innerText="hahaha";
+            }
+        }
+    </script>
+
+</body>
+</html>
