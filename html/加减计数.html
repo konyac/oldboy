@@ -12,30 +12,35 @@
         .left{
             float: left;
         }
-        .bd{
+        .wrap{
             width: 200px;
             height: 30px;
             background-color: #c0cddf;
             border: solid #000000 1px;
         }
-        .jian{
+        .minus{
             height: 30px;
             width: 30px;
             border: none;
             text-align: center;
             line-height: 30px;
+            cursor: pointer;
+
         }
-        .jia{
+        .plus{
             height: 30px;
             width: 30px;
             border: none;
             text-align: center;
             line-height: 30px;
+            cursor: pointer;
         }
-        .shu input{
+        .count input{
             padding: 0;
             height: 30px;
             width: 138px;
+            /*text-align: right;*/
+            /*text-align-last: right;*/
             border: none;
             border-right: solid black 1px;
             border-left: solid black 1px;
@@ -43,12 +48,12 @@
     </style>
 </head>
 <body>
-    <div class="bd clearfix">
-        <div class="jian left">-</div>
-        <div class="shu left">
+    <div class="wrap clearfix">
+        <div class="minus left">-</div>
+        <div class="count left">
             <input type="text">
         </div>
-        <div class="jia left">+</div>
+        <div class="plus left">+</div>
     </div>
 
 </body>
