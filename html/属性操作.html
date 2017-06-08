@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+    <input type="button" value="点哦我" onclick="func()">
     <div id="i1">
         <div class="c1" alex="sb">123</div>
         <div class="c1">123</div>
@@ -19,12 +20,15 @@
         <input type="button">
     </div>
     <script>
-        var ch = document.getElementById("i1").children;
-        for(var i in ch){
-            if(ch[i].getAttribute("alex")==="sb"){
-                ch.innerText="hahaha";
+        function func() {
+            var ch = document.getElementById("i1").children;
+            for(var i in ch){
+                if(ch[i].getAttribute("alex")==="sb"){
+                    ch[i].innerText="hahaha";
+                }
             }
         }
+
     </script>
 
 </body>

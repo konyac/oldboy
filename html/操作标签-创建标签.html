@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <input type="text">
+    <input type="button" value="添加" onclick="f1(this);">
+    <div style="width: 202px;min-height: 80px;border: solid darkgrey 1px">
+        <ul id="content" style="list-style: none;margin: 0;padding: 0">
+            <li>alex</li>
+        </ul>
+    </div>
+    <script>
+        function f1(ths) {
+            var val = ths.previousElementSibling.value;
+            ths.previousElementSibling.value="";
+
+            //第一种方式
+//            var li = "<li>"+val+"</li>";
+//            var con = document.getElementById("content");
+//            con.insertAdjacentHTML("beforeEnd",li);
+            var li = document.createElement("li");
+            var temp = document.createElement("a");
+            temp.innerText = "百度";
+            temp.href="http://www.baidu.com";
+            temp.target="_blank";
+            li.innerText = val;
+            li.appendChild(temp);
+            var con = document.getElementById("content");
+//            con.appendChild(li);
+            con.lastElementChild.insertBefore(li,con.children[1]);
+
+
+
+
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input id="search" type="text" value="请输入关键字 " style="color: gray" onfocus="f1(this)" onblur="f2(this)">
+    <script>
+        function f1(ths) {
+            if(ths.value==="请输入关键字 "){
+                ths.value="";
+                ths.style.color="black"
+            }
+
+        }
+        function f2(ths) {
+            if(ths.value.trim()==""){
+                ths.value="请输入关键字 ";
+                ths.style.color="gray"
+            }
+
+        }
+//        function f1(ths){
+//            ths.style.color = "black";
+//            if(ths.value == '请输入关键字' || ths.value.trim() == ""){
+//
+//                ths.value = "";
+//            }
+//        }
+//
+//        function f2(ths){
+//            if(ths.value.trim() == ""){
+//                ths.value = '请输入关键字';
+//                ths.style.color = 'gray';
+//            }else{
+//                ths.style.color = "black";
+//            }
+//        }
+    </script>
+
+</body>
+</html>
