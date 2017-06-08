@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            margin: 0;
+            background-color: #dddddd;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        ul li{
+            text-align: center;
+            height: 38px;
+            line-height: 38px;
+        }
+
+        .pg-header{
+            background-color: #0f0f0f;
+            height: 48px;
+        }
+        .body-left{
+            position: absolute;
+            left: 200px;
+            width: 180px;
+            padding: 20px 0;
+            background-color: #647485;
+        }
+        .body-right{
+            position: absolute;
+            right: 200px;
+            left: 385px;
+        }
+        .body-right .content{
+            height: 800px;
+            border: solid #0f0f0f 1px;
+        }
+        .fixed{
+            position: fixed;
+            left: 200px;
+            top: 2px;
+        }
+        .body-left .active{
+            background-color: #dddddd;
+            color: #2459a2;
+        }
+    </style>
+</head>
+<body onscroll="scr();">
+    <div class="pg-header"></div>
+    <div id="menu" class="body-left">
+        <ul>
+            <li>第一章</li>
+            <li>第二章</li>
+            <li>第三章</li>
+        </ul>
+    </div>
+    <div class="body-right">
+        <div class="content">床前明月光</div>
+        <div class="content">疑是地上霜</div>
+        <div class="content">举头望明月</div>
+    </div>
+    <script>
+        function scr() {
+            var sc = document.body.scrollTop;
+            var me = document.getElementById("menu");
+            if(sc>48){
+                me.classList.add("fixed")
+            }else {
+                me.classList.remove("fixed")
+            }
+            var conts = document.getElementsByClassName("content");
+            for(var i in conts){
+                var current_cont = conts[i];
+                var cont_top = current_cont.offsetParent.offsetTop+current_cont.offsetTop;
+//                console.log(cont_top)
+                var win_top = cont_top-sc;
+                if(win_top<0&&(current_cont.offsetHeight+cont_top)>sc){
+                    me.getElementsByTagName("li")[i].classList.add("active");
+                    var lis = me.getElementsByTagName("li");
+                    for(var j in lis){
+                        if(lis[j]!=lis[i]){
+                            me.getElementsByTagName("li")[j].classList.remove("active");
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
