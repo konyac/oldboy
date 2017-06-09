@@ -36,7 +36,7 @@
             left: 385px;
         }
         .body-right .content{
-            height: 800px;
+            height: 600px;
             border: solid #0f0f0f 1px;
         }
         .fixed{
@@ -61,8 +61,8 @@
     </div>
     <div class="body-right">
         <div class="content">床前明月光</div>
-        <div class="content">疑是地上霜</div>
-        <div class="content">举头望明月</div>
+        <div class="content" >疑是地上霜</div>
+        <div class="content" style="height: 200px">举头望明月</div>
     </div>
     <script>
         function scr() {
@@ -79,15 +79,31 @@
                 var cont_top = current_cont.offsetParent.offsetTop+current_cont.offsetTop;
 //                console.log(cont_top)
                 var win_top = cont_top-sc;
+                var lis = me.getElementsByTagName("li");
+
+                if(cont_top+current_cont.offsetHeight===sc+document.documentElement.clientHeight){
+                    for(var m in lis){
+                        if(lis[m].className==="active"){
+                            lis[m].classList.remove("active");
+                        }
+                    }
+                    me.children[0].lastElementChild.classList.add("active");
+                    console.log("ok");
+                    console.log(cont_top,current_cont.offsetHeight,sc,document.documentElement.clientHeight);
+                    return
+
+                }
+
                 if(win_top<0&&(current_cont.offsetHeight+cont_top)>sc){
-                    me.getElementsByTagName("li")[i].classList.add("active");
-                    var lis = me.getElementsByTagName("li");
+
+                    lis[i].classList.add("active");
                     for(var j in lis){
                         if(lis[j]!=lis[i]){
-                            me.getElementsByTagName("li")[j].classList.remove("active");
+                            lis[j].className="";
                         }
                     }
                 }
+
             }
         }
     </script>

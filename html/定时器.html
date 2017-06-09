@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="button" value="Interval" onclick="Interval();">
+    <input type="button" value="StopInterval" onclick="StopInterval();">
+    <script>
+        function Interval() {
+            s1 = setInterval("console.log(1)",1000);
+            s2 = setInterval(function () {
+                console.log("456")
+                },2000
+            );
+            console.log("666");
+        }
+        function StopInterval() {
+            clearInterval(s1)
+        }
+    </script>
+</body>
+</html>
