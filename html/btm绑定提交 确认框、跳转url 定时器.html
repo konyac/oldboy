@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form id="fom" action="http://www.baidu.com/s?" method="get">
+        <input name="wd" type="text">
+        <input type="button" onclick="SubmitForm();" value="提交">
+    </form>
+    <input type="button" value="去死吧" onclick="go_dead()"><label id="la">去死？</label>
+    <div>
+        <input type="button" value="删除" onclick="Delete()">
+        <input type="button" value="取消" onclick="unDelete()">
+    </div>
+    <script>
+        function SubmitForm() {
+            document.getElementById("fom").submit();
+        }
+        function go_dead() {
+            var s = confirm("去死");
+            document.getElementById("la").innerText = s;
+        }
+        function Delete() {
+            document.getElementById("la").innerText = "已删除";
+            s1 = setInterval(ClearStatus,5000)
+        }
+        function ClearStatus() {
+            document.getElementById("la").innerText = "";
+        }
+        function unDelete() {
+            clearInterval(s1)
+
+        }
+    </script>
+</body>
+</html>
