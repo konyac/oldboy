@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        function func() {
+            for(var i=0;i<3;i++){
+                function inner() {
+                    console.log(i)
+                }
+            }
+            setInterval(inner,1000)
+        }
+        func();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="btns">
+        <input type="button" value="点我1">
+        <input type="button" value="点我2">
+        <input type="button" value="点我3">
+    </div>
+    <script>
+        var btns = document.getElementById("btns").children;
+        for(var i=0;i<btns.length;i++){
+            var current_btn = btns[i];
+            current_btn.onclick=function () { //循环的时候function没有执行呢
+                alert(i)
+                console.log(i)
+            }
+        }//for 循环结束后i=3，然后再执行function
+    </script>
+</body>
+</html>
