@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form action="h1.html">
+        <div id="form1">
+            <input type="text">
+        </div>
+        <input type="submit" value="提交" onclick="return func();">
+    </form>
+    <script>
+        function func() {
+            var inputs = document.getElementById("form1").getElementsByTagName("input");
+            for(var i=0;i<inputs.length;i++){
+                var current_inp = inputs[i];
+                if(current_inp.value.trim()===""){//!current_inp.value.trim()
+                    alert("请输入内容");
+                    return false
+                }
+            }
+            return true
+        }
+    </script>
+</body>
+</html>
