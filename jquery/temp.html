@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <a>aaaaaaa</a>
+        <div>bbbbbbbb
+            <a>mmmmmmmm</a>
+        </div>
+        <a>jkasjkljlk</a>
+        <a>llllllll</a>
+        <span>44444444</span>
+
+    </div>
+    <a>2222222</a>
+
+    <script>
+        var x1 = $("div~a");
+        x1.each(function () {
+            console.log(this)
+        })
+    </script>
+</body>
+</html>
