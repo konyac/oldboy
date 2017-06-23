@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <form>
+        <label>Name:</label>
+        <input name="name" type="radio"/>
+        <fieldset>
+            <label>Newsletter:</label>
+            <input name="newsletter" type="button" value="按钮"/>
+            <input type="checkbox" alex = "sb">
+            <input type="text">
+        </fieldset>
+    </form>
+    <input name="none" />
+
+    <script>
+//        var inps = $("form input[alex]");
+        var inps = $(":button");
+        inps.each(function () {
+            console.log(this)
+        })
+    </script>
+</body>
+</html>

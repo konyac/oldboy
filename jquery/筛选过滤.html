@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<p> This is just a test.</p> <p> So is this</p>
+<ul>
+    <li>list item 1</li>
+    <li>list item 2</li>
+    <li>list item 3</li>
+    <li>list item 4</li>
+    <li>list item 5</li>
+</ul>
+<form><input type="checkbox" /></form>
+<div class="protected"></div><div></div>
+<p>Hello</p><p id="selected">Hello Again</p>
+<script>
+    // eq  获取当前链式操作中第N个jQuery对象，返回jQuery对象，当参数大于等于0时为正向选取，比如0代表第一个，1代表第二个。当参数为负数时为反向选取，比如-1为倒数第一个，具体可以看以下示例。
+     // 比 基本选择器的 eq 好，这样可以拼接
+    var p1 = $("p").eq(1);//[ <p> So is this</p> ]
+    var p2 = $("p").eq(-1); //[ <p> So is this</p> ]
+
+    // first() last()
+    var ul = $("ul li").first(); //[ <li>list item 1</li> ]
+
+    // hasClass(class) 检查当前的元素是否含有某个特定的类，如果有，则返回true。 这其实就是 is("." + class)。
+    $("div").click(function(){
+      if ( $(this).hasClass("protected") )
+        $(this)
+          .animate({ left: -10 })
+          .animate({ left: 10 })
+          .animate({ left: -10 })
+          .animate({ left: 10 })
+          .animate({ left: 0 });
+    });
+
+    // is() 括号内可以是回调函数function 获取返回值，需要的是true 或者false
+    $("input[type='checkbox']").parent().is("form") ;// true 由于input元素的父元素是一个表单元素，所以返回true。
+    // not(expr|ele|fn) 删除与指定表达式匹配的元素
+    $("p").not( $("#selected")[0] ) // 从p元素中删除带有 select 的ID的元素 [ <p>Hello</p> ]
+
+</script>
+
+
+</body>
+</html>

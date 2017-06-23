@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab-menu</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <style>
+        body{
+            margin: 0;
+        }
+        .clearfix:after{
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+
+        }
+        .tab-menu{
+            width: 1000px;
+            margin: 0 auto;
+            border: solid rgba(58, 95, 108, 0.44) 1px;
+            border-top: transparent;
+        }
+        .header{
+            background-color: #eeeeee;
+            border-bottom: solid rgba(58, 95, 108, 0.44) 1px;
+            height: 46px;
+        }
+        ul{
+            list-style: none;
+            margin:0 ;
+            padding: 0;
+            /*做导航时ul设置*/
+        }
+        ul li{
+            float: left;
+            height: 46px;
+            line-height: 46px;
+            text-align: center;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-right: solid rgba(58, 95, 108, 0.44) 1px;
+            cursor: pointer;
+        }
+        .content{
+            min-height: 500px;
+        }
+        .hide{
+            display: none;
+        }
+        .active{
+            color: #c7254e;
+            border-bottom: solid 1px white;
+            border-top: solid #c7254e 2px;
+            height: 44px;
+            line-height: 44px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-menu">
+        <div class="header clearfix">
+            <ul>
+                <li target="h1" class="active" onclick="func(this);">价格趋势</li>
+                <li target="h2" onclick="func(this);">市场分析</li>
+                <li target="h3" onclick="func(this);">其他</li>
+            </ul>
+        </div>
+        <div id="c1" class="content">
+            <div con = "h1">content1</div>
+            <div con = "h2" class="hide">content2</div>
+            <div con = "h3" class="hide">content3</div>
+        </div>
+
+    </div>
+    <script>
+        function func(ths) {
+            var current = $(ths);
+            var ids = current.attr("target");//ids是个字符串
+            var con = $("div[con="+ids+"]");//要种字符串的拼接法
+            current.addClass("active").siblings().removeClass("active");
+            con.removeClass("hide").siblings().addClass("hide");
+        }
+    </script>
+</body>
+</html>

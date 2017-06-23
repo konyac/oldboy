@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<form>
+    <input type="button" value="Input Button"/>
+    <input type="checkbox" />
+
+    <input type="file" />
+    <input type="hidden" />
+    <input type="image" />
+
+    <input type="password" />
+    <input type="radio" />
+    <input type="reset" />
+
+    <input type="submit" />
+    <input type="text" />
+    <select><option>Option</option></select>
+
+    <textarea></textarea>
+    <button>Button</button>
+
+</form>
+
+<script>
+    var ips = $(":input");//所有input
+    var pwd = $(":password");//[ <input type="password" /> ]
+    var cbx = $(":checkbox");
+    ips.each(function () {
+        console.log(this)
+    });
+    console.log("----------------------------");
+    pwd.each(function () {
+        console.log(this)
+    });
+    console.log("----------------------------");
+    cbx.each(function () {
+        console.log(this)
+    })
+</script>
+</body>
+</html>
