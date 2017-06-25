@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <td><button onclick="selectAll();">全选</button></td>
+                <td style="text-align: center"><button onclick="cancel();">取消</button></td>
+                <td style="text-align: center"><button onclick="reverse();">反选</button></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><p>1111111111</p></td>
+                <td><p>1111111111</p></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><p>2222222</p></td>
+                <td><p>2222222</p></td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td><p>3333333</p></td>
+                <td><p>3333333</p></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        var che = $("tbody :checkbox");
+        function selectAll() {
+            che.prop("checked",true)
+        }
+        function cancel() {
+            che.prop("checked",false)
+        }
+        function reverse() {
+            che.each(function () {
+                if($(this).prop("checked")){
+                    $(this).prop("checked",false)
+                }else {
+                    $(this).prop("checked",true)
+                }
+            })
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>返回顶部</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <style>
+        .hide{
+            display: none;
+        }
+        .go-top{
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            width: 40px;
+            height: 40px;
+            background-color: #5ea593;
+            color:black;
+        }
+        .c1{
+            visibility: hidden;
+        }
+        .go-top:hover .c1{
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body onscroll="Func();">
+
+    <div id="i1" style="height: 2000px">
+        sdfsd
+        <div id="i3" style="background-color:#e8e8e8;width: 300px;height: 100px;overflow: auto">
+            dfsdf
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+    </div>
+
+    <div id="i2" class="go-top hide" onclick="goTOP();" >
+        <!--<a href="#"></a>  不刷新 下面一样-->
+        <a href="javascript:void(0);" class="c1">返回顶部</a>
+    </div>
+    <script type="text/javascript">
+        // jquery
+         window.onscroll =  function () {//获取滑轮到顶端的高度
+            var x = $(window).scrollTop();
+             console.log(x);
+             if (x > 100){
+                 $("#i2").removeClass("hide")
+             }else {
+                 $("#i2").addClass("hide")
+             }
+         };
+        $("#i3").scroll(function () {
+             var y=$("#i3").scrollTop();
+             console.log(y);
+             if (y > 100){
+                 $("#i2").removeClass("hide")
+             }else {
+                 $("#i2").addClass("hide")
+             }
+        });
+        $("#i2").click(function () {
+            $(window).scrollTop(0);
+            $("#i3").scrollTop(0)
+        });
+
+        // js
+        function Func() {
+//            var hei = document.body.scrollTop;
+//            if (hei>100){
+//                document.getElementById("i2").classList.remove("hide");
+//            }else {
+//                document.getElementById("i2").classList.add("hide");
+//            };
+        }
+        function goTOP() {
+//            document.body.scrollTop = 0;
+        }
+
+
+    </script>
+</body>
+</html>

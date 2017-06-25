@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <input>
+    <input>
+    <input>
+
+    <script>
+
+        // html([val|fn])
+//        $('p').html();
+//        $("p").html("Hello <b>world</b>!");
+//        $("p").html(function(n){
+//        return "<div style='background-color: yellow'>hahaha</div>这个 p 元素的 index 是：" + n;
+//        });
+//
+//        // text（）  text([val|fn]) 取得所有匹配元素的内容。
+//        $('p').text();
+//        $("p").text("Hello world!");
+//        $("p").text(function(n){
+//            return "<div>hahaha</div>这个 p 元素的 index 是：" + n;
+//            });
+//        // val([val|fn|arr])
+//        $("input").val();
+        $("input").val("hello world!");
+        $('input:text.items').val(function() {
+          return this.value + ' ' + this.className;
+        });
+
+
+    </script>
+</body>
+</html>

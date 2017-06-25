@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<p> </p>
+<input type="checkbox"><i>111</i><br>
+<input type="checkbox" checked="checked"><i>222</i><br>
+<input type="checkbox"><i>3333</i>
+<script>
+
+    // attr(name|properties|key,value|fn)  设置或返回被选元素的属性值。
+    // 建议用prop修改属性，因为attr不能改回来 对于input
+//    $("img").attr("src");
+//    $("img").attr({ src: "test.jpg", alt: "Test Image" }); //为所有图像设置src和alt属性。使用字典
+//    $("img").attr("src","test.jpg"); //为所有图像设置src属性。
+//    $("img").attr("title", function() { return this.src }); //把src属性的值设置为title属性的值。循环每一个匹配元素执行函数操作
+    //removeAttr(name)
+    /*从每一个匹配的元素中删除一个属性
+1.6以下版本在IE6使用JQuery的removeAttr方法删除disabled是无效的。解决的方法就是使用$("XX").prop("disabled",false);
+1.7版本在IE6下已支持删除disabled。*/
+
+
+    // prop(name|properties|key,value|fn)
+    //通过函数来设置所有页面上的复选框被选中。
+//    $("input[type='checkbox']").prop("checked");
+//    禁用页面上的所有复选框。
+//    $("input[type='checkbox']").prop({
+//          disabled: true
+//        });
+    //选中复选框为true，没选中为false
+    $("input[type='checkbox']").prop("checked", function( i, val ) {
+      return !val;
+    });
+
+    // removeProp(name) 用来删除由.prop()方法设置的属性集
+    //设置一个段落数字属性，然后将其删除。
+//    var $para = $("p");
+//    $para.prop("luggageCode", 1234);
+//    $para.append("The secret luggage code is: ", String($para.prop("luggageCode")), ". ");
+//    $para.removeProp("luggageCode");
+//    $para.append("Now the secret luggage code is: ", String($para.prop("luggageCode")), ". ");
+//    // The secret luggage code is: 1234. Now the secret luggage code is: undefined.
+
+</script>
+</body>
+</html>
