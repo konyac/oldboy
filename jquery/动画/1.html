@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<button id="left">«</button> <button id="right">»</button>
+<div class="block" style="height: 20px;width: 20px;background-color: red"></div>
+<script>
+    $("#right").click(function(){
+  $(".block").animate({left: '+50px'}, "slow");
+});
+
+$("#left").click(function(){
+  $(".block").animate({left: '-50px'}, "slow");
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <input type="checkbox"><button>选择</button>
+    <input type="checkbox"><button>选择</button>
+    <script>
+        $(function () {
+            $.fn.extend({
+                che:function () {
+                    $(this).prev().prop("checked",true)
+                }
+            });
+
+            $("button").click(function () {
+                $(this).che();
+            })
+        })
+    </script>
+
+</body>
+</html>

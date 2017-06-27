@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+            <div class="outer">
+                <div class="condition">
+
+                        <div class="icons" style="display:inline-block">
+                            <a onclick="add(this);"><button>+</button></a>
+                        </div>
+
+                        <div class="input" style="display:inline-block">
+                            <input type="checkbox">
+                            <input type="text" value="alex">
+                        </div>
+                </div>
+            </div>
+
+<script src="jquery-3.2.1.min.js"></script>
+    <script>
+
+            function add(self){
+                var $duplicate = $(self).parent().parent().clone();
+                $duplicate.find('a[onclick="add(this);"]').attr('onclick',"removed(this)").children("").text("-");
+                $duplicate.appendTo($(self).parent().parent().parent());
+
+            }
+           function removed(self){
+
+               $(self).parent().parent().remove()
+
+           }
+
+    </script>
+</body>
+</html>

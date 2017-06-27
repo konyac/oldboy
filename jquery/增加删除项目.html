@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div class="outer">
+        <div class="module">
+            <button onclick="add(this);">+</button>
+            <input type="checkbox">
+            <input type="text" value="alex">
+        </div>
+    </div>
+    <script>
+        function add(ths) {
+            var clo = $(ths).parent().clone();//获取外层整体
+            clo.find("button[onclick='add(this);']").attr("onclick","remove(this);").text("-");//修改button的值和函数
+//            console.log(clo.children());
+            clo.appendTo(".outer")//将复制下来的插入到外层内部后面
+        }
+        function remove(ths) {
+            $(ths).parent().remove()//移除
+        }
+    </script>
+
+</body>
+</html>

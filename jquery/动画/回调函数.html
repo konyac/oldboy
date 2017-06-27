@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script>
+
+    $(document).ready(function(){
+   $("button").click(function(){
+       $("p").hide(1000,function(){
+           alert('动画结束')
+       })
+
+//       $("p").css('color','red').slideUp(1000).slideDown(2000)
+   })
+});
+    </script>
+</head>
+<body>
+  <button>隐藏</button>
+  <p>helloworld helloworld helloworld</p>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div style="background-color:red">
+<p>这是一个段落。</p>
+<button>请点击这里</button>
+</div>
+<table>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>11111111</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>22222</td>
+    </tr>
+</table>
+<div id="foo" style="width: 200px;height: 100px;background-color: #c7254e">
+    1111
+</div>
+<script>
+    // jquery 事件 click等  bind  delegate委派
+
+
+    // bind bind(type,[data],fn) 为每个匹配元素的特定事件绑定事件处理函数。
+    /*type:含有一个或多个事件类型的字符串，由空格分隔多个事件。比如"click"或"submit"，还可以是自定义事件名。
+    data:作为event.data属性值传递给事件对象的额外数据对象
+    false: 将第三个参数设置为false会使默认的动作失效。*/
+
+    //当每个段落被点击的时候，弹出其文本。
+
+    $("p").bind("click", function(){
+      alert( $(this).text() );
+    });
+    // 同时绑定多个事件类型
+    $('#foo').bind('mouseenter mouseleave', function() {
+        $(this).toggleClass('entered');
+    });
+
+//    同时绑定多个事件类型/处理程序，字典，
+    $("button").bind({
+  click:function(){$("p").slideToggle();},
+  mouseover:function(){$("body").css("background-color","red");},
+  mouseout:function(){$("body").css("background-color","#FFFFFF");}
+});
+
+    //可以在事件处理之前传递一些附加的数据。
+   function handler(event) {
+      alert(event.data.foo);
+    }
+    $("p").bind("click", {foo: "bar"}, handler)
+
+    //通过返回false来取消默认的行为并阻止事件起泡。
+    $("form").bind("submit", function() { return false; })
+
+    //通过使用 preventDefault() 方法只取消默认的行为。
+    $("form").bind("submit", function(event){
+      event.preventDefault();
+    });
+    //通过使用 stopPropagation() 方法只阻止一个事件
+    $("form").bind("submit", function(event){
+      event.stopPropagation();
+    });
+
+
+    // 事件委派
+    //delegate(selector,[type],[data],fn)   用的时候再绑定。
+    //指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。
+    //使用 delegate() 方法的事件处理程序适用于当前或未来的元素（比如由脚本创建的新元素）。
+
+
+    //当点击鼠标时，隐藏或显示 p 元素：
+    $("div").delegate("button","click",function(){
+      $("p").slideToggle();
+    });
+
+    //delegate这个方法可作为live()方法的替代，使得每次事件绑定到特定的DOM元素。
+        //以下两段代码是等同的:
+    $("table").delegate("td", "hover", function(){
+        $(this).toggleClass("hover");
+    });
+    $("table").each(function(){
+        $("td", this).live("hover", function(){
+              $(this).toggleClass("hover");
+        });
+
+    });
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+
+<div class="outer">
+    <div class="section" style="display: inline-block;">
+        <div class="icons" style="display: inline-block;">
+            <a onclick="add(this);"><button>+</button></a>
+        </div>
+    </div>
+    <div class="inputs" style="display: inline-block;">
+        <input type="checkbox">
+        <input type="text" value="IP">
+    </div>
+</div>
+
+
+<script>
+
+    function add(obj) {
+        var item = $(obj).parent().parent().parent()
+        var num = $("body .outer")
+        $(".outer").eq(num.length-1).after(item.clone())
+        var nnn = $("body .outer")
+         $("body .outer").eq(nnn.length-1).find(":button").text("-")
+         $("body .outer").eq(nnn.length-1).find(":button").parent().attr("onclick","remove8(this);") // 修改属性用attr 修改input的状态用prop
+//         var xx=$("body .outer").eq(num.length-1).find(":button")[0]
+//         console.log(xx)
+
+    }
+    function remove8(obj) {
+        console.log($(obj).parent().parent()[0])
+        $(obj).parent().parent().parent().remove()
+    }
+
+</script>
+
+</body>
+</html>
