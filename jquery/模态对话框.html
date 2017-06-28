@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模态对话框</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .shade{
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: rgba(1,1,1,0.6);
+        }
+        .hide{
+            display: none;
+        }
+        .model{
+            width: 480px;
+            height: 210px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top:-100px;
+            margin-left: -240px;
+            border: solid rebeccapurple 1px;
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="添加" onclick="add();">
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>用户名</th>
+                    <th>ip</th>
+                    <th>端口</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td target ="user">c1</td>
+                    <td target ="ip">1.1.1.1</td>
+                    <td target ="port">8090</td>
+                    <td onclick="Edit(this)">Edit</td>
+                </tr>
+                <tr>
+                    <td target = "user">c2</td>
+                    <td target = "ip">1.1.1.1</td>
+                    <td target ="port">8090</td>
+                    <td onclick="Edit(this)">Edit</td>
+                </tr>
+                <tr>
+                    <td target = "user">c3</td>
+                    <td target = "ip">1.1.1.1</td>
+                    <td target ="port">8090</td>
+                    <td onclick="Edit(this)">Edit</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="shade hide"></div>
+    <div class="model hide">
+        <form action="" method="get">
+            <p>用户<input id="user" type="text"></p>
+            <p>ip<input id="ip" type="text"></p>
+            <p>端口<input id="port" type="text"></p>
+            <button onclick="return sub();" type="submit">提交</button>
+            <button onclick="cancel(this);">取消</button>
+        </form>
+
+    </div>
+    <script>
+
+            function Edit(ths) {
+                $(".shade,.model").removeClass("hide");//同时多选两个标签
+                var data = $(ths).prevAll() ;//$(ths),将dom对象变成jquery对象
+                data.each(function () {
+                    var val = $(this).text();
+                    var tar = $(this).attr("target");
+                    console.log(val,tar);
+                    $("#"+tar).val(val)//给value赋值
+                })
+            }
+            function cancel() {
+                $(".shade,.model").addClass("hide");
+                $(".model").find("input").val("")
+            }
+            function add() {
+                $(".shade,.model").removeClass("hide");//同时多选两个标签
+            }
+            function sub() {
+                flag = true;
+                $(".model").find('input[type="text"]').each(function () {
+                    if ($(this).val().trim().length === 0) {
+                        flag = false;
+                        return false
+                    }
+                });
+                return flag;
+            }
+
+
+    </script>
+</body>
+</html>
