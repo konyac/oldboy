@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <script src="../jquery-3.2.1.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+        }
+        .outer{
+            width: 790px;
+            height: 340px;
+            border: dashed #4cae4c 5px;
+            margin: 0 auto;/*轮播居中*/
+            position: relative;
+        }
+        .outer ul{
+            list-style: none;
+            padding: 0;
+        }
+        .img li{
+            display: inline-block;/*去掉li的黑点*/
+            position: absolute;/*图片全部飘起来*/
+            left: 0;
+            top: 0;
+        }
+        .num li{
+            /*用这个方法把li横过来，或者每个li用float:left*/
+            display: inline-block;
+            background-color: #eeeeee;
+            color: #c7254e;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;/*圆角*/
+            font-size: 10px;
+            text-align: center;
+            line-height: 14px;
+            margin: 2px;
+            cursor: pointer;
+        }
+        .num .active{
+            background-color: #c7254e;
+            color:#eeeeee ;
+        }
+        .num{
+            position: absolute;
+            left: 0;
+            bottom: 10px;/*让数字飘到下面*/
+            /*去掉li直接的距离，因为每个li直接有个br换行，有间距，用font-size=0去掉*/
+            font-size: 0;
+            /*先设置一个宽度为100%然后在用text-align:center让里面的内容居中*/
+            width: 100%;
+            text-align: center;
+        }
+        .btn{
+            position: absolute;
+            top: 50%;
+            margin-top: -30px;/*设定按钮上下居中，先定位50%，然后在上移一半自己的高度*/
+            width: 30px;
+            height: 60px;
+            background-color: #c0cddf;
+            opacity: 0.5;/*透明度*/
+            text-align: center;
+            line-height: 60px;
+            font-size: 20px;
+            display: none;
+            cursor: pointer;
+
+        }
+        .btn_right{
+            right: 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <ul class="img">
+            <li><img src="img/1.jpg"></li>
+            <li><img src="img/2.jpg"></li>
+            <li><img src="img/3.jpg"></li>
+            <li><img src="img/4.jpg"></li>
+            <li><img src="img/5.jpg"></li>
+        </ul>
+        <ul class="num">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <div class="btn_left btn"> < </div>
+        <div class="btn_right btn"> > </div>
+        <script>
+            $(function () {
+                $(".num li").first().addClass("active");
+                $(".num li").mouseover(function () {
+                    $(this).addClass("active").siblings().removeClass("active");
+                    var index = $(this).index();
+                    i=index;//将i赋值为index，这样进入到定时器的时候按着当时的顺序来
+                    $(".img li").eq(index).fadeIn(1000).siblings().fadeOut(1000);
+                });
+                var time = setInterval(move,1500);
+                var i = 0;//初始页面载入是的赋值，放到函数外面
+                function move() {
+                    i++;
+                    if(i===5){/*到最右边的时候切到最左边*/
+                        i=0
+                    }
+                    $(".num li").eq(i).addClass("active").siblings().removeClass("active");
+                    $(".img li").eq(i).fadeIn(1000).siblings().fadeOut(1000);
+                }
+                function moveL() {
+                    i--;
+                    if(i===-1)/*判断一下i如果变成最左边的时候，切到最右边*/
+                    {
+                        i=4
+                    }
+                    $(".num li").eq(i).addClass("active").siblings().removeClass("active");
+                    $(".img li").eq(i).fadeIn(1000).siblings().fadeOut(1000);
+                }
+                $(".outer").hover(function () {
+                    clearInterval(time);
+                    $(".btn").show()
+                },function () {
+                    time = setInterval(move,1500);
+                    $(".btn").hide()
+                });
+                $(".btn_right").click(function () {
+                    move();
+                });
+                $(".btn_left").click(function () {
+                    moveL();
+                })
+            })
+        </script>
+    </div>
+</body>
+</html>

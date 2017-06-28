@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <script src="../jquery-3.2.1.min.js"></script>
+
+        <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+        ul li{
+            list-style: none;
+        }
+        .outer{
+            padding-top: 50px; /* 数字飘下来*/
+            height: 340px;
+            width: 790px;
+            border: solid #9f9f9f 5px;
+            border-radius: 6px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .num{
+            position: absolute;
+            left: 0;
+            /*top: 0;*/
+            bottom: 10px;
+            font-size: 0;
+            text-align: center;
+            width: 100%;
+        }
+        .num li{
+            height: 20px;
+            width: 20px;
+            background-color: darkgray;
+            border-radius: 60%;
+            text-align: center;
+            line-height: 20px;
+            display: inline-block;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        .outer .img li{
+            position: absolute;
+            left:0 ;
+            top: 0;
+        }
+        .button{
+            height: 60px;
+            width: 40px;
+            background-color: darkgrey;
+            position: absolute;
+            /*left: 0px;*/
+            top: 50%;
+            margin-top: -30px;
+            opacity: 0.6;
+            font-size: 40px;
+            font-weight: bolder;
+            text-align: center;
+            line-height: 60px;
+            display: none;
+        }
+        .btn_right{
+            right: 0;
+        }
+         .outer:hover .button{
+             display: block;
+             background-color: #00aecd;
+             opacity: 0.6;
+         }
+        .outer .num li.current{
+            background-color: red;
+        }
+        .li_acitve{
+                background-color:yellow;
+                color:red
+            }
+    </style>
+</head>
+<body>
+
+     <div class="outer">
+         <ul class="img">
+             <li><img src="img/1.jpg"></li>
+             <li><img src="img/2.jpg"></li>
+             <li><img src="img/3.jpg"></li>
+             <li><img src="img/4.jpg"></li>
+             <li><img src="img/5.jpg"></li>
+         </ul>
+         <ul class="num">
+             <li>1</li>
+             <li>2</li>
+             <li>3</li>
+             <li>4</li>
+             <li>5</li>
+         </ul>
+
+         <div class="btn_left button"> <  </div>
+         <div class="btn_right button"> >  </div>
+     </div>
+
+
+<script>
+    x = 0
+    $(function ($) {
+        f1();
+        $(".outer").hover(function () {
+            $(".button").css({"color":"red"});
+
+        });
+
+       $(".num li").hover(function () {
+             $(this).addClass("li_acitve")
+             $(this).siblings().removeClass("li_acitve")
+             var inde = $(this).text()
+            $(".img").children().eq(inde-1).siblings().fadeOut()
+            $(".img").children().eq(inde-1).fadeIn(100)
+        })
+
+        $(".num li").click(function () {
+            var inde = $(this).text()
+            $(".img").children().eq(inde-1).siblings().fadeOut()
+            $(".img").children().eq(inde-1).fadeIn(100)
+        })
+
+
+        $(".outer").mouseover(function () {
+            clearInterval(t1)
+            index_num = $(".num li[class='li_acitve']").text()
+
+        })
+
+        $(".btn_right").click(function () {
+
+            console.log(index_num)
+            if (index_num == 5){
+                x = 0
+            }else {
+                x = index_num  //点击就立刻切换
+            }
+            var inde = $(".num li").eq(x).text()
+            $(".num li").eq(x).addClass("li_acitve")
+            $(".num li").eq(x).siblings().removeClass("li_acitve")
+            $(".img").children().eq(inde-1).siblings().fadeOut()
+            $(".img").children().eq(inde-1).fadeIn(100)
+            index_num++
+            if (index_num >= 5){
+                index_num = 0
+            }
+            console.log(index_num)
+        });
+        $(".btn_left").click(function () {
+
+            if (index_num == -1){
+                x = 0
+            }else {
+                x = index_num - 2  //点击就立刻切换
+            }
+            var inde = $(".num li").eq(x).text()
+            $(".num li").eq(x).addClass("li_acitve")
+            $(".num li").eq(x).siblings().removeClass("li_acitve")
+            $(".img").children().eq(inde-1).siblings().fadeOut()
+            $(".img").children().eq(inde-1).fadeIn(100)
+            index_num--
+            if (index_num <= -1){
+                index_num = 5
+            }
+            console.log(index_num)
+        })
+
+
+        $(".outer").mouseout(function () {
+            if (index_num == 5){
+                x = 0
+            }else {
+                x = index_num}
+            f1();
+        })
+    })
+
+    function f1() {
+
+        t1 = setInterval(function () {
+
+        var inde = $(".num li").eq(x).text()
+        if (inde == 5){
+            x = -1
+        }
+        $(".num li").eq(x).addClass("li_acitve")
+        $(".num li").eq(x).siblings().removeClass("li_acitve")
+        $(".img").children().eq(inde-1).siblings().fadeOut()
+        $(".img").children().eq(inde-1).fadeIn(100)
+        x++
+
+        },1000)
+    }
+
+</script>
+</body>
+</html>
