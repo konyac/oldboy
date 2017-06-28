@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .outer{
+            width: 640px;
+            height: 240px;
+            border: solid black 1px;
+            position: absolute;
+        }
+        .nav{
+            height: 36px;
+            width: 100%;
+            background-color: #c0cddf;
+            text-align: center;
+            line-height: 36px;
+            cursor:move;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="nav">拖动面板</div>
+    </div>
+    <script>
+        $(".nav").mousedown(function (e) {
+            var _event = e||window.event;
+            var old_x = _event.clientX;//拿到点击时鼠标的位置
+            var old_y = _event.clientY;
+            var p_left = $(this).parent().offset().left;//拿到点击时外框的实际位置，距离left top值
+            var p_top = $(this).parent().offset().top;
+            $(this).bind("mousemove",function (e) {//绑定一个鼠标移动事件
+                var _event = e||window.event;
+                var new_x = _event.clientX;//拿到数标移动时，实际的x y
+                var new_y = _event.clientY;
+                var move_x = new_x - old_x;//获取实时移动了多少x y差值。
+                var move_y = new_y -old_y;
+                var new_p_lef = p_left+move_x;//外框的实时left 和 top值
+                var new_p_top = p_top+move_y;
+                $(this).parent().css("left",new_p_lef+"px");//同时给外框添加一个样式。实时偏移量
+                $(this).parent().css("top",new_p_top+"px");
+            })
+        }).mouseup(function () {
+            $(this).unbind("mousemove");//鼠标离开时解除事件
+        })
+
+    </script>
+</body>
+</html>
