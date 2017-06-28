@@ -98,11 +98,12 @@
                 $(".shade,.model").removeClass("hide");//同时多选两个标签
             }
             function sub() {
-                flag = true;
+                var flag = true;
                 $(".model").find('input[type="text"]').each(function () {
                     if ($(this).val().trim().length === 0) {
+                        $(this).css("border","red solid 1px") //空的话改变下样式
                         flag = false;
-                        return false
+//                        return false //去掉return全部过滤一遍
                     }
                 });
                 return flag;
