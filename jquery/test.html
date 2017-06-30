@@ -4,16 +4,21 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="jquery-3.2.1.min.js"></script>
-    <script>
-        $(function () {
-            alert($(".title").text())
-        })
-    </script>
+
 </head>
 <body>
-    <p class="title">11111</p>
-    <p class="title">22222</p>
-    <p class="title">wwww</p>
+    <select id="sel">
+        <option value="1">1111</option>
+        <option value="2" selected="selected">22222</option>
+        <option value="3">333333</option>
+        <option value="4">444444</option>
+    </select>
+    <button onclick="show()">show</button>
+    <script>
+        function show() {
+            alert($("#sel").val())
+        }
+    </script>
 
 </body>
 </html>
