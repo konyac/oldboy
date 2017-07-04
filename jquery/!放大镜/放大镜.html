@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .outer .small_box{
+            border: dashed 1px #c7254e;
+            position: relative;
+            width: 450px;
+            height: 450px;
+        }
+        .small_box .float{
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: #ffee33;
+            opacity: 0.2;
+            display: none;
+        }
+        .outer .big_box{
+            position: absolute;
+            left: 452px;
+            top: 0;
+            width: 540px;
+            height: 540px;
+            border: solid 1px #c0cddf;
+            overflow: hidden;
+            display: none;
+        }
+        .outer .big_box img{
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="small_box">
+            <div class="float"></div>
+            <img src="small.jpg">
+        </div>
+        <div class="big_box">
+            <img src="big.jpg">
+        </div>
+    </div>
+    <script src="../jquery-3.2.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".small_box").mouseover(function () {
+                $(".float").css("display","block");
+                $(".big_box").css("display","block");
+
+
+
+            });
+            $(".small_box").mouseout(function () {
+                $(".float").css("display","none");
+                $(".big_box").css("display","none");
+            });
+            $(".small_box").mousemove(function (e) {
+                var float_height = $(".float").height();//取值一定要带上括号
+                var float_width = $(".float").width();
+                var small_box_height = $(".small_box").height();
+                var small_box_width = $(".small_box").width();
+                var _event = e||window.event;
+                var x =_event.clientX;//鼠标在整个文档下的坐标值，x y
+                var y = _event.clientY;
+//                console.log(float_width,float_height,small_box_width,small_box_height);
+                if(x<float_width/2){//鼠标进入左边界
+                    x=0;
+                }else if(x>small_box_width-float_width/2){//鼠标进入右边界
+                    x=small_box_width-float_width;
+                }else {
+                    x= x-float_width/2;
+                }
+                if(y<float_height/2){
+                    y=0
+                }else if(y>small_box_height-float_height/2){
+                    y=small_box_height-float_height;
+                }else {
+                    y=y-float_height/2
+                }
+                //以上用来确定鼠标移动的量。
+                $(".float").css("left",x+"px");
+                $(".float").css("top",y+"px");
+                //获取移动的百分比。,想象着，图不动，大框动。大图最大移动距离除以小图最大移动距离。
+                var percent_X = ($(".big_box img").width()-$(".big_box").width())/(small_box_width-float_width);
+                var percent_Y = ($(".big_box img").height()-$(".big_box").height())/(small_box_height-float_height);
+//                console.log(percent_X,percent_Y);//移动的百分比。
+                $(".big_box img").css("left",-x*percent_X+"px");
+                $(".big_box img").css("top",-y*percent_Y+"px");
+                
+            })
+        })
+    </script>
+
+</body>
+</html>
