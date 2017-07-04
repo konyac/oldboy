@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+    <link rel="stylesheet" href="bootstrap_test/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="bootstrap_test/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+     <select id="sel_menu2" class="js-example-basic-single js-states form-control" >
+         <optgroup label="系统设置">
+             <option value="1">用户管理</option>
+             <option value="2">角色管理</option>
+             <option value="3">部门管理</option>
+             <option value="4">菜单管理</option>
+         </optgroup>
+         <optgroup label="订单管理">
+             <option value="5">订单查询</option>
+             <option value="6">订单导入</option>
+             <option value="7">订单删除</option>
+             <option value="8">订单撤销</option>
+         </optgroup>
+         <optgroup label="基础数据">
+            <option value="9">基础数据维护</option>
+         </optgroup>
+     </select>
+
+    <script>
+
+           $("#sel_menu2").select2({
+                tags: true,
+               multiple:true
+//             maximumSelectionLength: 5 //最多能够选择的个数
+             });
+    </script>
+
+</body>
+</html>

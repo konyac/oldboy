@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        a {
+            display:block;
+            width:200px;
+            height:65px;
+            line-height:65px; /*定义状态*/
+            text-indent:-2015px; /*隐藏文字*/
+            background-image: url("1.jpg"); /*定义背景图片*/
+            background-position:0 0; /*定义链接的普通状态，此时图像显示的是顶上的部分*/}
+            a:hover {
+                background-position:0 -66px; /*定义链接的滑过状态，此时显示的为中间部分，向下取负值*/}
+            a:active {
+                background-position:0 -132px; /*定义链接的普通状态，此时显示的是底部的部分，向下取负值*/
+            }
+    </style>
+</head>
+<body>
+    <a class="button" href="http://www.baidu.com"></a>
+
+</body>
+</html>

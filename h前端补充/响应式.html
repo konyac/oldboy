@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>响应式布局</title>
+    <style>
+        @media (min-width: 500px) {/*屏幕宽度大于500*/
+            .w6{
+                width: 50%;
+                float: left;
+                background-color: red;
+                }
+        }
+        /*z注意宽度判定的先后顺序，由小到大*/
+        @media (min-width: 1000px) {/*屏幕宽度大于1000*/
+            .w6{
+                width: 50%;
+                float: left;
+                background-color: yellow;
+             }
+        }
+    </style>
+</head>
+<body>
+    <div class="w6">123</div>
+    <div class="w6">456</div>
+</body>
+</html>
