@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .edit_mode{
+            background-color: gray;
+            color: #ffffff;
+            padding: 10px;
+            display: inline-block;
+            width: 150px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .editing{
+            background-color:#e38d13 ;
+            color: whitesmoke;
+        }
+
+
+    </style>
+    <link href="nprogress.css" rel="stylesheet">
+    <script src="nprogress.js"></script>
+    <script src="../jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <button onclick="CheckAll('#edit_mode','#tb1');">全选</button>
+        <button onclick="CheckReverse('#edit_mode','#tb1')">反选</button>
+        <button onclick="CheckCancel('#edit_mode','#tb1')">取消</button>
+        <div id="edit_mode" class="edit_mode" onclick="EditMode(this,'#tb1')">进入编辑模式</div>
+    </div>
+    <table border="1">
+        <thead>
+            <tr>
+                <!--标题-->
+                <th>选择</th>
+                <th style="width: 200px">主机名</th>
+                <th>端口</th>
+                <th>状态</th>
+            </tr>
+        </thead>
+        <tbody id="tb1">
+            <tr>
+                <td><input type="checkbox"></td>
+                <td edit = "true">v1</td>
+                <td>V11</td>
+                <td edit="true" edit-type="select" sel-val="1" global-key="STATUS">在线</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td edit = "true">v2</td>
+                <td>V11</td>
+                <td edit="true" edit-type="select" sel-val="1" global-key="STATUS">在线</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox"></td>
+                <td edit = "true">v3</td>
+                <td>V11</td>
+                <td edit="true" edit-type="select" sel-val="1" global-key="STATUS">在线</td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        $(function () {
+            NProgress.start();
+            BindSingleCheck("#edit_mode","#tb1");//文档加载完毕之后自动执行这个函数
+            NProgress.done();
+        });
+//        监听是否按下Ctrl键
+        window.globalCtrlkeyPress = false;//定义一个全局变量
+        window.onkeydown = function (event) {//给window绑定了一个onkeydown事件，检测keyCode 是不是Ctrl。
+            if(event && event.keyCode===17){
+                window.globalCtrlkeyPress = true;
+            }
+        };
+        window.onkeyup = function (event) {//给window绑定了一个onkeydown事件，检测keyCode 是不是Ctrl。
+            if(event && event.keyCode===17){
+                window.globalCtrlkeyPress = false;//Ctrl键松开的时候
+            }
+        };
+
+
+        function MultiSelect(ths) {
+            if(window.globalCtrlkeyPress){
+                var index = $(ths).parent().index();//找到select标签父亲td所在的索引。
+                var value = $(ths).val();//获取这个select的value值，选择的值。
+                $(ths).parent().parent().nextAll().find('td input[type=checkbox]:checked').each(function () {
+                    $(this).parent().parent().children().eq(index).children().val(value)
+                })
+            }
+
+            
+        }
+
+        function BindSingleCheck(mode,tb) {
+            $(tb).find(":checkbox").bind("click",function () { //给每行中的checkbox绑定一个点击事件，
+                var tr = $(this).parent().parent();//获取当前点击的行
+                if($(mode).hasClass("editing")){
+                    if($(this).prop('checked')){
+                        //checkbox默认事件要优先于自定义的click点击事件，先变更checked
+                        RowIntoEdit(tr)//进入编辑模式
+                    }else {
+                        RowOutEdit(tr)//退出编辑模式
+                    }
+                }
+            })
+
+        }
+        function CheckAll(mode,tb) {
+            //mode => #edit_mode => 用于检测用户是否点击进入编辑模式
+            //tb => #tb1 =>tbale中的tbody
+                if ($(mode).hasClass("editing")) {
+                    $(tb).children().each(function () {
+                        var tr = $(this);//过滤每个tr,循环每一行，$(this)当前行。
+//                        console.log(tr);
+                        var check_box = tr.children().first().find(":checkbox");//获取每行的复选框
+//                        console.log(check_box);
+                        if(check_box.prop('checked')){
+                            //已选中的话不做操作，已经进入了编辑模式
+                        }else {
+                            check_box.prop('checked',true);
+                            //当前行进入编辑模式
+                            RowIntoEdit(tr);
+                        }
+                    })
+                } else {
+                    $(tb).find(":checkbox").prop("checked", true)
+                }
+        }
+        function CheckReverse(mode, tb) {
+            if ($(mode).hasClass("editing")) {
+                $(tb).children().each(function () {
+                    var tr = $(this);//过滤每个tr
+                    var check_box = tr.children().first().find(':checkbox');//获取每行的复选框
+                    if (check_box.prop('checked')) {//判断是否已进入编辑模式
+                        check_box.prop('checked',false);
+                        RowOutEdit(tr);
+                    } else {
+                        check_box.prop('checked', true);
+                        RowIntoEdit(tr);
+                    }
+                })
+            } else {
+                $(tb).find(":checkbox").each(function () {
+                    if($(this).prop("checked")){
+                        $(this).prop("checked",false)
+                    }else {
+                        $(this).prop("checked",true)
+                    }
+                })
+            }
+        }
+
+        function CheckCancel(mode, tb){
+            if($(mode).hasClass('editing')){
+                $(tb).children().each(function(){
+                    var tr = $(this);
+                    var check_box = tr.children().first().find(':checkbox');
+                    if(check_box.prop('checked')){//判断是否已进入编辑模式
+                        check_box.prop('checked',false);
+                        RowOutEdit(tr);//当前行退出编辑模式
+                    }else{
+
+                    }
+                })
+            }else{
+                $(tb).find(':checkbox').prop('checked', false);
+            }
+        }
+        function EditMode(ths,tb) {
+            if($(ths).hasClass("editing")){
+                $(ths).removeClass("editing");//退出编辑模式
+                $(tb).children().each(function () {
+                    var tr = $(this);//获取每一行行
+                    var check_box = tr.children().first().find(":checkbox");
+                    if(check_box.prop("checked")){//获取已经进入编辑模式的行
+                        RowOutEdit(tr)//执行退出编辑行操作
+                    }
+                })
+            }else {
+                $(ths).addClass("editing");//进入编辑模式
+                $(tb).children().each(function () {
+                    var tr = $(this);//获取每一行行
+                    var check_box = tr.children().first().find(":checkbox");
+                    if(check_box.prop("checked")){//获取已经提前选中的行
+                        RowIntoEdit(tr)//执行进入编辑行操作
+                    }
+                })
+            }
+        }
+
+        STATUS = [
+            {'id': "1", 'value': "在线"},
+            {'id': "2", 'value': "下线"},
+            {"id":"3","value":"待机"}
+        ];
+        //全局变量的访问，STATUS，或者window['STATUS']
+        function RowIntoEdit(tr) {
+            $(tr).children().each(function () {//过滤所有的td
+                if($(this).attr("edit")==="true"){//加了自定义属性，控制td进入编辑模式
+                    if($(this).attr("edit-type")==="select"){
+                        var select_val = $(this).attr("sel-val");
+                        var global_key = $(this).attr("global-key");//"STATUS"
+                        //window[global_key] 获取全局变量
+                        //生成select标签，并且设置默认值。
+                        var select_tag = CreateSelect({"onchange": "MultiSelect(this);"}, {}, window[global_key], 'id', 'value', select_val);
+                        $(this).html(select_tag);
+
+                    }else {
+                        var orgin_value = $(this).text();
+                        var temp = "<input value='"+orgin_value+"'/>";
+                        $(this).html(temp)
+                    }
+
+                }
+            })
+
+        }
+        function RowOutEdit(tr) {
+            $(tr).children().each(function () {
+                if($(this).attr('edit')==="true"){
+                    if($(this).attr('edit-type')==='select'){
+                        var new_val = $(this).children().first().val();//拿到已选中的option的value值 ，就是select的value。
+                        var new_text = $(this).children().first().find('option[value="'+new_val+'"]').text();
+                        $(this).attr('sel-val',new_val);
+                        $(this).text(new_text)
+
+                    }else {
+                        var orgin_value = $(this).children().first().val();
+                        $(this).text(orgin_value);
+                    }
+                }
+            })
+
+        }
+        function CreateSelect(attrs,csses,option_dict,item_key,item_value,current_val){
+            var sel= document.createElement('select');
+            $.each(attrs,function(k,v){//获取传入字典的key 和值,绑定的函数
+                $(sel).attr(k,v);//生成一个自定义属性。给select标签绑定个"onchange=MultiSelect(this);"函数
+            });
+            $.each(csses,function(k,v){//绑定的css样式。
+                $(sel).css(k,v);//给select绑定样式
+            });
+            $.each(option_dict,function(k,v){//传入全局变量，循环列表每一项
+                var opt1=document.createElement('option');
+                var sel_text = v[item_value];
+                var sel_value = v[item_key];
+
+                if(sel_value===current_val){
+                    $(opt1).text(sel_text).attr('value', sel_value).attr('text', sel_text).attr('selected',true).appendTo($(sel));//创建选中的select选项，加入的option中
+                }else{
+                    $(opt1).text(sel_text).attr('value', sel_value).attr('text', sel_text).appendTo($(sel));
+                    //创建未选择的select选项，并加入的option中。
+                }
+            });
+            return sel;//返回这个select标签
+        }
+
+    </script>
+</body>
+</html>
