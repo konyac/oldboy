@@ -8,6 +8,7 @@
     <form action="https://www.baidu.com/s?" method="get">
         <div id="form1">
             <input name="wd" type="text">
+            <input name="pd" type="text">
         </div>
         <input type="submit" value="提交" onclick="return func();">
     </form>
@@ -26,13 +27,16 @@
 //        }
         //以上为js的form验证内容
         function func() {
-            var val = $("#form1 input").val();
+            var val = $("#form1 input[name='wd']").val();
+
             if(val.trim().length===0){
                 alert("请输入内容");
                 return false
             }
             return true
         }
+        console.log($("#form1 input")[0]);//jq对象变成dom对象
+        console.log($(document.getElementById("form1"))) //dom变成jq对象
     </script>
 </body>
 </html>
