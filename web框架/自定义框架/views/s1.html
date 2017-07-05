@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        @media (min-width: 400px) {
+            .w6{
+                width: 50%;
+                float: left;
+                background-color: #2459a2;
+            }
+        }
+        @media (min-width: 600px) {
+            .w6{
+                width: 50%;
+                float: left;
+                background-color: red;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>{{ name }}</h1>
+    <ul>
+        {% for item in user_list %}
+            <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+    <div class="w6">
+        123
+    </div>
+    <div class="w6">456</div>
+</body>
+</html>
