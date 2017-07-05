@@ -72,7 +72,22 @@ ul{
 
 
     </div>
-    <div class="pg-body"></div>
+    <div class="pg-body">
+        <h1>提交内容</h1>
+        <form method="post" action="/index">
+            <!--/*action应该是url的链接*/-->
+            <input type="text" name="ooxx">
+            <button type="submit">提交</button>
+        </form>
+
+        <h1>展示内容</h1>
+        <ul>
+            {% for item in inputs %}
+            <li>{{item}}</li>
+            {% end %}
+            <!--模板语言里通过for循环展示数据-->
+        </ul>
+    </div>
     <div class="pg-footer"></div>
 </body>
 </html>
