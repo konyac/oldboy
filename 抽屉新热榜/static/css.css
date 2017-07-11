@@ -105,7 +105,7 @@ ul{
 }
 .body-left-header{
     border-bottom: 1px solid #dce7f4;
-    width: 600px;
+    width: 630px;
     line-height: 30px;
 }
 .body-left-header-menu{
@@ -142,4 +142,44 @@ ul{
     margin: 10px;
     color: white;
     font-size: 15px;
+}
+.hide{
+    display: none;
+}
+.body-left-news{
+    /*position: fixed;*/
+    height: 25px;
+    width: 628px;
+    border: 1px solid #fbe9c0;
+    background-color: #fff9e2;
+    font-size: 12px;
+    text-align: center;
+    line-height: 25px;
+}
+.item .content-title a{
+    font-size: 14px;
+    color: #369;
+    font-weight: 700;
+    text-decoration: none;
+
+}
+.item .content-title span{
+    font-size: 12px;
+
+}
+.item .content-pic{
+    float: right;
+    margin-left: 10px;
+
+}
+.content-title{
+    margin-top: 10px;
+}
+.content-text{
+    font-size: 12px;
+    color: #787878;
+    margin-top: 3px;
+}
+.news-content{
+    width: 550px;
 }
