@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+</head>
+<body>
+        <input id="user" type="text" name="username">
+        <input id="pwd" type="password" name="pwd">
+        <button onclick="Submit_form();">登陆</button>
+<script>
+    xhr = null;
+    function Submit_form() {
+        xhr = new XMLHttpRequest();/*创建xhr对象*/
+        xhr.open("POST","/login",true);/*打开一个连接,选择发送方式。post方式必须上传requesthander*/
+        xhr.onreadystatechange = func;/*绑定一个函数，回调函数，点击send之后，就去发送了，会触发这个函数，只要状态被改变，就触发这个函数。xhr.readyState 发送变化就触发这个函数，readystate=4的时候接收完*/
+        xhr.setRequestHeader("content-type","application/x-www-form-urlencoded","charset=UTF-8");
+        xhr.send("username="+document.getElementById("user").value+";password="+document.getElementById("pwd").value);
+    }
+    function func() {
+        if(xhr.readyState === 4){
+            ret = JSON.parse(xhr.responseText);/*JSON序列化成一个对象*/
+            if(ret.status){
+
+            }else {
+                alert(ret.message)
+            }
+
+        }
+
+
+    }
+</script>
+
+</body>
+</html>

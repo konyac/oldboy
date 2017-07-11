@@ -5,14 +5,6 @@ import tornado.ioloop
 import time
 
 
-class IndexHandler(tornado.web.RequestHandler):
-    def get(self, *args, **kwargs):
-        self.render("index.html")
-
-    def post(self, *args, **kwargs):
-        self.render("index.html")
-
-
 class LoginHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
         self.render("login.html", status_text="")
@@ -28,6 +20,14 @@ class LoginHandler(tornado.web.RequestHandler):
             self.redirect("/manager")
         else:
             self.render("login.html", status_text="登陆失败")
+
+
+class IndexHandler(tornado.web.RequestHandler):
+    def get(self, *args, **kwargs):
+        self.render("index.html")
+
+    def post(self, *args, **kwargs):
+        self.render("index.html")
 
 
 class LogoutHandler(tornado.web.RequestHandler):
