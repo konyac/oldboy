@@ -58,7 +58,7 @@ ul{
     display: inline-block;
     text-decoration: none;
     height: 44px;
-     color: #c0cddf;
+    color: #c0cddf;
 }
 .head-contend .nav_right{
     float: right;
@@ -78,12 +78,11 @@ ul{
     margin-left: -5px;
 
 }
-.search-iput{
+.search-input{
     background-color: rgb(244, 244, 244);
     height: 31px;
     width: 90px;
     border: none;
-
 }
 .pg-body{
     margin: 0 auto;
