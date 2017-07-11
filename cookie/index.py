@@ -50,7 +50,7 @@ class ManagerHandler(tornado.web.RequestHandler):
 
 settings = {
     "template_path": "views",
-    "cookie_secret": "alex"
+    "cookie_secret": "alex"  # cookie加密要添加的
 }
 
 app = tornado.web.Application([("/index", IndexHandler),
