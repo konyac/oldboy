@@ -15,8 +15,8 @@ class LoginHandler(tornado.web.RequestHandler):
         if username == "alex" and password == "123":
             r = time.time()  # 获取当前时间戳,
             r = r + 10  # 使时间戳在当前时间下+10秒。
-            # self.set_cookie("auth","1")设置普通cookie。
-            self.set_secure_cookie("auth", "1", expires=r)  # expires 过期时间。
+            # self.set_cookie("auth","1")设置普通cookie。,cookie的value必须是字符串
+            self.set_secure_cookie("auth", "1", expires=r)  # expires 过期时间。expires_days 过期天数
             self.redirect("/manager")
         else:
             self.render("login.html", status_text="登陆失败")
@@ -49,10 +49,11 @@ class ManagerHandler(tornado.web.RequestHandler):
 
 
 settings = {
-    "template_path": "views",
+    "template_path": "views",#模板路径
+    "static_path":"statics",
     "cookie_secret": "alex"  # cookie加密要添加的
 }
-
+# 路由映射
 app = tornado.web.Application([("/index", IndexHandler),
                                ("/login", LoginHandler),
                                ("/manager", ManagerHandler),
