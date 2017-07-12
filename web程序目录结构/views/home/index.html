@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <h1>提交数据</h1>
+    <form method="post" action="/index/">
+        <input type="text" name="username">
+        <input type="text" name="email">
+        <input type="submit" value="提交">
+    </form>
+    <h1>展示数据</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>用户名</th>
+                <th>邮箱</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for line in list_info %}
+                <tr>
+                    <td>{{ line["username"]}}</td>
+                    <td>{{ line["email"]}}</td>
+                </tr>
+            {% end %}
+        </tbody>
+    </table>
+
+</body>
+</html>
