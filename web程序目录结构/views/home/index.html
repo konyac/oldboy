@@ -3,6 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>首页</title>
+    <style>
+        .pager a{
+            display: inline-block;
+            padding: 5px;
+            margin: 3px;
+            background-color: #9acfea;
+            color: #0f0f0f;
+        }
+        .pager a.active{/*标签后面跟类要挨着写 不加空格*/
+            background-color: #ee4437;
+            color: whitesmoke;
+        }
+    </style>
 </head>
 <body>
     <h1>提交数据</h1>
@@ -28,6 +41,11 @@
             {% end %}
         </tbody>
     </table>
+    <div class="pager">
+        <!--/*加上raw，使得发送过来的字符串能够实现html展示*/-->
+        {% raw str_page %}
+    </div>
+
 
 </body>
 </html>
