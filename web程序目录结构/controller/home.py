@@ -29,11 +29,11 @@ class IndexHandler(tornado.web.RequestHandler):
         start = (page-1)*5 #显示的起始和结束的公式
         end = page*5
         current_list = LIST_INFO[start:end]
-        self.render("home/index.html", list_info=current_list)#home前面不加/
+        self.render("home/index.html", list_info=current_list,current_page=page )#home前面不加/，current_page记住当前页，
 
-    def post(self, *args, **kwargs):
+    def post(self, page,):
         username = self.get_argument("username", None)
         email = self.get_argument("email", None)
         temp = {"username": username, "email": email}
         LIST_INFO.append(temp)
-        self.redirect("/index/")
+        self.redirect("/index/"+page)#page拿到的本来就是字符串
