@@ -20,9 +20,9 @@ class Mainhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
         # if name:
         #     INPUTS_LIST.append(name)
         #     # xxxooo = INPUTS_LIST  #  这样不行传入报错
-        # self.render("s1.html", npm="NPM888", inputs=INPUTS_LIST)  # 不能只写一个列表名称，要把前端用到的变量也定义上
+        self.render("s1.html", npm="NPM888", inputs=INPUTS_LIST)  # 不能只写一个列表名称，要把前端用到的变量也定义上
 
-        self.render(r"D:\农信联社资料\全部资料\NXSHTML\index.html")#post方式
+        # self.render("index.html")#post方式
 
     def post(self, *args, **kwargs):
         name = self.get_argument("ooxx")#获取用户提交的数据
