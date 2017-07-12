@@ -81,15 +81,15 @@ class Pagination:
                     s = self.current_page - 5
                     e = self.current_page + 5
         temp_page = ""
-        #首页
-        first_page= """<a href="%s/1">首页</a>""" % (base_url)
-        temp_page+=first_page
-        #上一页
-        if self.current_page==1:
+        # 首页
+        first_page = """<a href="%s/1">首页</a>""" % (base_url)
+        temp_page += first_page
+        # 上一页
+        if self.current_page == 1:
             pre_page = """<a href="javascript:void(0)">上一页</a>"""
         else:
-            pre_page = """<a href="%s/%s">上一页</a>"""%(base_url,self.current_page-1)
-        temp_page+=pre_page
+            pre_page = """<a href="%s/%s">上一页</a>""" % (base_url, self.current_page - 1)
+        temp_page += pre_page
         for p in range(s, e + 1):  # 要显示的页码起始结束的控制
             if p == self.current_page:
                 t_page = """<a class="active" href="%s/%s">%s</a>
@@ -104,14 +104,28 @@ class Pagination:
         else:
             last_page = """<a href="%s/%s">下一页</a>""" % (base_url, self.current_page + 1)
         temp_page += last_page
-        #尾页
-        end_page = """<a href="%s/%s">尾页</a>""" % (base_url,self.all_page)
-        temp_page+=end_page
+        # 尾页
+        end_page = """<a href="%s/%s">尾页</a>""" % (base_url, self.all_page)
+        temp_page += end_page
+        # 页面跳转
+        jump = """<input type="text"/><a onclick="jump('%s',this)">GO</a>""" % (base_url,)
+        script = """<script>
+                function jump(baseUrl,ths) {
+                    var val = ths.previousElementSibling.value;
+                    if(val.trim().length>0){
+                        location.href = baseUrl+'/'+val;
+                    }
+                }
+            </script>        
+        """
+        temp_page+=jump
+        temp_page+=script
         return temp_page
+
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, page):
-        page_obj = Pagination(page,len(LIST_INFO))
+        page_obj = Pagination(page, len(LIST_INFO))
         current_list = LIST_INFO[page_obj.start:page_obj.end]
         temp_page = page_obj.page_str("/index")
         self.render("home/index.html", list_info=current_list, current_page=page_obj.current_page,
