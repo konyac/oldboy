@@ -54,7 +54,7 @@ class Pagination:
         :param base_url: 基础的url前缀
         :return: html 分页字符串
         """
-        temp_page = ""
+
         """
         # s，e
         # all_page:总页数 current_page:当前页
@@ -80,6 +80,16 @@ class Pagination:
                 else:
                     s = self.current_page - 5
                     e = self.current_page + 5
+        temp_page = ""
+        #首页
+        first_page= """<a href="%s/1">首页</a>""" % (base_url)
+        temp_page+=first_page
+        #上一页
+        if self.current_page==1:
+            pre_page = """<a href="javascript:void(0)">上一页</a>"""
+        else:
+            pre_page = """<a href="%s/%s">上一页</a>"""%(base_url,self.current_page-1)
+        temp_page+=pre_page
         for p in range(s, e + 1):  # 要显示的页码起始结束的控制
             if p == self.current_page:
                 t_page = """<a class="active" href="%s/%s">%s</a>
@@ -88,6 +98,15 @@ class Pagination:
                 t_page = """<a href="%s/%s">%s</a>
                     """ % (base_url, p, p)
             temp_page += t_page
+        # 下一页
+        if self.current_page >= self.all_page:
+            last_page = """<a href="javascript:void(0)">下一页</a>"""
+        else:
+            last_page = """<a href="%s/%s">下一页</a>""" % (base_url, self.current_page + 1)
+        temp_page += last_page
+        #尾页
+        end_page = """<a href="%s/%s">尾页</a>""" % (base_url,self.all_page)
+        temp_page+=end_page
         return temp_page
 
 class IndexHandler(tornado.web.RequestHandler):
