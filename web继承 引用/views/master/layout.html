@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>母版</title>
+    <style>
+        .pg-header{
+            height: 49px;
+            background-color: black;
+        }
+        .pg-footer{
+            height: 100px;
+            background-color: #dddddd;
+        }
+    </style>
+    <!--公用样式-->
+
+    <!--某页面自定义的样式-->
+    {% block css %}
+    {% end %}
+</head>
+<body>
+
+<div class="pg-header">
+    母版  header
+</div>
+
+<div class="pg-content">
+    {% block body %}<br>
+    {% end %}
+</div>
+
+
+<div class="pg-footer"> 母版 footer</div>
+
+<!--某页面自定义的JS-->
+    {% block js %}
+    {% end %}
+</body>
+</html>

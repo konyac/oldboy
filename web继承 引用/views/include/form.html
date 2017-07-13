@@ -1,0 +1,11 @@
+<form>
+    <input type="text">
+    <input type="submit" value="提交">
+</form>
+<ul>
+    <!--在tornado后台get的时候传过来的一个列表，详细见上面的具体代码-->
+    {% for i in list_info %}
+    <li>{{ i }}</li>
+    {% end %}
+
+</ul>

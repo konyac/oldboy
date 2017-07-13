@@ -1,0 +1,20 @@
+{% extends "../master/layout.html" %}
+
+{% block body %}
+    <h1>继承2fuck</h1>
+
+    <!--引用，引用的html里可以带变量和写到自己html一样-->
+    {% include "../include/form.html" %}
+    {% include "../include/form.html" %}
+    {% include "../include/form.html" %}
+
+{% end %}
+
+
+{% block js %}
+    <script>
+        console.log("sd")
+    </script>
+{% end %}
+
+<!--代码要写到代码块里-->
