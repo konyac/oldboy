@@ -3,7 +3,7 @@
 import tornado.web
 import tornado.ioloop
 # from controller import home
-from controller import home_分页模块化
+from controller import home_page_models
 
 
 settings = {
@@ -14,7 +14,7 @@ settings = {
 
 # 路由映射，路由系统
 # app = tornado.web.Application([("/index/(?P<page>\d*)", home.IndexHandler)], **settings)
-app = tornado.web.Application([("/index/(?P<page>\d*)", home_分页模块化.IndexHandler)], **settings)
+app = tornado.web.Application([("/index/(?P<page>\d*)", home_page_models.IndexHandler)], **settings)
 
 if __name__ == "__main__":
     app.listen(8000)
