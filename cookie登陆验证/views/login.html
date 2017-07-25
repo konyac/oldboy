@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/login">
+    <!--action 这里的属性是地址不是login.html-->
+    <i>用户名：</i><input type="text" name="name"><br>
+    <i>密  码：</i><input type="password" name="pwd"><br>
+    <i style="color: red">{{status}}</i>
+    <button type="submit">登陆</button>
+</form>
+
+</body>
+</html>
