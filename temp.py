@@ -31,7 +31,11 @@
 #
 # a=index()
 # print(a)
-
-lis = {"islogin":None,"user":[{"11":1234,"2222":22222,"33333":333333},{"11":1234,"2222":22222,"33333":333333},{"11":1234,"2222":22222,"33333":333333}]}
-for i in lis.get("user"):
-    print(i["2222"],i.index)
+#
+# lis = {"islogin":None,"user":[{"11":1234,"2222":22222,"33333":333333},{"11":1234,"2222":22222,"33333":333333},{"11":1234,"2222":22222,"33333":333333}]}
+# for i in lis.get("user"):
+#     print(i["2222"])\
+import hashlib
+obj = hashlib.md5()
+obj.update(bytes("jdsalfkjalsfj",encoding="utf-8"))
+print(obj.hexdigest())
