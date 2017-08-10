@@ -15,27 +15,46 @@
 # func(*li)
 #
 # # 动态参数
+"""
+装饰器
+def outer(func):
+    def inner():
+        print("123")
+        r=func()
+        print("456")
+        return r
+    return inner
 
-# def outer(func):
-#     def inner():
-#         print("123")
-#         r=func()
-#         print("456")
-#         return r
-#     return inner
-#
-# @outer
-# def index():
-#     print(1)
-#     return 111
-#
-# a=index()
-# print(a)
-#
+@outer
+def index():
+    print(1)
+    return 111
+
+a=index()
+print(a)
+"""
+
+
 # lis = {"islogin":None,"user":[{"11":1234,"2222":22222,"33333":333333},{"11":1234,"2222":22222,"33333":333333},{"11":1234,"2222":22222,"33333":333333}]}
 # for i in lis.get("user"):
 #     print(i["2222"])\
+
+'''
+md5加密
 import hashlib
 obj = hashlib.md5()
 obj.update(bytes("jdsalfkjalsfj",encoding="utf-8"))
 print(obj.hexdigest())
+'''
+
+class Father:
+    def __init__(self):
+        self.gz()
+    def gz(self):
+        print("father gz")
+
+class Son(Father):
+    def gz(self):
+        print("son gz")
+
+
