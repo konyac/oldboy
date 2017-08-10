@@ -30,7 +30,7 @@ class IndexHandler(tornado.web.RequestHandler):
 
 settings = {
     "template_path": "views",
-    "static_path":"static",
+    "static_path":"statics",
     "cookie_secret": "alex"  # cookie加密要添加的
 }
 

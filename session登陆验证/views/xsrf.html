@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="jquery-3.2.1.min.js"></script>
+    <script src="/sss/jquery-3.2.1.min.js"></script>
 </head>
 <body>
     <form action="/xsrf" method="post">
@@ -23,15 +23,21 @@
             var code = document.getElementById('imgCode');
             code.src += '?';
         }
+        function getCookie(name) {
+            var r = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+            return r ? r[1] : undefined;
+        }
         function SubmitCrsf() {
+            var nid = getCookie("_xsrf");
             $.post({
                 url:"/xsrf",
                 data:{
-                    "k1":"v1"
+                    "k1":"v1",
+                    "_xsrf":nid,
                 },
                 success:function (callback) {
                     //Ajax请求发送成功之后 自动执行，callback就是服务器 write的数据
-                    console.log(callback)
+                    console.log(nid)
                 }
             })
         }
