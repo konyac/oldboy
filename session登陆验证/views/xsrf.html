@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <form action="/xsrf" method="post">
+        {% raw xsrf_form_html() %}
+        <p><input name="user" type="text" placeholder="用户"/></p>
+        <p><input name='pwd' type="text" placeholder="密码"/></p>
+        <p>
+            <input name="code" type="text" placeholder="验证码"/>
+            <img src="/check_code" onclick='ChangeCode();' id='imgCode'>
+        </p>
+        <input type="submit" value="Submit" /> <span style="color:red"></span>
+    </form>
+    <input type="button" value="Ajax XSRF" onclick="SubmitCrsf();">
+    <script type="text/javascript">
+
+        function ChangeCode() {
+            var code = document.getElementById('imgCode');
+            code.src += '?';
+        }
+        function SubmitCrsf() {
+            $.post({
+                url:"/xsrf",
+                data:{
+                    "k1":"v1"
+                },
+                success:function (callback) {
+                    //Ajax请求发送成功之后 自动执行，callback就是服务器 write的数据
+                    console.log(callback)
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -21,6 +21,7 @@ class Mainhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
         #     INPUTS_LIST.append(name)
         #     # xxxooo = INPUTS_LIST  #  这样不行传入报错
         self.render("s1.html", npm="NPM888", inputs=INPUTS_LIST)  # 不能只写一个列表名称，要把前端用到的变量也定义上
+        # self.render("s2.html")  # 不能只写一个列表名称，要把前端用到的变量也定义上
 
         # self.render("index.html")#post方式
 
@@ -29,6 +30,7 @@ class Mainhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
         print(name)
         INPUTS_LIST.append(name)
         self.render("s1.html",inputs=INPUTS_LIST)
+        # self.render("s2.html",inputs=INPUTS_LIST)
 
 
 #     get方式 url中传输数据。
@@ -36,8 +38,8 @@ class Mainhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
 
 settings = {
     "template_path": "template",  # 模板路径的配置
-    "static_path": "statics",  # 静态文件的位置
-    # 'static_url_prefix': '/sss/',#静态文件地址别名
+    "static_path": "static",  # 静态文件的位置
+    'static_url_prefix': '/sss/',#静态文件地址别名
     "ui_methods":mt,#自定义方法
     "ui_modules":md,#自定义模块
 

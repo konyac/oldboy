@@ -97,6 +97,13 @@ class LoginHandler(Base):
             # self.redirect('/login')
             self.render('login.html', status='验证码错误')
 
+class XsrfHandler(Base):
+    def get(self, *args, **kwargs):
+        self.render("xsrf.html")
+
+    def post(self, *args, **kwargs):
+        self.write("xsrf.pos")
+
 
 class CheckCodeHandler(Base):
     def get(self, *args, **kwargs):
@@ -118,12 +125,14 @@ setting = {
     "template_path": "views",  # 模板路径
     "static_path": "static",  # 静态文件
     'cookie_secret': 'aiuasdhflashjdfoiuashdfiuh',
+    'xsrf_cookies':True,
 }
 application = tornado.web.Application(
     [("/index", IndexHandler),
      ("/manager", ManagerHandler),
      ("/login", LoginHandler),
-     ("/check_code", CheckCodeHandler), ], **setting
+     ("/check_code", CheckCodeHandler),
+     ("/xsrf", XsrfHandler),], **setting
 )
 
 if __name__ == "__main__":

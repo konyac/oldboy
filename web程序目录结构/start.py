@@ -9,7 +9,7 @@ from controller import home_page_models
 
 settings = {
     "template_path": "views",  # 模板路径
-    "static_path": "statics",  # 静态文件
+    "static_path": "static",  # 静态文件
     "cookie_secret": "alex"  # cookie加密要添加的
 }
 
