@@ -123,8 +123,8 @@ class CheckCodeHandler(Base):
 
 setting = {
     "template_path": "views",  # 模板路径
-    "static_path": "statics",  # 静态文件
-    "static_url_prefix": "sss",
+    "static_path": "static",  # 静态文件
+    "static_url_prefix": "static",
     'cookie_secret': 'aiuasdhflashjdfoiuashdfiuh',
     'xsrf_cookies':True,
 }

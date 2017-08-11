@@ -116,7 +116,7 @@ class CheckCodeHandler(Base):
 
 setting = {
     "template_path": "views",  # 模板路径
-    "static_path": "statics",  # 静态文件
+    "static_path": "static",  # 静态文件
     'cookie_secret': 'aiuasdhflashjdfoiuashdfiuh',
 }
 application = tornado.web.Application(

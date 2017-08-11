@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <h1>XMLHttpRequest - Ajax请求</h1>
+    <input type="text" placeholder="姓名" id="name">
+    <input type="text" placeholder="年龄" id="age">
+    <input type="button" onclick="XhrGetRequest();" value="Get发送请求" />
+    <input type="button" onclick="XhrPostRequest();" value="Post发送请求" />
+
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script type="text/javascript">
+        function XhrGetRequest() {
+            username = $('#name').val();
+            age = $('#age').val();
+            $.ajax({
+            url:"/index",
+            type:"GET",
+            dataType:'text',
+            data:{'name':username,'age':age},
+            success: function(data){
+                    console.log(data);
+                    $('#name').val("");
+                    $('#age').val("")
+                }
+            });
+
+        }
+        function XhrPostRequest() {
+            $.ajax({
+            url:"/index",
+            type:"POST",
+            dataType:'text',
+            data:"{'name':'alex','age':'16'}",
+            success: function(data,statusText){
+
+                    alert(data,statusText);
+                }
+            })
+
+        }
+
+
+
+    </script>
+
+</body>
+</html>
+

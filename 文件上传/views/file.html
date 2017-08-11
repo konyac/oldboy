@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul>
+        {% for item in img_list %}
+        <li><img style="height: 80px;width: 100px" src="/statics/img/{{item}}" ></li>
+        {% end %}
+        <li><img src="{{static_url('img/图示.png')}}"></li>
+    </ul>
+    <form method="post" action="/file" enctype="multipart/form-data">
+        <input type="file" name="img">
+        <p>
+            <input type="submit" value="上传">
+        </p>
+
+    </form>
+
+</body>
+</html>
