@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+     <ul>
+        {% for item in img_list %}
+        <li><img style="height: 80px;width: 100px" src="/statics/img/{{item}}" ></li>
+        {% end %}
+        <li><img src="{{static_url('img/图示.png')}}"></li>
+    </ul>
+    <input type="file" id="img" />
+    <input type="button" onclick="UploadFile();" value="Uplode"/>
+    <script>
+        function UploadFile(){
+            var fileObj = document.getElementById("img").files[0];//获取文件
+
+            var form = new FormData();//创建form对象
+//            form.append("k1", "v1");//添加数据
+            form.append("img", fileObj);//添加文件，img为文件名
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("post", '/file', true);
+            xhr.send(form);
+        }
+    </script>
+</body>
+</html>

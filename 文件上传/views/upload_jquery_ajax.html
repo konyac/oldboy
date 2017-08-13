@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>文件上传jquery_ajax</title>
+    <script src="/statics/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <ul>
+        {% for item in img_list %}
+        <li><img style="height: 80px;width: 100px" src="/statics/img/{{item}}" ></li>
+        {% end %}
+        <li><img src="{{static_url('img/图示.png')}}"></li>
+    </ul>
+    <input type="file" id="img" />
+    <input type="button" onclick="UploadFile();" value="Upload"/>
+    <script>
+        function UploadFile(){
+            var fileObj = $("#img")[0].files[0];
+            var form = new FormData();
+//            form.append("k1", "v1");
+            form.append("img", fileObj);
+
+            $.ajax({
+                type:'POST',
+                url: '/file',
+                data: form,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                success: function(arg){
+                    console.log(arg);
+                }
+            })
+        }
+    </script>
+</body>
+</html>
