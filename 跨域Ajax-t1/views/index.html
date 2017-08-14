@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="{{static_url('jquery-3.2.1.min.js')}}"></script>
+</head>
+<body>
+    <input type="button" value="Ajax" onclick="DoAjax();">
+    <script>
+        function DoAjax() {
+             $.ajax({
+                url:"/index",
+                type:"POST",
+                data:{"k1":"v1"},
+                success:function (callback) {
+                    console.log(callback)
+                }
+            })
+        }
+
+    </script>
+
+</body>
+</html>

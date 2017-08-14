@@ -26,7 +26,7 @@ class IndexHandler(tornado.web.RequestHandler):
 settings = {
     "static_path": "static",#这里的名字如果改动的话，必须和文件目录名字一同改，并且，只能使用{{static_url('css/index.css')}}来访问了。
     "template_path": "views",
-    "static_url_prefix": "/statics/",#想要用别名的话，前提还得保证静态文件的目录名字叫static，static_path 还是static。也就是前提都是默认的才能用。
+    "static_url_prefix": "/static/",#想要用别名的话，前提还得保证静态文件的目录名字叫static，static_path 还是static。也就是前提都是默认的才能用。
 
 }
 
