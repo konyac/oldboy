@@ -9,7 +9,8 @@
     <p><input type="button" value="Ajax" onclick="DoAjax();"><i>会报错</i></p>
     <p><input type="button" value="JONSP" onclick="DoJONSP();"><i>script方式跨域</i></p>
     <p><input type="button" value="JONSPAjax" onclick="DoJONSPAjax();"><i>Ajax跨域</i></p>
-    <p><input type="button" value="Cors" onclick="DoCors();"><i>Cors跨域</i></p>
+    <p><input type="button" value="Cors" onclick="DoCors();"><i>Cors简单请求跨域</i></p>
+    <p><input type="button" value="CorsComplex" onclick="DoCorsComplex();"><i>CorsComplex复杂请求跨域</i></p>
     <img src="http://cuijianxin.com:8002/static/15.png">
     <!--跨域<script> <img> <ifram>是不受限制的-->
     <script>
@@ -44,6 +45,16 @@
             $.ajax({
                 url:"http://cuijianxin.com:8002/cors",//Ajax跨域访问，没有响应头会有访问限制
                 type:"post",
+                data:{"k1":"v1"},
+                success:function (args) {
+                    console.log(args)
+                }
+            })
+        }
+        function DoCorsComplex() {
+            $.ajax({
+                url:"http://cuijianxin.com:8002/cors",//Ajax跨域访问，没有响应头会有访问限制
+                type:"put",//put 就是复杂请求了。
                 data:{"k1":"v1"},
                 success:function (args) {
                     console.log(args)

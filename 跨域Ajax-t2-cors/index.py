@@ -13,6 +13,13 @@ class CorsHandler(tornado.web.RequestHandler):
         self.set_header("Access-Control-Allow-Origin","http://cuicui.com:8001") #加上响应头，响应的值就是你客户端的域名，所有客户域名都符合要求 写成*即可。
         self.write("{'status':1,'message':'post'}")
 
+    def options(self, *args, **kwargs):
+        self.set_header("Access-Control-Allow-Origin", "http://cuicui.com:8001")#允许域名来访问
+        self.set_header("Access-Control-Allow-Methods", "PUT")#允许put方法来访问
+
+    def put(self, *args, **kwargs):
+        self.set_header("Access-Control-Allow-Origin", "http://cuicui.com:8001")  # 允许域名来访问
+        self.write("{'status':1,'message':'put'}")
 
 settings = {
     "template_path": "views",
