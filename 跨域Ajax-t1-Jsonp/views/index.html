@@ -6,8 +6,9 @@
     <script src="{{static_url('jquery-3.2.1.min.js')}}"></script>
 </head>
 <body>
-    <p><input type="button" value="Ajax" onclick="DoAjax();"><i>跨域访问域名，本身域名是cuicui.com。会报错</i></p>
+    <p><input type="button" value="Ajax" onclick="DoAjax();"><i>会报错</i></p>
     <p><input type="button" value="JONSP" onclick="DoJONSP();"><i>script方式跨域</i></p>
+    <p><input type="button" value="JONSPAjax" onclick="DoJONSPAjax();"><i>Ajax跨域</i></p>
     <img src="http://cuijianxin.com:8002/static/15.png">
     <!--跨域<script> <img> <ifram>是不受限制的-->
     <script>
@@ -30,6 +31,13 @@
         }
         function func(args) {
             console.log(args)
+        }
+        function DoJONSPAjax() {
+            $.ajax({
+                url:"http://cuijianxin.com:8002/index",//跨域访问
+                dataType:"jsonp",//数据类似，必须jsonp
+                jsonCallBack:"func"//回调的数据函数名
+            })
         }
 
     </script>
