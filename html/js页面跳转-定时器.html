@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <DIV ALIGN="CENTER" style="font-size: 15px;color:threeddarkshadow;" >
+    如果你不执行任何操作，系统会在5秒后自动返回！
+    </DIV>
+    <DIV ALIGN="CENTER" style="font-size: 15px;color:threeddarkshadow;" id="his">
+    5秒钟后自动返回.....
+    </DIV>
+
+    <SCRIPT LANGUAGE="JavaScript">
+        var time = 5; //时间,秒
+        var timelong = 0;
+        function diplaytime(){ //时间递减
+        document.all.his.innerHTML = time -timelong ;
+        timelong ++;
+        }
+        function redirect(){ //跳转页
+        //history.back();
+        window.location.href="http://www.baidu.com";//指定要跳转到的目标页面
+        }
+        timer=setInterval('diplaytime()', 1000);//显示倒计时时间,重复定时器，一直执行
+        timer=setTimeout('redirect()',time * 1000); //单词计时器，跳转
+        </SCRIPT>
+
+
+</body>
+</html>
