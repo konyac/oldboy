@@ -14,10 +14,10 @@ class IndexHandler(tornado.web.RequestHandler):
         print(name, age)
         if name and age:
             container.append({name: age})
-        self.render("index.html")
+        self.render("cors.html")
 
     def post(self, *args, **kwargs):
-        # self.render("index.html")
+        # self.render("cors.html")
         resp = json.dumps(container)
         self.write(resp)
 

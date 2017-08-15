@@ -5,20 +5,21 @@ import tornado.ioloop
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("cors.html")
+        self.render("index.html")
 
     def post(self, *args, **kwargs):
-        # self.render("cors.html")
-        self.write("{'status':111，'message':'mmmmm'}")
+        self.write("t1.ajax")
+
 
 settings = {
     "template_path": "views",
-    "cookie_secret": "alex"  # cookie加密要添加的
+    "static_path": "statics",
+
 }
 
 app = tornado.web.Application([("/index", IndexHandler),
-                              ],**settings)
+                               ], **settings)
 
 if __name__ == "__main__":
-    app.listen(8000)
+    app.listen(8001)
     tornado.ioloop.IOLoop.instance().start()

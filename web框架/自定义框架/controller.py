@@ -17,7 +17,7 @@ def new():
     return data.encode('utf-8')
 
 def index():
-    f = open(os.path.join('views', 'index.html'), 'r')
+    f = open(os.path.join('views', 'cors.html'), 'r')
     data = f.read()
     f.close()
     return data

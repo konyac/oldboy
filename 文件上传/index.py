@@ -6,7 +6,7 @@ import tornado.ioloop
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("index.html")
+        self.render("cors.html")
 
     def post(self, *args, **kwargs):
         favor = self.get_arguments("favor") #checkbox取值的时候要用get_arguments

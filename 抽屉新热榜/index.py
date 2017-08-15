@@ -16,13 +16,13 @@ NEWS_LIST = [{
 
 class Indexhandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("index.html", user_list=USER_LIST, news_list=NEWS_LIST)
+        self.render("cors.html", user_list=USER_LIST, news_list=NEWS_LIST)
 
 
 
 class Loginhandler(tornado.web.RequestHandler):
     # def get(self):
-    #     self.render("index.html", )
+    #     self.render("cors.html", )
 
     def post(self, *args, **kwargs):
         username = self.get_argument("username", None)
@@ -32,7 +32,7 @@ class Loginhandler(tornado.web.RequestHandler):
             USER_LIST["username"] = username
         self.redirect("/index")   #跳转的时候不带参数
         # print(USER_LIST, username)
-        # self.render("index.html", user_list=USER_LIST,news_list=NEWS_LIST)  # 重点坑渲染的时候带参数
+        # self.render("cors.html", user_list=USER_LIST,news_list=NEWS_LIST)  # 重点坑渲染的时候带参数
 
 
 class Publishhandler(tornado.web.RequestHandler):

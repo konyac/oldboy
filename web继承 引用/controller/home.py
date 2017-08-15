@@ -6,7 +6,7 @@ LIST_INFO=[11,22,33]
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("extend/index.html")
+        self.render("extend/cors.html")
 
 
 class FuckHandler(tornado.web.RequestHandler):

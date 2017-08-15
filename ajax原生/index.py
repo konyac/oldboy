@@ -23,10 +23,10 @@ class LoginHandler(tornado.web.RequestHandler):
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("index.html")
+        self.render("cors.html")
 
     def post(self, *args, **kwargs):
-        self.render("index.html")
+        self.render("cors.html")
 
 settings = {
     "template_path": "views",

@@ -8,7 +8,7 @@ class IndexHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
         self.set_cookie("value","2222")
         print(self.cookies)
-        self.render("index.html")
+        self.render("cors.html")
 settings = {
     "template_path": "views",  # 模板路径
     "static_path": "static",  # 静态文件

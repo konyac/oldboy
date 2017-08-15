@@ -23,7 +23,7 @@ class Mainhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
         self.render("s1.html", npm="NPM888", inputs=INPUTS_LIST)  # 不能只写一个列表名称，要把前端用到的变量也定义上
         # self.render("s2.html")  # 不能只写一个列表名称，要把前端用到的变量也定义上
 
-        # self.render("index.html")#post方式
+        # self.render("cors.html")#post方式
 
     def post(self, *args, **kwargs):
         name = self.get_argument("ooxx")#获取用户提交的数据

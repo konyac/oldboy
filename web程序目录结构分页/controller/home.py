@@ -71,7 +71,7 @@ class IndexHandler(tornado.web.RequestHandler):
             """ % (p , p )
             temp_page += t_page
 
-        self.render("home/index.html", list_info=current_list, current_page=page,
+        self.render("home/cors.html", list_info=current_list, current_page=page,
                     str_page=temp_page)  # home前面不加/，current_page记住当前页，
 
     def post(self, page, ):

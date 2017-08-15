@@ -128,7 +128,7 @@ class IndexHandler(tornado.web.RequestHandler):
         page_obj = Pagination(page, len(LIST_INFO))
         current_list = LIST_INFO[page_obj.start:page_obj.end]
         temp_page = page_obj.page_str("/index")
-        self.render("home/index.html", list_info=current_list, current_page=page_obj.current_page,
+        self.render("home/cors.html", list_info=current_list, current_page=page_obj.current_page,
                     str_page=temp_page)  # home前面不加/，current_page记住当前页，
 
     def post(self, page, ):
