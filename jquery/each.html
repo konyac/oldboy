@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <img>
+    <img>
+    <img>
+    <button onclick="func();">执行each</button>
+    <P>迭代两个图像，并设置它们的 src 属性。注意:此处 this 指代的是 DOM 对象而非 jQuery 对象。</P>
+    <script>
+        function func() {
+            $("img").each(function(i){ //i是索引
+           this.src = "test" + i + ".jpg";
+         });
+        }
+    </script>
+
+</body>
+</html>

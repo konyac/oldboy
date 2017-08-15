@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <button>Change colors</button>
+<span>11111</span>
+<div>11111</div>
+<div>11111</div>
+<div>11111</div>
+<div>1111</div>
+<div id="stop">Stop here</div>
+<div>111</div>
+<div>111</div>
+<div>1111</div>
+    <script>
+        $("button").click(function () {
+            $("div").each(function (index, domEle) {
+              // domEle == this
+              $(domEle).css("backgroundColor", "yellow");
+              if ($(this).is("#stop")) {
+              $("span").text("Stopped at div index #" + index);
+              return false; //这里的return只是跳出了each，并非跳出function。
+              }
+            });
+        });
+    </script>
+</body>
+</html>

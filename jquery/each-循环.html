@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+     <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+    <p>通用遍历方法，可用于遍历对象和数组。
+不同于遍历jQuery 对象的 $().each() 方法，此方法可用于遍历任何对象。回调函数拥有两个参数：第一个为对象的成员或数组的索引，第二个为对应变量或内容。如果需要退出 each 循环可使回调函数返回 false，其它返回值将被忽略。</p>
+    <button onclick="func();">执行each循环</button>
+    <button onclick="funcc();">执行each循环2</button>
+<script>
+    function func() {
+        $.each( [10,11,12], function(i, n){
+  alert( "Item #" + i + ": " + n );
+});
+    }
+    function funcc() {
+        $.each( { name: "John", lang: "JS" }, function(i, n){
+  alert( "Name: " + i + ", Value: " + n );
+});
+
+    }
+</script>
+</body>
+</html>
