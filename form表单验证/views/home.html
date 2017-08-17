@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <h1>form表单验证</h1>
+    <form action="/home" method="post">
+        <input type="text" name="ip" placeholder="ip">
+        {% if error_dict %}
+        <span>{{error_dict['ip']}}</span>
+        {% end %}
+        <input type="submit" value="提交">
+
+    </form>
+
+</body>
+</html>
