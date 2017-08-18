@@ -40,8 +40,8 @@ class IPFiled:
                 if ret:  # 匹配通过
                     self.is_valid = True
                     self.value = input_value
-                else:#匹配不通过,返回错误字典
-                    if self.error_dict.get('valid', None):#82 行定义的错误信息,如果未定义则自己定义
+                else:  # 匹配不通过,返回错误字典
+                    if self.error_dict.get('valid', None):  # 82 行定义的错误信息,如果未定义则自己定义
                         self.error = self.error_dict['valid']
 
                     else:
@@ -60,14 +60,14 @@ class BaseForm:  # 公共的类的方法,不用重复写
         success_value_dict = {}  # 用来存储正确的值信息
         form_dict = self.__dict__  # self.__dict__方法获取对象的属性字典。获取对象的参数
         # print(form_dict)
-        for key, regular in form_dict.items():# 对象的所有项 self。ip  IPFiled对象
+        for key, regular in form_dict.items():  # 对象的所有项 self。(ip  IPFiled对象)
             '''
             key:就是字段名称，self.ip
             handler:HomeHandler对象，用来获取值得，self.get_argument
             regular = IPFiled(required=True) 一个实例化的对象。
             
             '''
-            input_value = handler.get_argument(key)  # 用户输入的值
+            input_value = handler.get_argument(key,None)  # 用户输入的值
             # 将具体的验证放到IPFiled中去，在IPFiled validate方法中
             regular.validate(key, input_value)  # 执行验证方法
             if regular.is_valid:
@@ -85,24 +85,22 @@ class HomeForm(BaseForm):
         定义参数的规则，正则验证规则
         """
 
-        self.ip = IPFiled(error_dict={'required': "别闹，别整空的..", "valid": "骚年，格式错误了"},required=True,)
+        self.ip = IPFiled(error_dict={'required': "别闹，别整空的..", "valid": "骚年，格式错误了"}, required=True, )
 
 
 class Homehandler(tornado.web.RequestHandler):  # 继承类RequestHandler
     def get(self, *args, **kwargs):
-        self.render("home.html",error_dict = None)
+        self.render("home.html", error_dict=None)
 
     def post(self, *args, **kwargs):
         obj = HomeForm()
         is_valid, success_dict, error_dict = obj.check_valid(self)
         if is_valid:
-            print('success',success_dict)
-            self.render('home.html',error_dict = None)
+            print('success', success_dict)
+            self.render('home.html', error_dict=None)
         else:
-            print('error',error_dict)
-            self.render('home.html',error_dict =error_dict)
-
-
+            print('error', error_dict)
+            self.render('home.html', error_dict=error_dict)
 
 
 settings = {

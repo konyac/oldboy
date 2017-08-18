@@ -26,7 +26,7 @@ class MainForm:
         form_dict = self.__dict__  # self.__dict__方法获取对象的属性字典。获取对象的参数
         # print(form_dict)
         for key, regular in form_dict.items():
-            post_value = request.get_argument(key)#用户输入的值
+            post_value = request.get_argument(key, None)  # 用户输入的值
             val = re.match(regular, post_value)  # 正则匹配，math，从开头开始匹配，成功返回一个对象，不成功是None
             if not val:
                 flag = False
@@ -42,10 +42,10 @@ class Indexhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
     def post(self, *args, **kwargs):
         obj = MainForm()
         is_valid, value_dict = obj.check_valid(self)
-        print(is_valid,value_dict)
+        print(is_valid, value_dict)
         if is_valid:
             print(value_dict)
-        # self.write("ok")
+            # self.write("ok")
 
 
 settings = {
