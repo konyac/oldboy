@@ -12,7 +12,8 @@ class IndexHandler(tornado.web.RequestHandler):
         self.render("file.html", img_list=IMG_LIST)
 
     def post(self, *args, **kwargs):
-        file = self.request.files["img"]
+        file = self.request.files.get('img')# 文件是放到列表里的，一个文件是一个字典。
+        print(file,type(file))
         for meta in file:
             # file_name 是上次的文件名
             file_name = meta["filename"]

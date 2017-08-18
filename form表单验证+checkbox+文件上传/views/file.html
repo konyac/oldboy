@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body>
+
+    <form action="/file" method="post" enctype="multipart/form-data">
+        <input type="text" name="ip"  placeholder="ip">
+        <input type="text" name="host"  placeholder="host">
+
+        <p>
+            <input type="checkbox" name="favor" value="1" /> 篮球；
+            <input type="checkbox" name="favor" value="2" /> 足球；
+            <input type="checkbox" name="favor" value="3" /> 玻璃球；
+        </p>
+
+        <p>
+            <input type="file" name="fafafa" />
+            <input type="file" name="fafafa" />
+        </p>
+        {% if error_dict %}
+            {% for value in error_dict.values() %}
+                <span>{{ value}}</span>
+            {% end for %}
+
+        {% end %}
+
+        <input type="submit" >
+    </form>
+
+</body>
+</html>
+
