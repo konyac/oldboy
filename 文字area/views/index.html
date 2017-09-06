@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <textarea style="width: 200px;height: 80px" id='la' placeholder="请填写备注"></textarea>
+    <p><span id="text-count">200</span>/200</p>
+    <input type="button" value="提交" onclick="sub();">
+    <form action="/index" method="post">
+        <textarea name="text"></textarea>
+        <input type="submit" value="提交">
+    </form>
+    <span>{% raw item %}</span>
+    <script>
+        $('#la').on('input change',function () {
+            var ths = $(this);
+            var _val= ths.val();
+            var count= '';
+            if (_val.length>200){
+                ths.val(_val.substring(0,200))//操作20 显示前20
+            }
+            count=200-_val.length;
+            $("#text-count").text(count);
+        });
+        function sub() {
+            text = $('#la').val();
+            $.post({
+                 url:'/index',
+                data:{'text':text},
+                success:function () {
+
+                }
+                });
+            $('#la').val('');
+            $("#text-count").text(200);
+        }
+    </script>
+
+</body>
+</html>
