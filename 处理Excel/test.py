@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
-import xlrd, xlwt,os,sys
+import xlrd, xlwt,os
 
 fname = "郑州营销000.xls"
 bk = xlrd.open_workbook(fname)
