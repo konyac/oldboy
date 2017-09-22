@@ -5,9 +5,8 @@ from sqlalchemy import Column, Integer, String, ForeignKey, UniqueConstraint, In
 from sqlalchemy.orm import sessionmaker, relationship
 from sqlalchemy import create_engine
 
-engine = create_engine('mysql+pymysql://root:root@127.0.0.1:3306/orm?charset=utf8')
+engine = create_engine('mysql+pymysql://root:root@127.0.0.1:3306/orm')
 Base = declarative_base()
-engine = create_engine('sqlite:///dbyuan67.db', echo=True)
 
 #创建单表
 class Users(Base):
@@ -61,5 +60,11 @@ def init_db():
     Base.metadata.create_all(engine)
 def drop_db():
     Base.metadata.drop_all(engine)
-init_db()
+
+Session = sessionmaker(bind=engine)
+session =Session()
+u1 =Users(name='jason',extra='jksalkdjfal')
+session.add(u1)
+session.commit()
+
 
