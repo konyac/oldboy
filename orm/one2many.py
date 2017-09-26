@@ -38,7 +38,7 @@ def drop_db():
     Base.metadata.drop_all(engine)
 
 
-# init_db()
+init_db()
 
 # 建立插入数据连接
 Session = sessionmaker(bind=engine)
@@ -49,9 +49,9 @@ f2 = Father(name='cuicui2', age=44)
 f3 = Father(name="cuicui3", age=24)
 
 # 增加数据
-# session.add(f1)
-# session.add_all([f2,f3])
-# session.commit()
+session.add(f1)
+session.add_all([f2,f3])
+session.commit()
 # ret = session.query(Father).all() #ret是father表中的每一行，是个对象
 # ret_first = session.query(Father).first() #ret是father表中的第一行也是个对象
 # print(session.query(Father)) #SELECT father.id AS father_id, father.name AS father_name, father.age AS father_age FROM father
@@ -63,10 +63,10 @@ f3 = Father(name="cuicui3", age=24)
 s1= Son(name='little cuicui1',age=1,father_id=1)
 s2= Son(name='little cuicui2',age=1,father_id=1)
 s3= Son(name='little cuicui3',age=1,father_id=2)
-# session.add_all([s1,s2,s3])
-# session.commit()
+session.add_all([s1,s2,s3])
+session.commit()
 # ret = session.query(Father.name,Father.age).join(Son).all()
 # ret = session.query(Father.name,Father.age,Son.name.label('s_name')).join(Son).all()
 # print(ret)
 
-print(session.query(Father).filter(Father.id.in_([1,2])).all())
+# print(session.query(Father).filter(Father.id.in_([1,2])).all())

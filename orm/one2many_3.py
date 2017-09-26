@@ -37,7 +37,7 @@ class Father(Base):
 
 
 # 1 创建 删除 表
-Base.metadata.create_all(engine)  # 创建两个表
+# Base.metadata.create_all(engine)  # 创建两个表
 # Base.metadata.drop_all(engine) # 删除两个表
 
 
@@ -48,17 +48,18 @@ Base.metadata.create_all(engine)  # 创建两个表
 Session = sessionmaker(bind=engine)
 session = Session()
 
-f3 = Father(name="cuicui", age=18)
-
-w1 = Son(name="little cui 5", age=2, )
-w2 = Son(name="little cui 6", age=3, )
+# f3 = Father(name="cuicui", age=18)
+#
+# w1 = Son(name="little cui 5", age=2, )
+# w2 = Son(name="little cui 6", age=3, )
 # w3 = Son(name="little cui w3", age=3, )
 
 #第一种添加方式
-
+'''
 f3.son=[w1,w2]
 session.add_all([f3,w1,w2])
 session.commit()
+'''
 
 # 第二种添加方式
 '''
@@ -73,3 +74,17 @@ for i in ret.son:
     print(i.name)
 ret2 = session.query(Son).filter_by(age=3).first()
 print(ret2.father.name)
+ret3=session.query(Father).filter_by(name='cuicui2').first()
+# ret3.son.append(w3)
+print(ret3.son)
+for i in ret3.son:
+    print(i.name)
+
+f2 = Father(name='cuicui2',age=24)
+'''
+f2.son=[w3]
+session.add(f2)
+session.commit()
+'''
+
+
