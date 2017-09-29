@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{{ static_url('css.css') }}" type="text/css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="pg-header">
+        <div class="head-contend">
+            <a href="#" class="logo"></a>
+            <ul class="nav">
+                <li><a href="http://www.baidu.com">全部</a></li>
+                <li><a href="http://www.baidu.com">42区</a></li>
+                <li><a href="http://www.baidu.com">段子</a></li>
+                <li><a href="http://www.baidu.com">图片</a></li>
+                <li><a href="http://www.baidu.com">挨踢1024</a></li>
+                <li><a href="http://www.baidu.com">你问我答</a></li>
+            </ul>
+            <ul class="nav_right">
+                {% if user_list["is_login"] %}
+                    <li style="cursor: pointer;" id="show"><a class="log">{{user_list["username"]}}</a></li>
+                {% else %}
+                    <li><a class="reg" href="http://www.baidu.com">注册</a></li>
+                    <li style="cursor: pointer;" onclick="Login();"><a class="log">登陆</a></li>
+                {% end %}
+                <li class="search-body">
+                    <input class="search-input" type="text">
+                    <a class="search-icon">
+                        <i class="fa fa-search"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="pg-body clearfix">
+        <div class="body-left">
+            <div class="body-left-header clearfix">
+                <ul class="body-left-header-menu">
+                    <li><a href="#">最热</a></li>
+                    <li><a href="#">发现</a></li>
+                    <li><a href="#">人类发布</a></li>
+                </ul>
+                {% if user_list["is_login"] %}
+                    <a onclick="publish();"><button class="fabu">+ 发布</button></a>
+                {% else %}
+                    <a onclick="error();"><button class="fabu">+ 发布</button></a>
+                {% end %}
+            </div>
+            <div class="body-left-news hide">1条如热榜，点击查看</div>
+            <div class="body-left-content">
+                {% for i in news_list %}
+                    <div class="item clearfix">
+                        <div class="content-pic"><img src="statics/1.jpg"></div>
+                        <div class="news-content">
+                            <div class="content-title"><a href="https://wallstreetcn.com/articles/314213" target="_blank">{{ i["title"]}}</a>&nbsp;&nbsp;<span>-wallstreetcn.com 42区</span></div>
+                            <div class="content-text">{{ i["content"]}}</div>
+
+                            <div class="content-footer"></div>
+                        </div>
+                    </div>
+                {% end %}
+            </div>
+        </div>
+        <div class="body-right">aaa</div>
+    </div>
+    <div class="pg-footer"></div>
+    <div id="login">
+
+
+    </div>
+    <script>
+        function Login() {
+            $('#log').show()
+        }
+        function publish() {
+                $('#pub').modal("show")
+        }
+        function error() {
+            $(".message").removeClass("hidden")
+        }
+        $('.message .close').on('click', function() {
+            $(this).closest('.message').transition('fade');
+        });
+    </script>
+</body>
+</html>

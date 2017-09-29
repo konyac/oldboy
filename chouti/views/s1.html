@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{{ static_url('css.css') }}">
+    <script src="{{ static_url('jquery-3.2.1.min.js') }}"></script>
+
+
+</head>
+<body>
+    <div class="pg-header">
+        <div class="head-contend">
+            <a href="/" class="logo"></a>
+            <ul class="nav">
+                <li><a href="http://www.baidu.com">全部</a></li>
+                <li><a href="http://www.baidu.com">42区</a></li>
+                <li><a href="http://www.baidu.com">段子</a></li>
+                <li><a href="http://www.baidu.com">图片</a></li>
+                <li><a href="http://www.baidu.com">挨踢1024</a></li>
+                <li><a href="http://www.baidu.com">你问我答</a></li>
+            </ul>
+
+        </div>
+
+
+    </div>
+    <div class="pg-body">
+        <i>{{npm}}</i>
+        <div>
+            {% module custom() %}
+    {{ tab(npm) }}
+        </div>
+        <h1>提交内容</h1>
+        <form method="get" action="/index">
+            <!--/*action应该是url的链接*/-->
+            <input type="text" name="ooxx">
+            <button type="submit">提交</button>
+        </form>
+
+        <h1>展示内容</h1>
+        <ul>
+            {% for item in inputs %}
+            <li>{{item}}</li>
+            {% end %}
+            <!--模板语言里通过for循环展示数据-->
+        </ul>
+    </div>
+    <div class="pg-footer"></div>
+</body>
+</html>
