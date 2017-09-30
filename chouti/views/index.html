@@ -27,8 +27,8 @@
                 {% if user_list["is_login"] %}
                     <li style="cursor: pointer;" id="show"><a class="log">{{user_list["username"]}}</a></li>
                 {% else %}
-                    <li><a class="reg" href="http://www.baidu.com">注册</a></li>
-                    <li style="cursor: pointer;" onclick="Login();"><a class="log">登陆</a></li>
+                    <li><a class="reg" style="color: #ffffff">注册</a></li>
+                    <li style="cursor: pointer;" onclick="Login();"><a class="log" style="color: #ffffff">登陆</a></li>
                 {% end %}
                 <li class="search-body">
                     <input class="search-input" type="text">
@@ -72,13 +72,52 @@
         <div class="body-right">aaa</div>
     </div>
     <div class="pg-footer"></div>
-    <div id="login">
+    <div id="module-login" class="hide">
+        <div class="module-login-container">
+            <div class="box-login">
+                <div style="border-radius: 5px 0 0 0" class="header"><span>登陆</span></div>
+                <div class="body-login">
+                    <div class="tab-box">
+                        <span class="idlogin active" style="margin-right: 10px">用户名登陆</span>|<span class="emaillogin" style="margin-left: 10px">邮箱登陆</span>
+                    </div>
+                    <div class="box-idlogin">
+                        <div class="err-msg"></div>
+                        <input class="id" id="id" name="id" type="text" placeholder="请输入邮箱或用户名">
+                        <input class="idpwd" id="idpwd" name="idpwd" type="password" placeholder="密码">
+                        <div class="code">
+                            <input style="width: 100px" id="cod" type="text"><img style="width: 60px;height: 30px;margin-left: 20px" src="statics/1.jpg">
+                        </div>
 
+
+                    </div>
+                    <div class="box-emaillogin hide">
+                        <div class="err-msg"></div>
+                        <input class="id" id="email" name="email" type="text" placeholder="请输入邮箱或用户名">
+                        <input class="idpwd" id="emailpwd" name="emailpwd" type="password" placeholder="密码">
+
+                    </div>
+
+                </div>
+
+            </div>
+           <div class="box-register">
+               <div style="border-radius: 0 5px 0 0" class="header"><span>注册</span>
+               <div onclick="(function() {
+                 $('#module-login').addClass('hide')
+               })();" style="cursor:pointer;position: absolute;right: 8px;top: 1px;width: 15px;height: 15px">
+                   <i class="fa fa-times"></i>
+               </div>
+               </div>
+
+           </div>
+
+
+        </div>
 
     </div>
     <script>
         function Login() {
-            $('#log').show()
+            $('#module-login').removeClass('hide')
         }
         function publish() {
                 $('#pub').modal("show")
