@@ -1,30 +1,36 @@
-*{
-    margin:0;
+* {
+    margin: 0;
     padding: 0;
 }
-body{
+
+body {
     background-color: #ededed;
 }
-.clearfix:after{
+
+.clearfix:after {
     display: block;
     height: 0;
     content: "1";
     visibility: hidden;
     clear: both;
 }
-ul{
+
+ul {
     list-style: none;
 }
-.pg-header{
+
+.pg-header {
     height: 44px;
     background-color: #2459a2;
-    box-shadow: 0 2px 2px rgba(0,0,0,.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, .1);
 }
-.head-contend{
+
+.head-contend {
     margin: 0 auto;
     width: 1016px;
 }
-.pg-header .logo{
+
+.pg-header .logo {
     background: url("http://dig.chouti.com/images/logo.png") no-repeat;
     float: left;
     width: 121px;
@@ -32,7 +38,8 @@ ul{
     margin-top: 11px;
 
 }
-.pg-header .nav{
+
+.pg-header .nav {
     /*list-style: none;*/
     float: left;
     /*height: 44px;*/
@@ -40,7 +47,8 @@ ul{
     text-align: center;
     padding-left: 10px;
 }
-.nav_right li,.nav li{
+
+.nav_right li, .nav li {
     float: left;
     line-height: 44px;
     font-size: 12px;
@@ -48,91 +56,106 @@ ul{
     /*border:solid red;*/
 
 }
-.nav_right .reg:hover,.nav_right .log:hover,.nav li a:hover{
+
+.nav_right .reg:hover, .nav_right .log:hover, .nav li a:hover {
     background-color: #396bb3;
     color: #ffffff;
     /*border-bottom: solid red 5px;*/
 }
-.nav_right .reg,.nav_right .log,.nav li a{
-    padding:0 20px;
+
+.nav_right .reg, .nav_right .log, .nav li a {
+    padding: 0 20px;
     display: inline-block;
     text-decoration: none;
     height: 44px;
     color: #c0cddf;
 }
-.head-contend .nav_right{
+
+.head-contend .nav_right {
     float: right;
     margin: 0;
 }
-.nav_right li{
+
+.nav_right li {
     display: inline-block;
 }
-.search-icon{
+
+.search-icon {
     display: inline-block;
     height: 31px;
     width: 30px;
     background-color: #f4f4f4;
-    border-left:  solid 1px #e0e0e0;
+    border-left: solid 1px #e0e0e0;
     text-align: center;
     line-height: 31px;
     margin-left: -5px;
 
 }
-.search-input{
+
+.search-input {
     background-color: rgb(244, 244, 244);
     height: 31px;
     width: 90px;
     border: none;
 }
-.pg-body{
+
+.pg-body {
     margin: 0 auto;
     width: 1016px;
     background-color: white;
 }
-.body-left{
+
+.body-left {
     width: 630px;
     float: left;
     margin-top: 5px;
     margin-left: 15px;
     margin-right: 15px;
 }
-.body-right{
+
+.body-right {
     width: 300px;
     float: right;
     margin-right: 15px;
     margin-left: 15px;
 }
-.body-left-header{
+
+.body-left-header {
     border-bottom: 1px solid #dce7f4;
     width: 630px;
     line-height: 30px;
 }
-.body-left-header-menu{
+
+.body-left-header-menu {
     width: auto;
     float: left;
 }
-.body-left-header-menu li{
+
+.body-left-header-menu li {
     display: inline-block;
 
     margin: 10px;
 
 }
-.body-left-header-menu a{
+
+.body-left-header-menu a {
     text-decoration: none;
-     font-weight: 700;
-       color: #369;
+    font-weight: 700;
+    color: #369;
     font-size: 13px;
 }
 
-.body-left-header-menu a:hover{
-    text-decoration:underline;
+.body-left-header-menu a:hover {
+    text-decoration: underline;
 }
-.body-left-header-menu a:active{
+
+.body-left-header-menu a:active {
     background-color: #9fd8ef;
     color: #333;
     text-decoration: none;
 }
-.fabu{
+
+.fabu {
     width: 134px;
     height: 30px;
     border: 1px solid #8aab30;
@@ -142,10 +165,12 @@ ul{
     color: white;
     font-size: 15px;
 }
-.hide{
+
+.hide {
     display: none;
 }
-.body-left-news{
+
+.body-left-news {
     /*position: fixed;*/
     height: 25px;
     width: 628px;
@@ -155,43 +180,51 @@ ul{
     text-align: center;
     line-height: 25px;
 }
-.item .content-title a{
+
+.item .content-title a {
     font-size: 14px;
     color: #369;
     font-weight: 700;
     text-decoration: none;
 
 }
-.item .content-title span{
+
+.item .content-title span {
     font-size: 12px;
 
 }
-.item .content-pic{
+
+.item .content-pic {
     float: right;
     margin-left: 10px;
 
 }
-.content-title{
+
+.content-title {
     margin-top: 10px;
 }
-.content-text{
+
+.content-text {
     font-size: 12px;
     color: #787878;
     margin-top: 3px;
 }
-.news-content{
+
+.news-content {
     width: 550px;
 }
-#module-login{
+
+#module-login {
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 999;
 }
-.module-login-container{
+
+.module-login-container {
     height: 375px;
     width: 750px;
     position: absolute;
@@ -202,19 +235,22 @@ ul{
     border-radius: 5px;
     background-color: white;
 }
-.box-login{
+
+.box-login {
     float: left;
     width: 375px;
     /*background-color: #9fd8ef;*/
     height: 100%;
 }
-.box-register{
+
+.box-register {
     float: left;
     width: 375px;
     /*background-color: #ffee33;*/
     height: 100%;
 }
-.module-login-container .header{
+
+.module-login-container .header {
     height: 30px;
     font-size: 14px;
     line-height: 30px;
@@ -224,26 +260,31 @@ ul{
     padding: 0 10px;
     position: relative;
 }
-.body-login{
+
+.body-login {
     border-right: 1px dotted #808080;
     border-radius: 0 0 0 5px;
     height: 100%;
 }
-.tab-box{
+
+.tab-box {
     padding: 20px;
     text-align: center;
     font-size: 14px;
     color: #abb6d2;
     cursor: pointer;
 }
-.tab-box .active{
+
+.tab-box .active {
     color: #2559a4 !important;
     cursor: default;
 }
-.box-idlogin,.box-emaillogin{
+
+.box-idlogin, .box-emaillogin {
     text-align: center;
 }
-.box-idlogin input,.box-emaillogin input {
+
+.id, .idpwd {
     width: 196px;
     padding: 6px;
     border: 1px solid #CDDDEF;
@@ -251,11 +292,50 @@ ul{
     margin-bottom: 15px;
     outline: 0;
 }
-.code input{
-    width: 118px;
-    padding: 6px;
+
+#cod, #rescod {
+    width: 111px;
+    height: 32px;
+    margin-left: 89px;
+    vertical-align: middle;
     border: 1px solid #CDDDEF;
     font-weight: bold;
-    margin-bottom: 15px;
     outline: 0;
+}
+
+.code {
+    text-align: left;
+}
+
+.box-btn {
+    text-align: left;
+    height: 44px;
+    line-height: 44px;
+}
+
+.btn-login, .btn-register {
+    width: 95px;
+    height: 31px;
+    line-height: 31px;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    text-align: center;
+    background-color: #2459a2;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 5px;
+    font-weight: 700;
+    margin-left: 89px;
+}
+
+.getcod {
+    width: 70px;
+    height: 30px;
+    margin-left: 10px;
+    vertical-align: middle;
+    background-color: #2459a2;
+    color: white;
+    font-size: 12px;
+    border: none;
 }
