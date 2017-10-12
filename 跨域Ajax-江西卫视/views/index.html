@@ -50,6 +50,7 @@
             $.ajax({
                 url:"http://cuijianxin.com:8002/index",//跨域访问
                 dataType:"jsonp",//数据类似，必须jsonp
+//                callback:'func',
                 jsonCallBack:"func"//回调的数据函数名
             })
         }
@@ -62,7 +63,7 @@
              $.ajax({
                 url:"http://www.jxntv.cn/data/jmd-jxtv2.html?callback=list",//跨域访问
                 dataType:"jsonp",//数据类似，必须jsonp
-                 callBack:"list",
+//                 callBack:"list",
                 jsonpCallBack:"list"//回调的数据函数名
             })
         }
