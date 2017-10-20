@@ -2,8 +2,8 @@
 # _*_ coding:utf-8 _*_
 import tornado.web
 import tornado.ioloop
-from controllers import home
-from controllers import account
+from chouti.controllers import home
+from chouti.controllers import account
 
 
 settings = {

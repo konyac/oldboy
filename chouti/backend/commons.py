@@ -15,7 +15,7 @@ def generate_verification_code():
     for i in range(97, 123):  # a-z的ASCII码
         code_list.append(chr(i))
 
-    myslice = random.sample(code_list, 6)  # 从list中随机获取6个元素，作为一个片断返回
+    myslice = random.sample(code_list, 6)  # 从list中随机获取6个元素，作为一个片断返回.是个list
     verification_code = ''.join(myslice)  # list to string
     # print code_list
     # print type(myslice)

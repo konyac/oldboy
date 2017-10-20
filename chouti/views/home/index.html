@@ -112,13 +112,15 @@
                     </div>
                     <div class="box-idlogin">
                         <div class="err-msg"></div>
-                        <input class="id" id="resid" name="id" type="text" placeholder="请输入邮箱或用户名">
-                        <input class="idpwd" id="residpwd" name="idpwd" type="password" placeholder="密码">
-                        <div class="code">
+                        <input class="id" id="username" name="username" type="text" placeholder="用户名">
+                        <input class="id" id="resid" name="id" type="text" placeholder="请输入邮箱">
+                        <div class="code" style="margin-bottom: 15px">
                             <input id="rescod" type="text" placeholder="请输入验证码">
                             <input onclick="SendCode(this);" class="getcod" type="button" value="获取验证码">
                         </div>
-                        <input class="btn-register" style="margin-top: 50px" type="button" value="注册">
+                        <input class="idpwd" id="residpwd" name="idpwd" type="password" placeholder="密码">
+
+                        <input class="btn-register" type="button" value="注册">
 
 
                     </div>
