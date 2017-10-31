@@ -112,15 +112,15 @@
                     </div>
                     <div class="box-idlogin">
                         <div class="err-msg"></div>
-                        <input class="id" id="username" name="username" type="text" placeholder="用户名">
-                        <input class="id" id="resid" name="id" type="text" placeholder="请输入邮箱">
-                        <div class="code" style="margin-bottom: 15px">
-                            <input id="rescod" type="text" placeholder="请输入验证码">
-                            <input onclick="SendCode(this);" class="getcod" type="button" value="获取验证码">
+                        <input class="id register" id="username" name="username" type="text" placeholder="用户名">
+                        <input class="id register" id="resid" name="id" type="text" placeholder="请输入邮箱">
+                        <div class="code register" style="margin-bottom: 15px">
+                            <input class="register" id="rescod" name="code" type="text" placeholder="请输入验证码">
+                            <input onclick="SendCode(this);" class="getcod register" type="button" value="获取验证码">
                         </div>
-                        <input class="idpwd" id="residpwd" name="idpwd" type="password" placeholder="密码">
+                        <input class="idpwd register" id="residpwd" name="idpwd" type="password" placeholder="密码">
 
-                        <input class="btn-register" type="button" value="注册">
+                        <input class="btn-register" onclick="Register()" type="button" value="注册">
 
 
                     </div>
@@ -161,6 +161,30 @@
                 }
             })
 
+        }
+        function Register() {
+            var user_dict={};
+            $('.register').each(function () {
+                var val = $(this).val();
+                var name = $(this).attr('name');
+                user_dict[name]=val
+            });
+            $.ajax({
+                url:'/register',
+                type:'POST',
+                data:user_dict,
+                success:function (args) {
+                    var ret = JSON.parse(args);
+                    if(ret.status){
+                        location.href='/index';
+                        alert(ret.status)
+
+                    }else {
+                        alert(ret.error)
+                    }
+                    console.log(args)
+                }
+            })
         }
     </script>
 </body>

@@ -9,6 +9,7 @@ engine = create_engine('mysql+pymysql://root:root@127.0.0.1:3306/chouti?charset=
 
 Base = declarative_base()
 
+#临时表
 class SendCode(Base):
     __tablename__ = 'sendcode'
     nid = Column(Integer, primary_key=True, autoincrement=True)

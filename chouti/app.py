@@ -16,7 +16,8 @@ settings = {
 application = tornado.web.Application(
     [(r"/index", home.IndexHandler),
      (r"/login", account.LoginHandler),
-     (r"/send_cond", account.SendCodeHandler)
+     (r"/send_cond", account.SendCodeHandler),
+     (r"/register", account.RegisterHandler)
      ],
     **settings)  # 创建一个对象
 

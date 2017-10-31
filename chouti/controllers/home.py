@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 import tornado.web
-
+from chouti.backend.utils import session
 USER_LIST = {"is_login": None}
 NEWS_LIST = [{
     "title": "万科重生：深铁会比华润更积极 因为深铁想从万科得到更多 ",
@@ -13,6 +13,10 @@ NEWS_LIST = [{
 }]
 
 
-class IndexHandler(tornado.web.RequestHandler):
+class IndexHandler(session.Base):
     def get(self, *args, **kwargs):
+        if self.session['is_login']:
+            USER_LIST['username']=self.session['username']
+            USER_LIST['is_login']=True
+        print(USER_LIST)
         self.render("home/index.html", user_list=USER_LIST, news_list=NEWS_LIST)
