@@ -15,8 +15,18 @@ NEWS_LIST = [{
 
 class IndexHandler(session.Base):
     def get(self, *args, **kwargs):
+
         if self.session['is_login']:
             USER_LIST['username']=self.session['username']
             USER_LIST['is_login']=True
-        print(USER_LIST)
+        # print(USER_LIST)
         self.render("home/index.html", user_list=USER_LIST, news_list=NEWS_LIST)
+    def post(self, *args, **kwargs):
+        et = self.get_argument('exit', None)
+        # print(et)
+        if (exit):
+            USER_LIST['username'] = None
+            USER_LIST['is_login'] = False
+            self.session['is_login']=False
+            # print(USER_LIST)
+        self.redirect("/index")

@@ -14,12 +14,12 @@ def main():
 
 # 手机归属地查询
 def request1(appkey, com):
-    url = "https://way.jd.com/qichacha/GetBriefIntroduction"
+    url = "https://way.jd.com/jindidata/search_info4"
     params = {
-        "companyName": com,
+        "keyword": com,
         "appkey": appkey,  # 应用APPKEY(应用详细页查询)
-        'dtype':'json',
-        'key':'736be44d18e011e6b4fb1051721d3b62'
+        # 'dtype':'json',
+        # 'key':'736be44d18e011e6b4fb1051721d3b62'
     }
 
     f = requests.get(url, params=params)

@@ -28,6 +28,8 @@ ul {
 .head-contend {
     margin: 0 auto;
     width: 1016px;
+    position: relative;
+
 }
 
 .pg-header .logo {
@@ -268,7 +270,8 @@ ul {
 }
 
 .tab-box {
-    padding: 20px;
+    padding-top: 13px;
+    padding-bottom: 2px;
     text-align: center;
     font-size: 14px;
     color: #abb6d2;
@@ -338,4 +341,27 @@ ul {
     color: white;
     font-size: 12px;
     border: none;
+}
+.err-msg{
+    color: firebrick;
+    font-size: 12px;
+    height: 20px;
+}
+.user-menu{
+    width: 64px;
+    background-color: #abb6d2;
+    position: absolute;
+    left: 835px;
+    top: 44px;
+
+}
+.user-menu-set , .user-menu-quit{
+    text-align: center;
+    line-height: 38px;
+    height: 38px;
+    cursor: pointer;
+}
+.user-menu-set:hover,.user-menu-quit:hover{
+    /*background-color: white;*/
+    color: white;
 }

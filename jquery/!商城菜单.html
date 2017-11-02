@@ -210,11 +210,11 @@
 
     $(function () {
         change("#all_menu_catagory","#nav_all_menu","#nav_all_content")
-    })
+    });
     function change(menuF,menuS,menuT) {
         $(menuF).bind("mouseover",function () {
             $(menuS).parent().removeClass("hide")
-        })
+        });
         $(menuF).bind("mouseout",function () {
             $(menuS).parent().addClass("hide")
         });
@@ -222,7 +222,7 @@
         $(menuS).children().bind("mouseover",function () {
 
             $(menuS).parent().removeClass("hide");
-            console.log($(this).attr("float-content"))
+            console.log($(this).attr("float-content"));
             $item =$(menuT).find('[float-id="'+$(this).attr("float-content")+'"]');
             console.log($item)
             $item.removeClass("hide").siblings().addClass("hide")

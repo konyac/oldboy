@@ -185,7 +185,7 @@ class FileFiled:
             file_name = meta['filename']  # 每个文件的文件名
             # 文件名存在 并且文件名在文件名列表中
             import os
-            # self.value:[1.py, 2.py]  【statics/1.py  statics/2.py】
+            # self.value:[forms, 2.py]  【statics/forms  statics/2.py】
             new_file_name = os.path.join(path, file_name)
 
             if file_name and file_name in self.value:
