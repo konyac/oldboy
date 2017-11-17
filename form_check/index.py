@@ -18,7 +18,7 @@ class Indexhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
             rep.status = True
         else:
             print(obj._error_dict)
-            rep.message['error'] ="cuowu"
+            rep.message['error'] ="错误"
         print(rep.__dict__)
 settings = {
     "template_path": "views",  # 模板路径的配置

@@ -20,6 +20,9 @@ class SendMsgForm(BaseForm):
 class RegisterForm(BaseForm):
 
     def __init__(self):
+        """
+        将要检测的字段作为一个个检测类封装起来
+        """
         self.username = StringField()
         self.email = EmailField(custom_error_dict={'required': '注册邮箱不能为空.', 'valid': '注册邮箱格式错误.'})
         self.password = StringField()

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
-from form_check.form import fields
+from newchouti.backend.form import fields
 
 
 class BaseForm:
@@ -30,7 +30,8 @@ class BaseForm:
                 post_value = handler.get_argument(field_name, None)#获取前端数据。
             #以上代码，循环验证类。拿到要验证的数据。
             #以下执行验证
-            field_obj.match(field_name, post_value)#执行验证。改变
+            # print(post_value)
+            field_obj.match(field_name, post_value)#######执行验证。改变#########
             if field_obj.is_valid:
                 self._value_dict[field_name] = field_obj.value
             else:

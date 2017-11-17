@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ifram 图片上传隐藏</title>
+    <script src="/static/jquery-3.2.1.min.js"></script>
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="my_form" name="form" action="/file" method="POST"  enctype="multipart/form-data" >
+        <div id="main">
+            <input name="img" id="my_file"  type="file" onchange="UploadImage()"/>
+            <input type="button" name="action" value="Upload" onclick="redirect()"/>
+            <iframe id='my_iframe' name='my_iframe' src=""  class="hide"></iframe>
+            <!--ifram作为一个通道，后台提交-->
+        </div>
+    </form>
+
+    <script>
+        function UploadImage(ths){
+            document.getElementById('my_iframe').onload = UploadImageComplete;
+            document.getElementById('my_form').target = 'my_iframe';
+            document.getElementById('my_form').submit();
+        }
+        function UploadImageComplete(){
+            var img_path = $("#my_iframe").contents().find("body").text();
+//            console.log(img_path)
+            var img = document.createElement('img');
+            img.src = img_path;
+            img.style.width = "200px";
+            img.style.height = "180px";
+            $("#my_form").append(img);
+
+        }
+    </script>
+</body>
+</html>

@@ -4,14 +4,15 @@ import tornado.web
 import tornado.ioloop
 import os
 
-IMG_LIST = []
+
 
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("upload_ajax_ifram.html", img_list=IMG_LIST)
+        self.render("upload_img_ifram.html")
 
     def post(self, *args, **kwargs):
+        img_path = ''
         file = self.request.files["img"]
         for meta in file:
             # file_name 是上次的文件名
@@ -19,8 +20,8 @@ class IndexHandler(tornado.web.RequestHandler):
             with open(os.path.join("static", "img", file_name), "wb") as up:  # 保存文件
                 # 保存文件
                 up.write(meta["body"])
-            IMG_LIST.append(file_name)
-        self.redirect("/file")
+            img_path=os.path.join("static", "img", file_name)
+        self.write(img_path)
 
 
 settings = {

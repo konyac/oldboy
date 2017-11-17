@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{{ static_url('css.css') }}" type="text/css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"
+          rel="stylesheet">
+
+</head>
+<body>
+<div class="pg-header">
+    <div class="head-contend">
+        <a href="#" class="logo"></a>
+        <ul class="nav">
+            <li><a href="http://www.baidu.com">全部</a></li>
+            <li><a href="http://www.baidu.com">42区</a></li>
+            <li><a href="http://www.baidu.com">段子</a></li>
+            <li><a href="http://www.baidu.com">图片</a></li>
+            <li><a href="http://www.baidu.com">挨踢1024</a></li>
+            <li><a href="http://www.baidu.com">你问我答</a></li>
+        </ul>
+        <ul class="nav_right">
+            {% if handler.session['is_login'] %}
+            <li is-login="true" style="cursor: pointer;" id="show" onmouseover="(function(){$('#user-menu').removeClass('hide')}());"
+                onmouseout="(function() {$('#user-menu').addClass('hide')}())"><a
+                    class="log">{{handler.session['user_info']['username']}}</a></li>
+            {% else %}
+            <li is-login="false" style="cursor: pointer;" onclick="Login();"><a class="reg" style="color: #ffffff">注册</a></li>
+            <li style="cursor: pointer;" onclick="Login();"><a class="log" style="color: #ffffff">登陆</a></li>
+            {% end %}
+            <li class="search-body">
+                <input class="search-input" type="text">
+                <a class="search-icon">
+                    <i class="fa fa-search"></i>
+                </a>
+            </li>
+        </ul>
+        <div onmouseover="(function() {$('#user-menu').removeClass('hide')}())"
+             onmouseout="(function() {$('#user-menu').addClass('hide')}())" class="user-menu hide" id="user-menu">
+            <ul style="list-style: none">
+                <li class="user-menu-set">设置</li>
+                <li onclick="exit();" class="user-menu-quit">退出</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="pg-body clearfix">
+    <div class="body-left">
+        <div class="body-left-header clearfix">
+            <ul class="body-left-header-menu">
+                <li><a href="#">最热</a></li>
+                <li><a href="#">发现</a></li>
+                <li><a href="#">人类发布</a></li>
+            </ul>
+            <a>
+                <button id="publishBtn" class="fabu">+ 发布</button>
+            </a>
+        </div>
+        <div class="body-left-news hide">1条如热榜，点击查看</div>
+        <div class="body-left-content">
+            {% for item in news_list %}
+            <div class="item">
+                <div class="news-pic">
+                    <img src="" alt="话吧" style="display: inline;">
+                </div>
+                <div class="null-item"></div>
+                <div class="news-content">
+                    <div class="part1">
+                        <a href="{{item[2]}}" class="show-content" target="_blank">{{item[1]}}</a>
+                        <span class="content-source">-wallstreetcn.com</span>
+                        <a href="/r/news/hot/1" class="n2">
+                            <span class="content-kind">{{item[6]}}</span>
+                        </a>
+                    </div>
+                    <div class="area-summary">
+                        <span class="summary">{{item[3]}}</span>
+                    </div>
+                    <div class="part2">
+                        <a href="javascript:void(0);" class="digg-a" title="推荐" onclick="DoFavor(this,{{item[0]}});">
+                            {% if item[9] %}
+                                <span class="hand-icon icon-digg active"></span>
+                            {% else %}
+                                <span class="hand-icon icon-digg"></span>
+                            {% end %}
+                            <b id="favor_count_{{item[0]}}">{{item[7]}}</b>
+                        </a>
+                        <a href="javascript:void(0);" class="discus-a" onclick="ToggleCommentArea({{item[0]}});">
+                            <span class="hand-icon icon-discus"></span>
+                            <b id="comment_count_{{item[0]}}">{{item[8]}}</b>
+                        </a>
+                        <a href="javascript:void(0);" class="collect-a" >
+                            <span class="hand-icon icon-collect"></span><b>私藏</b>
+                        </a>
+                        <a href="#" class="user-a">
+                            <span><img src=""></span>
+                            <b>{{item[5]}}</b>
+                        </a>
+                        <span class="time-into">
+                            <a class="time-a" href="#" target="_blank">
+                                <b>{{item[4].strftime("%Y-%m-%d %H:%M:%S")}}</b>
+                            </a>
+                            <i>入热榜</i>
+                        </span>
+
+                    </div>
+                    <!-- 评论区域 -->
+                    <div id="comment_area_{{item[0]}}" class="comment-box-area hide" >
+                        <div class="pinglun arrow" id="comt-arrow-8118680"></div>
+                        <a class="pinglun close-comt" title="关闭" href="javascript:void(0);" onclick="HideCommentArea({{item[0]}});"></a>
+
+                        <div class="corner comment-box clearfix" >
+
+                            <div class="loading-ico loading-ico-top"  style="margin-left:230px;">加载中，请稍候...</div>
+
+                            <div class="comment-box-top hide" >
+                                <div class="tip-1">最热评论(<span>{{item[8]}}</span>)</div>
+                                <div class="tip-2">
+                                    <a href="#" target="_blank">
+                                        <em class="pinglun em1"></em>
+                                        <span>去评论页面</span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <ul id="comment_list_{{item[0]}}" class="filetree comment-list-top-2 treeview hide">
+
+                            </ul>
+
+                            <div class="huifu-top-box hide">
+                                <div class="box-l txt-input-area-div-top corner no-corner-bottom">
+                                    <div class="lab-comment-top">回复  <span id="reply_id_{{item[0]}}"></span>:</div>
+                                    <!-- 针对谣言文本输入框无效 -->
+                                        <textarea id="comment_content_{{item[0]}}" maxlength="150" name="txt-huifu-top" class="txt-huifu txt-huifu-top"></textarea>
+                                </div>
+                                <div class="box-r">
+                                    <a href="javascript:void(0);" class="pub-icons add-pub-btn add-pub-btn-unvalid" onclick="DoComment({{item[0]}})">评论</a>
+                                    <a href="javascript:void(0);" class="loading-ico loading-ico-top pub-loading-top hide">发布中...</a>
+                                </div>
+                            </div>
+                            <div class="tip-3 ">
+                                <a href="javascript:void(0);" class="hiddenCom-Btn" onclick="HideCommentArea({{item[0]}});">
+                                    <em class="pinglun em2"></em>
+                                    <span>收起</span>
+                                </a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        {% end %}
+        </div>
+        <div class="pagination">
+            {% raw str_page%}
+        </div>
+    </div>
+    <div class="body-right">aaa</div>
+</div>
+<div class="pg-footer"></div>
+<div id="module-login" class="hide">
+    <div class="module-login-container">
+        <div class="box-login" id="model_login">
+            <div style="border-radius: 5px 0 0 0" class="header"><span>登陆</span></div>
+            <div class="body-login">
+                <div class="tab-box">
+                    <span class="idlogin active" onclick="active(this);" style="margin-right: 10px">用户名登陆</span>|<span
+                        class="emaillogin" style="margin-left: 10px" onclick="active(this);">邮箱登陆</span>
+                </div>
+                <div class="box-idlogin">
+                    <div class="err-msg"></div>
+                    <input class="id login" id="id" name="user" type="text" placeholder="请输入邮箱或用户名">
+                    <!--<span class="error">密码错误</span>-->
+                    <input class="idpwd login" id="idpwd" name="pwd" type="password" placeholder="密码">
+
+                    <input class="code login" id="cod" type="text" name="code" placeholder="请输入验证码">
+                    <img class="get_check_code"
+                         style="width: 60px;height: 30px;margin-left: 20px;vertical-align: middle"
+                         onclick="ChangeCode(this);" src="/check_code">
+
+                    <div class="box-btn">
+                        <span class="keeplogin" style="margin-left: 89px"><input type="checkbox" value=1>一个月内自动登录</span>
+                        <span class="fgtwd" style="margin-left: 20px"><a href="#">忘记密码？</a></span>
+                    </div>
+                    <input onclick="userlogin()" class="btn-login" type="button" value="登陆">
+
+
+                </div>
+            </div>
+
+        </div>
+        <div class="box-register" id="model_register">
+            <div style="border-radius: 0 5px 0 0" class="header"><span>注册</span>
+                <div onclick="(function() {$('#module-login').addClass('hide')})();"
+                     style="cursor:pointer;position: absolute;right: 8px;top: 1px;width: 15px;height: 15px">
+                    <i class="fa fa-times"></i>
+                </div>
+            </div>
+            <div class="body-register">
+                <div class="tab-box">
+                    <span class="rgsinfo" style="margin-right: 10px">输入注册信息</span>
+                </div>
+                <div class="box-idlogin">
+                    <div id="r-err" class="err-msg"></div>
+                    <input class="id register" id="username" name="username" type="text" placeholder="用户名">
+                    <input class="id register" id="resid" name="email" type="text" placeholder="请输入邮箱">
+
+                    <input class="email_code register" id="rescod" name="email_code" type="text" placeholder="请输入验证码">
+                    <input onclick="SendCode(this);" class="getcod register" type="button" value="获取验证码">
+
+                    <input class="idpwd register" id="residpwd" name="password" type="password" placeholder="密码">
+
+                    <input class="btn-register" onclick="Register()" type="button" value="注册">
+
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+<div class="shadow hide"></div>
+<div id="publishDialog" class="dialog hide">
+    <div class="dialog-title-bar">
+        <div class="dialog-title">
+            <span>发现新分享</span>
+        </div>
+        <div class="dialog-close" onclick="CloseDialog('#publishDialog');">X</div>
+    </div>
+    <div class="dialog-content">
+        <div class="tab-menu-box">
+            <div class="menu">
+                <ul id="tab-menu-title">
+                    <li content-to="1" class="current">链接</li>
+                    <li content-to="2">文字</li>
+                    <li content-to="3">图片</li>
+                </ul>
+            </div>
+            <div id="tab-menu-body" class="content">
+                <div content="1" class="publish-content clearfix">
+                    <div class="tab-alt">添加链接</div>
+                    <div class="f1 clearfix">
+                        <div class="left">
+                            <input type="text" name="url">
+                        </div>
+                        <div class="right">
+                            <a href="javascript:void (0)">获取标题</a>
+                        </div>
+                    </div>
+                    <div class="tab-alt">标题</div>
+                    <div class="f2">
+                        <input type="text" name="title">
+                    </div>
+                    <div class="tab-alt">添加摘要(选填)</div>
+                    <div class="f2">
+                        <textarea name="content"></textarea>
+                    </div>
+                    <div class="f3">
+                        <span>发布到：</span>
+                        <div class="news-type" style="display:inline-block;">
+                            <a value="1" class="active">42区</a>
+                            <a value="2">段子</a>
+                            <a value="3">图片</a>
+                            <a value="4">挨踢</a>
+                            <a value="5">你问我答</a>
+                        </div>
+                    </div>
+                    <div class="f4">
+                        <a class="submit right" id="submit_link">提交</a>
+                        <span class="error-msg right"></span>
+                    </div>
+
+                </div>
+                <div content="2" class="publish-content clearfix hide">
+                    <div class="f2">
+                        <textarea name="title"></textarea>
+                    </div>
+                    <div class="f3">
+                        <span>发布到：</span>
+                        <div class="news-type" style="display: inline-block">
+                            <a value="2" class="active">段子</a>
+                            <a value="5">你问我答</a>
+                        </div>
+                    </div>
+                    <div class="f4">
+                        <a class="submit right" id="submit_text">提交</a>
+                        <span class="error-msg right"></span>
+                    </div>
+
+                </div>
+                <div content="3" class="publish-content clearfix hide">
+                    <div class="tab-alt">添加图片</div>
+                    <div class="f5">
+                        <form style="display: inline-block" id="upload_img_form" name="form" action="/upload_image"
+                              method="POST" enctype="multipart/form-data">
+                            <a id="fakeFile" class="fake-file">
+                                <span>上传图片</span>
+                                <input type="file" name="img" onchange="UploadImage(this);">
+                                <input type="text" name="url" class="hide">
+                            </a>
+                            <iframe id="upload_img_iframe" name="upload_img_iframe" src="" class="hide"></iframe>
+                        </form>
+                        <a href="javascript:void(0);" class="re-upload hide" id="reUploadImage"
+                           onclick="ReUploadImage(this);">重新上传</a>
+                    </div>
+                    <div class="f2" style="margin-top: 8px">
+                        <textarea name="title" placeholder="请输入描述"></textarea>
+                    </div>
+                    <div class="f3">
+                        <span>发布到：</span>
+                        <div class="news-type" style="display:inline-block">
+                            <a value="3" class="active">图片</a>
+                            <a value="5">你问我答</a>
+                        </div>
+                    </div>
+                    <div class="f4">
+                        <a class="submit right" id="submit_img">提交</a>
+                        <span class="error-msg right"></span>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script>
+    $(function () {
+        BindTabMenu('#tab-menu-title', '#tab-menu-body');
+        BindPublishDialog();
+//        Login();
+//        SendCode(ths);
+//        userlogin();
+//        Register();
+//        exit();
+        BindNewType();
+        BindPublishSubmit();
+    });
+
+    function BindPublishSubmit(){
+        $('#submit_link,#submit_text,#submit_img').click(function(){
+            // 获取输入内容并提交
+            var container = $(this).parent().parent();
+            var post_dict = {};
+            container.find('input[type="text"],textarea').each(function(){
+                post_dict[$(this).attr('name')] =$(this).val();//循环取值
+            });
+            post_dict['news_type_id'] = container.find('.news-type .active').attr('value');
+
+            $.ajax({
+                url: '/index',
+                type: 'POST',
+                data: post_dict,
+                dataType: 'json',
+                success: function (arg) {
+                    if(arg.status){
+                        window.location.href = '/index';
+                    }else{
+                        console.log(arg);
+                    }
+                }
+
+            })
+
+
+        });
+    }
+
+    function Login() {
+        $('#module-login').removeClass('hide')
+    }
+
+    function userlogin() {
+        var username = $('#id').val();
+        var password = $('#idpwd').val();
+        var code = $("#cod").val();
+        var post_dict = {'user': username, "pwd": password, "code": code};
+        console.log(post_dict);
+
+        $.ajax({
+            url: '/login',
+            data: post_dict,
+            type: 'POST',
+            dataType: 'json',
+            success: function (args) {
+                console.log(args);
+                if (args.status) {
+
+                    location.href = '/index';
+                } else {
+                    $.each(args.message, function (k, v) {
+                        //<span class="error">s</span>
+                        var tag = document.createElement('span');
+                        tag.className = 'error';
+                        tag.innerText = v;
+                        $('#model_login input[name="' + k + '"]').after(tag);
+                    })
+                }
+            }
+        })
+
+    }
+    function BindPublishDialog(){
+
+        $('#publishBtn').click(function(){
+            if($('#show').attr('is-login') == 'true'){
+//                        console.log($('#show').attr('is-login'))
+                $('#publishDialog').removeClass('hide');
+                $('.shadow').removeClass('hide');
+            }else{
+                $('#module-login').removeClass('hide');
+            }
+
+
+        });
+
+    }
+
+    function SendCode(ths) {
+
+        $('#r-err').text('');
+        var user_dict = {};
+        $('.register').each(function () {
+            var val = $(this).val();
+            var name = $(this).attr('name');
+            user_dict[name] = val
+        });
+//        可以发送，不是倒计时状态下
+        if ($(ths).val().length > 2) {
+            if (user_dict['username'].trim().length === 0 && user_dict['email'].trim().length === 0) {
+                $('#r-err').text('用户名或邮箱不能为空');
+                return;
+            }
+
+            $.ajax({
+                url: '/send_cond',
+                data: {'email': user_dict['email']},
+                type: 'POST',
+                dataType: 'json',
+                success: function (args) {
+                    console.log(args);
+                    if (!args.status) {
+                        $('#r-err').text(args.summary);
+                        return;
+                    }
+                    else {
+                        var t = '60';
+                        var time = setInterval(djs, 1000);
+
+                        function djs() {
+                            $(ths).val(t);
+                            var m = parseInt(t) - 1;
+                            if (m === -1) {
+                                clearInterval(time);
+                                $(ths).val('重新获取')
+                            }
+                            t = m.toString()
+                        }
+                    }
+
+                },
+                error: function (args) {
+                    console.log(args)
+                }
+            });
+        }
+
+    }
+
+    function BindTabMenu(title, body) {
+        $(title).children().bind("click", function () {
+            var $menu = $(this);
+            var $content = $(body).find('div[content="' + $(this).attr("content-to") + '"]');
+            $menu.addClass('current').siblings().removeClass('current');
+            $content.removeClass('hide').siblings().addClass('hide');
+    });
+}
+     function CloseDialog(dialog){
+            $(dialog).addClass('hide');
+            $('.shadow').addClass('hide');
+        }
+
+    function Register() {
+        var user_dict = {};
+        $('.register').each(function () {
+            var val = $(this).val();
+            var name = $(this).attr('name');
+            user_dict[name] = val
+        });
+
+        $.ajax({
+            url: '/register',
+            type: 'POST',
+            data: user_dict,
+            dataType: 'json',
+            success: function (args) {
+                console.log(11111);
+                if (args.status) {
+                    console.log(args);
+                    location.href = '/index';
+                }
+                else {
+                    console.log(args);
+                    console.log(args.message);
+                    $.each(args.message, function (k, v) {
+                        //<span class="error">s</span>
+                        var tag = document.createElement('span');
+                        tag.className = 'error';
+                        tag.innerText = v;
+                        $('#model_register input[name="' + k + '"]').after(tag);
+                        console.log(tag)
+                    })
+                }
+            }
+        })
+
+
+    }
+    function exit() {
+        $.ajax({
+            url: '/index',
+            data: {"exit": 1},
+            type: 'POST',
+            success: function (args) {
+                location.reload()
+
+            }
+        })
+    }
+    function active(ths) {
+        if ($(ths).hasClass('idlogin')) {
+            if ($(ths).hasClass('active')) {
+
+            }
+            else {
+                $(ths).addClass('active');
+                $(ths).next().removeClass('active');
+            }
+        }
+        else {
+            if ($(ths).hasClass('active')) {
+
+            }
+            else {
+                $(ths).addClass('active');
+                $(ths).prev().removeClass('active');
+            }
+        }
+    }
+    function ChangeCode(ths) {
+        ths.src += "?"
+    }
+    /*
+    上传图片
+    */
+    function UploadImage(ths){
+        document.getElementById('upload_img_iframe').onload = UploadImageComplete;
+        document.getElementById('upload_img_form').target = 'upload_img_iframe';
+        document.getElementById('upload_img_form').submit();
+    }
+
+    /*
+    上传图片之后回掉函数
+    */
+    function UploadImageComplete(){
+        var origin = $("#upload_img_iframe").contents().find("body").text();
+        var obj = JSON.parse(origin);
+        if(obj.status){
+            var img = document.createElement('img');
+            img.src = obj.data;
+            img.style.width = "200px";
+            img.style.height = "180px";
+            $("#upload_img_form").append(img);
+            $('#fakeFile').addClass('hide').removeClass('fake-file');
+            $('#reUploadImage').removeClass('hide');
+            $('#fakeFile').find('input[type="text"]').val(obj.data);//临时存储url的值
+        }else{
+            alert(obj.summary);
+        }
+    }
+
+    /*
+    重新上传图片
+    */
+    function ReUploadImage(ths){
+        $(ths).addClass('hide');
+        $("#upload_img_form").find('img').remove();
+        $('#fakeFile').removeClass('hide').addClass('fake-file');
+    }
+//    新闻类型
+    function BindNewType(){
+        $('.news-type').children().click(function(){
+            $(this).addClass('active').siblings().removeClass('active');//给自己家active 去掉兄弟的active
+        });
+    }
+</script>
+</body>
+</html>
