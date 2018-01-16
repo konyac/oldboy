@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/commons.css" rel="stylesheet">
+    <link href="/static/css/admin.css" rel="stylesheet">
+     <!--[if lt IE 9]>
+        <script src="/static/js/respond.min.js"></script>
+        <script src="/static/js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="header clearfix">
+    <nav class="navbar navbar-default col-sm-10 col-sm-offset-1">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Logo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/admin">积分台账</a></li>
+                    <li><a href="/staff">员工管理</a></li>
+                    <li><a href="/set">审批设置</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">管理员<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="/reset">重置密码</a></li>
+
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">退出系统</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="main col-sm-offset-1 col-sm-10">
+    <div class="upload col-sm-8">
+        <a href="/adminsp">
+            <button type="button" class="btn btn-info manage-btn">审批积分 <span class="badge">12</span>
+            </button>
+        </a>
+
+    </div>
+    <div class="recent-box col-sm-12">
+        <!--<label style="margin-bottom: 20px">最近上报记录</label>-->
+        <div class="table-menu col-sm-12">
+            <span class="download glyphicon glyphicon-download-alt">导出</span>
+        </div>
+        <div class="recent-table">
+            <table class="table table-bordered table-hover table-responsive">
+                <thead>
+                <tr>
+                    <td class="td-min-w5">序号</td>
+                    <td class="td-min-w6">姓名</td>
+                    <td class="td-min-w5">层级</td>
+                    <td class="td-min-w7">岗位类别</td>
+                    <td class="td-min-w7">岗位序列</td>
+                    <td class="td-min-w7">积分事项</td>
+                    <td class="td-min-w7">积分依据</td>
+                    <td class="td-min-w7">统计时间</td>
+                    <td class="td-min-w5">积分</td>
+
+                    <td class="td-min-w5">备注</td>
+                </tr>
+                </thead>
+                <tr>
+                    <td>1</td>
+                    <td>杨琳琳</td>
+                    <td>本部</td>
+                    <td>专业技术岗位</td>
+                    <td>产品经理</td>
+
+                    <td>营销全国前20强地产客户荣盛祝福花语水岸，已与我行签约按揭协议</td>
+                    <td>全国前20强地产商（公司信贷客户除外）营销突破积5分</td>
+                    <td>2017-12-11 8:22:11</td>
+                    <td>4</td>
+                    <td>备注</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>杨琳琳</td>
+                    <td>本部</td>
+                    <td>专业技术岗位</td>
+                    <td>产品经理</td>
+
+
+                    <td>营销全国前20强地产客户荣盛祝福花语水岸，已与我行签约按揭协议</td>
+                    <td>全国前20强地产商（公司信贷客户除外）营销突破积5分</td>
+                    <td>2017-12-11 8:22:11</td>
+                    <td>4</td>
+                    <td>备注</td>
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+
+</script>
+</body>
+</html>

@@ -20,7 +20,7 @@ class IndexHandler(session.Base):
             USER_LIST['username']=self.session['username']
             USER_LIST['is_login']=True
         # print(USER_LIST)
-        self.render("home/index.html", user_list=USER_LIST, news_list=NEWS_LIST)
+        self.render("home/login.html", user_list=USER_LIST, news_list=NEWS_LIST)
     def post(self, *args, **kwargs):
         et = self.get_argument('exit', None)
         # print(et)

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+</head>
+<body>
+<nav id="navbar" class="navbar navbar-default navbar-fixed-top navbar-top">
+    <div class="nav-container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-expand-toggle">
+                <i class="fa fa-bars icon"></i>
+            </button>
+            <ol class="breadcrumb navbar-breadcrumb">
+                <li>UI Kits</li>
+                <li class="active">Theming</li>
+            </ol>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="/renzheng">未认证</a>
+
+            </li>
+            <li class="dropdown profile">
+                <a href="#">Emily
+                    Hart </a>
+            </li>
+            <li class="dropdown">
+                <a href="#"><i
+                        class="fa fa-sign-out"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="left-menu">
+    <div class="menu-header">
+        <a class="brand" href="#">
+            <div class="header-icon icon fa fa-paper-plane"></div>
+            <div class="header-title">商务链</div>
+        </a>
+    </div>
+    <ul class="menu-item">
+        <li>
+            <a href="/index">
+                <span class="icon fa fa-life-ring"></span><span class="li-title">首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="/company">
+                <span class="icon fa fa-cubes"></span><span class="li-title">企业信息</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="/product">
+                <span class="icon fa fa-users"></span><span class="li-title">产品信息</span>
+            </a>
+        </li>
+         <li>
+            <a href="/group">
+                <span class="icon fa fa-life-ring"></span><span class="li-title">人员</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+<div id="main_content" class="container-fluid">
+
+    <div class="side-body">
+        <div class="page-title">
+            <span class="title">企业认证</span>
+        </div>
+        <div style="margin-left: 0" class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="card-header clearfix">
+                        <div class="card-title">
+                            <div class="title">一、企业信息</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">企业名称</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="companyName" placeholder="企业名称">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">社社会信用代码/注册号</label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="companyNum" placeholder="">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">营业期限</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="busnissTime" placeholder="">
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox">长期
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">注册资本</label>
+                                    <div class="col-sm-2">
+                                        <input type="text" class="form-control" id="money" placeholder="">
+                                    </div>
+                                    <label style="margin-top: 7px">万</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">单位所在地</label>
+                                    <div data-toggle="distpicker">
+                                        <div style="margin-left: 0" class="col-sm-2 form-group">
+                                            <label class="sr-only" for="province7">Province</label>
+                                            <select class="form-control" id="province7">
+                                                <option value="" data-code="">—— 省 ——</option>
+                                                <option value="北京市" data-code="110000" selected="">北京市</option>
+                                                <option value="天津市" data-code="120000">天津市</option>
+                                                <option value="河北省" data-code="130000">河北省</option>
+                                                <option value="山西省" data-code="140000">山西省</option>
+                                                <option value="内蒙古自治区" data-code="150000">内蒙古自治区</option>
+                                                <option value="辽宁省" data-code="210000">辽宁省</option>
+                                                <option value="吉林省" data-code="220000">吉林省</option>
+                                                <option value="黑龙江省" data-code="230000">黑龙江省</option>
+                                                <option value="上海市" data-code="310000">上海市</option>
+                                                <option value="江苏省" data-code="320000">江苏省</option>
+                                                <option value="浙江省" data-code="330000">浙江省</option>
+                                                <option value="安徽省" data-code="340000">安徽省</option>
+                                                <option value="福建省" data-code="350000">福建省</option>
+                                                <option value="江西省" data-code="360000">江西省</option>
+                                                <option value="山东省" data-code="370000">山东省</option>
+                                                <option value="河南省" data-code="410000">河南省</option>
+                                                <option value="湖北省" data-code="420000">湖北省</option>
+                                                <option value="湖南省" data-code="430000">湖南省</option>
+                                                <option value="广东省" data-code="440000">广东省</option>
+                                                <option value="广西壮族自治区" data-code="450000">广西壮族自治区</option>
+                                                <option value="海南省" data-code="460000">海南省</option>
+                                                <option value="重庆市" data-code="500000">重庆市</option>
+                                                <option value="四川省" data-code="510000">四川省</option>
+                                                <option value="贵州省" data-code="520000">贵州省</option>
+                                                <option value="云南省" data-code="530000">云南省</option>
+                                                <option value="西藏自治区" data-code="540000">西藏自治区</option>
+                                                <option value="陕西省" data-code="610000">陕西省</option>
+                                                <option value="甘肃省" data-code="620000">甘肃省</option>
+                                                <option value="青海省" data-code="630000">青海省</option>
+                                                <option value="宁夏回族自治区" data-code="640000">宁夏回族自治区</option>
+                                                <option value="新疆维吾尔自治区" data-code="650000">新疆维吾尔自治区</option>
+                                                <option value="台湾省" data-code="710000">台湾省</option>
+                                                <option value="香港特别行政区" data-code="810000">香港特别行政区</option>
+                                                <option value="澳门特别行政区" data-code="820000">澳门特别行政区</option>
+                                            </select>
+                                        </div>
+                                        <div style="margin-left: 0" class="col-sm-2 form-group">
+                                            <label class="sr-only" for="city7">City</label>
+                                            <select class="form-control" id="city7">
+                                                <option value="" data-code="">—— 市 ——</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">经验范围</label>
+                                    <div class="col-sm-6">
+                                        <textarea class="form-control" rows="3"></textarea>
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">上传营业执照</label>
+                                    <div class="col-sm-2">
+                                        <div style="margin-top: 0;position: relative" class="fake-file">
+                                            <span>上传图片</span>
+                                            <input type="file" id="img" name="img"/>
+                                            <img id="show_img" class="show_img hide" src="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onclick="show('/renzheng2');" style="margin-top: 50px" type="submit"
+                                        class="col-sm-offset-2 btn btn-primary">
+                                    下一步
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+        <script>
+            $('#img').change(function () {
+                var fileObj = $("#img")[0].files[0];
+                var form = new FormData();
+                form.append("img", fileObj);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/upload_image',
+                    data: form,
+                    processData: false,  // tell jQuery not to process the data
+                    contentType: false,  // tell jQuery not to set contentType
+                    success: function (arg) {
+                        var ret = JSON.parse(arg);
+                        $('#show_img').removeClass('hide').attr({src: ret.data, alt: "营业执照"})
+                    }
+                })
+            })
+
+        </script>
+        <script src="/static/js/distpicker.data.js"></script>
+        <script src="/static/js/distpicker.js"></script>
+        <script src="/static/js/main.js"></script>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        $(".navbar-expand-toggle").bind('click', function () {
+            $("#navbar").toggleClass('navbar-expand');
+            $(".left-menu").toggleClass('left-menu-expand');
+            $(this).toggleClass('toggle-90');
+            $('.side-body').toggleClass('side-body-expand')
+
+        });
+    });
+    function show(url) {
+        $("#main_content").empty();
+        $.ajax({
+            type: 'POST',
+            url: url,
+            dataType: 'html',
+            success: function (data) {
+                $("#main_content").html(data);
+            }
+        })
+    }
+</script>
+
+
+</body>
+</html>
+
+
+

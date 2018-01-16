@@ -1,0 +1,134 @@
+<script type="text/javascript" src="/static/js/wangEditor.js"></script>
+<div class="side-body">
+    <div class="page-title">
+        <span class="title">{{name}}</span>
+    </div>
+    <div style="margin-left: 0" class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header clearfix">
+                    <div class="card-title">
+                        <div class="title">编辑产品</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">名称</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="productName" placeholder="名称">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">类别</label>
+                                <div class="col-sm-6">
+                                    <label class="radio-inline">
+                                        <input style="margin-left: 3px" type="radio" name="inlineRadioOptions"
+                                               id="inlineRadio1" value="option1">
+                                        产品
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input style="margin-left: 3px" type="radio" name="inlineRadioOptions"
+                                               id="inlineRadio2" value="option2">
+                                        服务
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">上传图片</label>
+                                <div class="col-sm-6">
+                                    <div class="pro_img_box">
+                                        <img class="pro_img" src="/static/er.jpg">
+                                        <i class="fa fa-times-circle close_label"></i>
+                                    </div>
+                                    <div style="margin-top: 0;position: relative" class="pro_fake fake-file">
+                                        <i style="color: #d7d7d7" class="fa fa-plus fa-2x"></i>
+                                        <input type="file" id="pro_img" name="img"/>
+                                    </div>
+                                    <label style="font-weight: normal;font-size: 12px;padding: 0" class="col-sm-12">仅支持JPG、JPEG和PNG格式，建议尺寸800x800，大小不超过1M。最多支持8张图片</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">简介</label>
+                                <div class="col-sm-8">
+                                    <!--<div id="editor-tool"></div>-->
+                                    <div id="editor">
+                                        <p>编辑产品信息</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">注册资本</label>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control" placeholder="联系人">
+                                </div>
+                                <div class="col-sm-2">
+                                    <input type="text" class="form-control"  placeholder="电话">
+                                </div>
+                            </div>
+                             <button  style="margin-top:30px" type="submit" class="col-sm-offset-2 btn btn-primary">
+                                    保存
+                             </button>
+                            <button  style="margin-left: 30px;margin-top: 30px" type="submit" class="btn btn-default">
+                                    取消
+                             </button>
+                        </form>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+<script>
+    $('#pro_img').change(function () {
+        var fileObj = $("#pro_img")[0].files[0];
+        var form = new FormData();
+        form.append("img", fileObj);
+
+        $.ajax({
+            type: 'POST',
+            url: '/upload_image',
+            data: form,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            success: function (arg) {
+                var ret = JSON.parse(arg);
+                var img = $('<div class="pro_img_box"><img class="pro_img" src="' + ret.data + '"></div>')
+                $('.pro_fake').before(img)
+            }
+        })
+    });
+    $('.pro_img_box').bind('mouseenter', function () {
+//        console.log('11111122')
+        var close = $('<i class="fa fa-times-circle close_label"></i>')
+        $(this).append(close);
+//        console.log($(this));
+        $(close).bind('click', function () {
+            $(this).parent('.pro_img_box')[0].remove()
+        })
+    }).bind("mouseleave ", function () {
+        $('.close_label').remove()
+    });
+</script>
+
+<script type="text/javascript">
+    var E = window.wangEditor
+    var editor = new E('#editor')
+    // 或者 var editor = new E( document.getElementById('editor') )
+    // 下面两个配置，使用其中一个即可显示“上传图片”的tab。但是两者不要同时使用！！！
+    editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+    //    editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
+    // 隐藏“网络图片”tab
+    editor.customConfig.showLinkImg = false
+    //    editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+    editor.create()
+</script>
+

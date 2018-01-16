@@ -9,7 +9,7 @@ import tornado.ioloop
 
 class Indexhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
     def get(self, *args, **kwargs):
-        self.render("index.html")
+        self.render("login.html")
 
     def post(self, *args, **kwargs):
         pass

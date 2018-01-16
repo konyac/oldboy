@@ -1,0 +1,108 @@
+<div class="side-body">
+    <div class="page-title">
+        <span class="title">企业认证</span>
+    </div>
+    <div style="margin-left: 0" class="row">
+        <div class="col-xs-12">
+            <div class="card">
+                <div class="card-header clearfix">
+                    <div class="card-title">
+                        <div class="title">二、个人信息</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div>
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">企业管理员</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="adminName" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">身份证号码</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="adminNum" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">上传二代身份证照片</label>
+                                <div class="col-sm-6">
+                                    <div style=" margin-top: 0;position: relative" class="fake-file">
+                                        <span>正面</span>
+                                        <input type="file" id="img1" name="img"/>
+                                        <img id="show_img1" class="show_img hide" src="">
+                                    </div>
+                                    <div style="margin-top: 0;margin-left:110px;position: relative" class="fake-file">
+                                        <span>反面</span>
+                                        <input type="file" id="img2" name="img"/>
+                                        <img id="show_img2" class="show_img hide" src="">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">手机号</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="adminTel" placeholder="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button style="margin-top: 50px" class="col-sm-offset-2 btn btn-primary">
+                                    上一步
+                                </button>
+                                <button style="margin-top: 50px;margin-left: 20px" type="submit" class="btn btn-primary">
+                                    提交
+                                </button>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+<script>
+    $('#img1').change(function () {
+        var fileObj = $("#img1")[0].files[0];
+        var form = new FormData();
+        form.append("img", fileObj);
+
+        $.ajax({
+            type: 'POST',
+            url: '/upload_image',
+            data: form,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            success: function (arg) {
+                var ret = JSON.parse(arg);
+                $('#show_img1').removeClass('hide').attr({src: ret.data})
+            }
+        })
+    })
+     $('#img2').change(function () {
+        var fileObj = $("#img1")[0].files[0];
+        var form = new FormData();
+        form.append("img", fileObj);
+
+        $.ajax({
+            type: 'POST',
+            url: '/upload_image',
+            data: form,
+            processData: false,  // tell jQuery not to process the data
+            contentType: false,  // tell jQuery not to set contentType
+            success: function (arg) {
+                var ret = JSON.parse(arg);
+                $('#show_img2').removeClass('hide').attr({src: ret.data})
+            }
+        })
+    })
+</script>

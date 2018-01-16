@@ -1,0 +1,39 @@
+
+
+
+
+.main-header {
+    padding: 10px 0;
+}
+
+.sx{
+    padding-bottom: 10px;
+}
+.sx span{
+    margin-right: 20px;
+    cursor: pointer;
+}
+td a{
+    text-decoration: none;
+    cursor: pointer;
+}
+.sx .active{
+    color: #22A7F0;
+}
+
+.back {
+    margin-bottom: 10px;
+}
+
+.sp-history {
+    display: inline-block;
+    float: right;
+    height: 60px;
+    line-height: 60px;
+    margin-right: 15px;
+}
+
+.sp-line {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e5e5e5;
+}

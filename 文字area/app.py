@@ -22,7 +22,7 @@ def insert(args):
 # print(select())
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("index.html",item=list[-1])
+        self.render("login.html",item=list[-1])
 
     def post(self, *args, **kwargs):
         text = self.get_argument('text',None)
@@ -30,7 +30,7 @@ class IndexHandler(tornado.web.RequestHandler):
         list.append(text)
         result = insert(text)
         print(text,result,list)
-        self.render("index.html", item=list[-1])
+        self.render("login.html", item=list[-1])
 
 settings = {
     "template_path": "views",

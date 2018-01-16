@@ -1,0 +1,40 @@
+body {
+    background-color: #f1f1f1;
+}
+/*main*/
+.main {
+    background-color: white;
+
+}
+
+.navbar {
+    margin-bottom: 0;
+    border: none;
+    background-color: white;
+}
+
+.header {
+    background-color: white;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover, .nav > .active > a:focus {
+    color: #ea6f5a
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover {
+    color: #ea6f5a;
+    background-color: transparent;
+}
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover{
+    background-color: transparent;
+}
+
+.td-min-w6{
+    min-width: 60px;
+}
+.td-min-w5{
+    min-width: 45px;
+}
+.td-min-w7{
+    min-width: 75px;
+}

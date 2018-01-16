@@ -1,0 +1,17 @@
+
+/*main*/
+.main {
+    background-color: white;
+
+}
+.main-header{
+    padding: 20px 0;
+}
+.userinfo-box{
+     padding: 0 20px;
+}
+
+.selector{
+    width: 50%;
+
+}

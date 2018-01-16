@@ -1,18 +1,37 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 import tornado.web
-import os,json,copy,datetime
+import os, json, copy, datetime
 from newchouti.backend.core import request_handler
 from newchouti.models import chouti_orm as ORM
 from newchouti.backend.utils.pager import Pagination
 from newchouti.backend.utils import decrator
-from newchouti.backend.utils.response import BaseResponse,StatusCodeEnum
+from newchouti.backend.utils.response import BaseResponse, StatusCodeEnum
 from sqlalchemy import and_, or_
 from newchouti.backend import commons
-from newchouti.forms.home import IndexForm,CommentForm
+from newchouti.forms.home import IndexForm, CommentForm
+
+import redis
+
+pool = redis.ConnectionPool(host='127.0.0.1', port=6379)  # 链接池
+r = redis.Redis(connection_pool=pool)
+
+
+def cache(func):
+    def inner(self, *args, **kwargs):
+        ret = r.get('html')
+        if ret:
+            self.write(ret)
+            return
+        func(self, *args, **kwargs)
+        r.set('html', self._response_html, ex=10) #在self.write中自定义了方法
+
+    return inner
 
 
 class IndexHandler(request_handler.BaseRequestHandler):
+
+    @cache
     def get(self, page=1):
 
         conn = ORM.session()
@@ -31,12 +50,17 @@ class IndexHandler(request_handler.BaseRequestHandler):
                             ORM.NewsType.caption,
                             ORM.News.favor_count,
                             ORM.News.comment_count,
-                            ORM.Favor.nid.label('has_favor')).join(ORM.NewsType, isouter=True).join(ORM.UserInfo, isouter=True).join(ORM.Favor, and_(ORM.Favor.user_info_id == current_user_id, ORM.News.nid == ORM.Favor.news_id), isouter=True)[obj.start:10]
+                            ORM.Favor.nid.label('has_favor')).join(ORM.NewsType, isouter=True).join(ORM.UserInfo,
+                                                                                                    isouter=True).join(
+            ORM.Favor, and_(ORM.Favor.user_info_id == current_user_id, ORM.News.nid == ORM.Favor.news_id),
+            isouter=True)[obj.start:10]
         conn.close()
 
         str_page = obj.string_pager('/index/')
 
-        self.render('home/index.html', str_page=str_page, news_list=result)
+        self.render('home/login.html', str_page=str_page, news_list=result)
+        # print(self._response_html)
+        # r.set("html", self._response_html, ex=10)
 
     @decrator.auth_login_json
     def post(self, *args, **kwargs):
@@ -84,9 +108,9 @@ class CommentHandler(request_handler.BaseRequestHandler):
         nid = self.get_argument('nid', 0)
         conn = ORM.session()
         comment_list = conn.query(
-            ORM.Comment.nid,#评论id
-            ORM.Comment.content,#回复内容
-            ORM.Comment.reply_id,#回复到
+            ORM.Comment.nid,  # 评论id
+            ORM.Comment.content,  # 回复内容
+            ORM.Comment.reply_id,  # 回复到
             ORM.UserInfo.username,
             ORM.Comment.ctime,
             ORM.Comment.up,
@@ -114,7 +138,6 @@ class CommentHandler(request_handler.BaseRequestHandler):
         comment_tree = commons.build_tree(comment_list)
 
         self.render('include/comment.html', comment_tree=comment_tree)
-
 
     @decrator.auth_login_json
     def post(self, *args, **kwargs):
@@ -160,9 +183,7 @@ class CommentHandler(request_handler.BaseRequestHandler):
         self.write(json.dumps(rep.__dict__))
 
 
-
 class FavorHandler(request_handler.BaseRequestHandler):
-
     @decrator.auth_login_json
     def post(self, *args, **kwargs):
         rep = BaseResponse()

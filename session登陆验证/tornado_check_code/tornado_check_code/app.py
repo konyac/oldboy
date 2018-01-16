@@ -17,7 +17,7 @@ class CheckCodeHandler(tornado.web.RequestHandler):
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render('index.html')
+        self.render('login.html')
 
 settings = {
     'template_path': 'template',

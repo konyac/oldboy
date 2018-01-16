@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/commons.css" rel="stylesheet">
+    <link href="/static/css/index.css" rel="stylesheet">
+     <!--[if lt IE 9]>
+        <script src="/static/js/respond.min.js"></script>
+        <script src="/static/js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<!--<div class="header clearfix">-->
+<nav class="navbar navbar-default top-fixed-top col-sm-10 col-sm-offset-1">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/index">首页</a></li>
+                <li class=""><a href="#">上报历史</a></li>
+                <li><a href="#">积分查看</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">当前积分：2200</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">{{username}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/userinfo">个人信息</a></li>
+                        <li><a href="/reset">重置密码</a></li>
+                        <!--<li><a href="#">Something else here</a></li>-->
+                        <li role="separator" class="divider"></li>
+                        <li><a href="/login">退出系统</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--</div>-->
+<div class="main col-sm-offset-1 col-sm-10">
+    <div class="upload col-sm-8">
+        <button type="button" class="btn btn-success upload-btn" data-toggle="modal" data-target="#uploadModal">上报积分
+        </button>
+        <a href="/sp">
+            <button type="button" class="btn btn-info manage-btn">审批积分 <span class="badge">142</span>
+            </button>
+        </a>
+
+    </div>
+    <div class="recent-box col-sm-12">
+        <label style="margin-bottom: 20px">最近上报记录</label>
+        <div class="recent-table">
+            <table class="table table-bordered table-hover table-responsive">
+                <thead>
+                <tr>
+                    <td class="td-min-w5">序号</td>
+                    <td>积分项目</td>
+                    <td>积分指标</td>
+                    <td class="td-min-w7">积分事项</td>
+                    <td class="td-min-w5">分值</td>
+                    <td>提交时间</td>
+                    <td class="td-min-w6">结果</td>
+                </tr>
+                </thead>
+
+                {% if not uploaded %}
+                <span>为空</span>
+                {% else %}
+                {% for i in uploaded %}
+                <tr>
+                    <td>{{uploaded.index(i)+1}}</td>
+                    <td>{{i[0]}}</td>
+                    <td>{{i[1]}}</td>
+                    <td>{{i[2]}}</td>
+                    <td>{{i[3]}}</td>
+                    <td>{{i[4]}}</td>
+                    {% if i[5]==1 %}
+                    <td><a data-toggle="modal" data-target="#uploadedModal">已上报</a></td>
+                    {% else %}
+                    <td><a data-toggle="modal" data-target="#uploadedModal">已积分</a></td>
+                    {% end %}
+                </tr>
+                {% end %}
+                {% end %}
+
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="form-horizontal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">上报积分</h4>
+                </div>
+                <div class="modal-body  clearfix">
+                    <!--个人信息-->
+                    <div class="user-info clearfix">
+                        <div class="user-name col-sm-6">
+                            <span>姓名：</span>
+                            <span>刘德华</span>
+                        </div>
+                        <div class="user-id col-sm-6">
+                            <span>身份证：</span>
+                            <span>410825198807034011</span>
+                        </div>
+                        <div class="user-department col-sm-6">
+                            <span>单位：</span>
+                            <span>研发部</span>
+                        </div>
+                        <div class="user-position col-sm-6">
+                            <span>岗位：</span>
+                            <span>研发岗位</span>
+                        </div>
+                    </div>
+                    <!--上报信息-->
+                    <div class="integral-info col-sm-12">
+                        <div class="form-group plus-minus">
+                            <label class="radio-inline">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option1" checked>正向
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option2">负向
+                            </label>
+                        </div>
+                        <div class="form-group integral-item">
+                            <label class="col-sm-2 control-label">项目分类</label>
+                            <div class="col-sm-10">
+                                <select id="integral-item" class="form-control">
+                                    <option>请选择</option>
+                                    {% for item in item_fl %}
+                                    <option value={{item_fl.index(item)}}>{{item[0]}}</option>
+                                    {% end %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group integral-name">
+                            <label class="col-sm-2 control-label">积分项目</label>
+                            <div class="col-sm-10">
+                                <select id="integral-name" class="form-control">
+                                    <option>请选择</option>
+                                    {% for i in item_ej %}
+                                    <optgroup label="{{i[0]}}">
+                                        {% for item in item_info %}
+                                        {% if item[1]==i[0] %}
+                                        <option value={{item_info.index(item)}} name="{{item_info[0][2]}}">{{ item[0] }}</option>
+                                        {%end%}
+                                        {%end%}
+                                    </optgroup>
+                                    {% end %}
+                                    {% for j in item_info %}
+                                    {% if not j[1]%}
+                                    <option value={{item_info.index(j)}} name="{{j[2]}}">{{ j[0] }}</option>
+                                    {%end%}
+                                    {%end%}
+
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group integral-zb">
+                            <label class="col-sm-2 control-label">积分指标</label>
+                            <div class="col-sm-10">
+                                <select id="integral-zb" class="form-control">
+                                    <option>请选择</option>
+                                    {% for item in extra_info %}
+                                    <option value={{extra_info.index(item)}} name="{{item[1]}}">{{ item[0] }}</option>
+                                    {%end%}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">积分事项</label>
+                            <div class="col-sm-10">
+                                <textarea id="detail" class="form-control" rows="3" placeholder="请填写相关备注"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">积分</label>
+                            <div class="col-sm-10">
+                                <input id="value" type="text" class="form-control" placeholder="请填写上报分值">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button onclick="upload_data();" type="button" class="btn btn-primary">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="uploadedModal" tabindex="-1" role="dialog" aria-labelledby="uploadedModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="form-horizontal">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="uploadedModalLabel">上报积分查看</h4>
+                </div>
+                <div class="modal-body  clearfix">
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <button type="button" class="btn btn-primary">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var fl = $("#integral-item");
+        var name = $("#integral-name");
+        var zb = $("#integral-zb");
+        fl.change(function () {
+            var itemName = fl.find("option:selected").text().trim();
+            if (itemName === "能力贡献") {
+                name.find('optgroup').show()
+            } else {
+                name.find('optgroup').hide()
+            }
+            name.find('option').each(function () {
+                if ($(this).attr('name') === itemName) {
+                    $(this).show()
+                } else {
+                    $(this).hide()
+                }
+            })
+        });
+        name.change(function () {
+            var Name = name.find("option:selected").text().trim();
+            zb.find('option').each(function () {
+                if ($(this).attr('name') === Name) {
+                    $(this).show();
+                } else {
+                    $(this).hide();
+                }
+            });
+
+        });
+        $("input[type=radio][name=inlineRadioOptions]").click(function () {
+            if ($(this).val() === 'option2') {
+                $('.integral-name,.integral-item').addClass('hide');
+                $('.integral-item-f').removeClass('hide')
+            } else {
+                $('.integral-name,.integral-item').removeClass('hide');
+                $('.integral-item-f').addClass('hide')
+            }
+        })
+
+    });
+    function upload_data() {
+        var fl = $("#integral-item option:selected").val();
+        var name = $("#integral-name option:selected").val();
+        var zb = $("#integral-zb option:selected").val();
+        var detail = $('#detail').val();
+        var value = $('#value').val();
+        var values = {"fl":fl,"name":name,"zb":zb,"detal":detail,"value":value}
+        console.log(values)
+    }
+</script>
+</body>
+</html>

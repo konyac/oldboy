@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/commons.css" rel="stylesheet">
+    <link href="/static/css/staff.css" rel="stylesheet">
+     <!--[if lt IE 9]>
+        <script src="/static/js/respond.min.js"></script>
+        <script src="/static/js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="header clearfix">
+    <nav class="navbar navbar-default col-sm-10 col-sm-offset-1">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Logo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/admin">积分台账</a></li>
+                    <li class="active"><a href="/staff">员工管理</a></li>
+                    <li><a href="/set">审批设置</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">管理员<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="/reset">重置密码</a></li>
+
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">退出系统</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="main col-sm-10 col-sm-offset-1">
+    <div style="padding: 20px">
+        <span>员工列表</span>
+        <span style="float: right" class="upload glyphicon glyphicon-download-alt">导入</span>
+    </div>
+
+    <div class="recent-table">
+        <table class="table table-bordered table-hover table-responsive">
+            <thead>
+            <tr>
+                <td>序号</td>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>出生日期</td>
+                <td>本部/营业机构</td>
+                <td>单位</td>
+                <td>身份证</td>
+                <td>操作</td>
+            </tr>
+            </thead>
+            <tr>
+                <td>1</td>
+                <td>马啸峰</td>
+                <td>男</td>
+                <td>1971-09-19</td>
+                <td>本部</td>
+                <td>行领导</td>
+                <td>410502197109192519</td>
+                <td>编辑</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>马啸峰</td>
+                <td>男</td>
+                <td>1971-09-19</td>
+                <td>本部</td>
+                <td>行领导</td>
+                <td>410502197109192519</td>
+                <td>编辑</td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+<script>
+
+</script>
+</body>
+</html>

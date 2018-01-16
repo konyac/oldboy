@@ -2,11 +2,11 @@
 # _*_ coding:utf-8 _*_
 import xlrd, xlwt,os
 
-fname = "郑州营销000.xls"
+fname = "低值易耗资产明细.xls"
 bk = xlrd.open_workbook(fname)
 shxrange = range(bk.nsheets)
 try:
-    sh = bk.sheet_by_name("外部联系人信息表1")
+    sh = bk.sheet_by_name("资产列表")
 except:
     print("no sheet in %s named Sheet1" % fname)
 # 获取行数
@@ -15,7 +15,7 @@ nrows = sh.nrows
 ncols = sh.ncols
 print("nrows %d, ncols %d" % (nrows, ncols))
 # 获取第一行第一列数据
-cell_value = sh.cell_value(1, 1)
+cell_value = sh.cell_value(1, 11) #获取11列的
 # print cell_value
 
 row_list = []

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .overFlow{
+            overflow: hidden;
+            /*显示省略符号来代表被修剪的文本。*/
+            text-overflow: ellipsis;
+            /*文本不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。*/
+            white-space: nowrap;
+            width: 180px;
+            background-color: #c7254e;
+            color: white;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="overFlow">
+        这是一段长的文本,这是一段长的文本,这是一段长的文本,这是一段长的文本
+
+    </div>
+
+</body>
+</html>

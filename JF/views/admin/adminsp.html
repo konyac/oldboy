@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/commons.css" rel="stylesheet">
+    <link href="/static/css/sp.css" rel="stylesheet">
+     <!--[if lt IE 9]>
+        <script src="/static/js/respond.min.js"></script>
+        <script src="/static/js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="main col-sm-offset-1 col-sm-10">
+    <div class="main-header">
+        <h3 style="display: inline-block">审核积分</h3>
+        <a href="/admin">
+            <button class="btn btn-default back">返回</button>
+        </a>
+        <div class="sp-history">
+            <span>审核历史</span>
+        </div>
+
+    </div>
+    <div class="sp-box col-sm-12">
+        <!--<div class="sx">-->
+            <!--<span class="active">全部</span>-->
+            <!--<span>本部门</span>-->
+            <!--<span>条线审批</span>-->
+        <!--</div>-->
+        <div class="recent-table">
+            <table class="table table-bordered table-hover table-responsive" data-width="20px">
+                <thead>
+                <tr>
+                    <!--<td><input type="checkbox"></td>-->
+                    <td class="td-min-w5">序号</td>
+                    <td class="td-min-w6">姓名</td>
+                    <td class="td-min-w6">单位</td>
+                    <td>岗位</td>
+                    <td>积分项目</td>
+                    <td>积分指标</td>
+                    <td>项目事项</td>
+                    <td>上报时间</td>
+                    <td class="td-min-w5">分值</td>
+                    <td class="td-min-w5">操作</td>
+
+                </tr>
+                </thead>
+                <tr>
+                    <!--<td><input type="checkbox"></td>-->
+                    <td>1</td>
+                    <td>刘德华</td>
+                    <td>综合管理部</td>
+                    <td>支持保障部门副职</td>
+                    <td>重点楼盘项目营销突破</td>
+                    <td>全国前20强地产商（公司信贷客户除外）营销突破积5分</td>
+                    <td>营销全国前20强地产客户荣盛祝福花语水岸，已与我行签约按揭协议</td>
+                    <td>2017-12-1 12:11:11</td>
+                    <td>4</td>
+                    <td><a data-toggle="modal" data-target="#ad-Modal">审核</a>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <!--<td><input type="checkbox"></td>-->
+                    <td>1</td>
+                    <td>刘德华</td>
+                    <td>综合管理部</td>
+                    <td>支持保障部门副职</td>
+                    <td>重点楼盘项目营销突破</td>
+                    <td>全国前20强地产商（公司信贷客户除外）营销突破积5分</td>
+                    <td>营销全国前20强地产客户荣盛祝福花语水岸，已与我行签约按揭协议</td>
+                    <td>2017-12-1 12:11:11</td>
+                    <td>4</td>
+                    <td><a data-toggle="modal" data-target="#ad-Modal">审核</a>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+    </div>
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="ad-Modal" tabindex="-1" role="dialog" aria-labelledby="ad-ModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="ad-ModalLabel">管理员积分审核</h4>
+            </div>
+
+
+            <form class="form-horizontal">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">部门</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">个人客户部</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">条线</label>
+                        <div class="col-sm-8">
+                            <p class="form-control-static">条线部门</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">审核</label>
+                        <div class="col-sm-8">
+                            <button type="button" class="btn btn-default sp1-btn">同意</button>
+                            <button style="margin: 0 10px" type="button" class="btn btn-default sp2-btn">拒绝</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">审核意见</label>
+                        <div class="col-sm-8">
+                            <textarea class="form-control" rows="2" placeholder="请填写审核意见"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="button" class="btn btn-primary">提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function () {
+        $('.sp1-btn').click(function () {
+            $(this).removeClass('btn-default').addClass('btn-success');
+            $('.sp2-btn').removeClass('btn-warning');
+        });
+        $('.sp2-btn').click(function () {
+            $(this).removeClass('btn-default').addClass('btn-warning');
+            $('.sp1-btn').removeClass('btn-success');
+        });
+        $('input[type=radio][name=inlineRadioOptions]').click(function () {
+            if ($(this).val() === "y") {
+                $('.tx-bm').removeClass('hide')
+            } else {
+                $('.tx-bm').addClass('hide')
+            }
+
+        })
+    })
+</script>

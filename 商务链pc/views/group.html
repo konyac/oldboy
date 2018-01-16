@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+</head>
+<body>
+<nav id="navbar" class="navbar navbar-default navbar-fixed-top navbar-top">
+    <div class="nav-container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-expand-toggle">
+                <i class="fa fa-bars icon"></i>
+            </button>
+            <ol class="breadcrumb navbar-breadcrumb">
+                <li>UI Kits</li>
+                <li class="active">Theming</li>
+            </ol>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="/renzheng">未认证</a>
+
+            </li>
+            <li class="dropdown profile">
+                <a href="#">Emily
+                    Hart </a>
+            </li>
+            <li class="dropdown">
+                <a href="#"><i
+                        class="fa fa-sign-out"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="left-menu">
+    <div class="menu-header">
+        <a class="brand" href="#">
+            <div class="header-icon icon fa fa-paper-plane"></div>
+            <div class="header-title">商务链</div>
+        </a>
+    </div>
+    <ul class="menu-item">
+        <li>
+            <a href="/index">
+                <span class="icon fa fa-life-ring"></span><span class="li-title">首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="/company">
+                <span class="icon fa fa-cubes"></span><span class="li-title">企业信息</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="/product">
+                <span class="icon fa fa-users"></span><span class="li-title">产品信息</span>
+            </a>
+        </li>
+        <li>
+            <a href="/group">
+                <span class="icon fa fa-life-ring"></span><span class="li-title">人员</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+<div id="main_content" class="container-fluid">
+    <div class="side-body">
+        <div class="page-title">
+            <span class="title">人员认证</span>
+            <span style="margin-left: 20px">请认证企业成员真实性</span>
+        </div>
+        <div style="margin-left: 0" class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="card-header clearfix">
+                        <div style="float: left">
+                            <span class="active">全部</span>
+                            <span>未认证</span>
+                            <span>已认证</span>
+                        </div>
+                        <div style="width: 200px;float: right" class="input-group">
+                            <input style="margin-top: 5px" type="text" class="form-control" placeholder="搜索人员">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">搜索</button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>姓名</th>
+                                    <th>手机</th>
+                                    <th>认证</th>
+                                </tr>
+
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>刘德华</td>
+                                    <td>18530983738</td>
+                                    <td>
+                                        <div>
+                                            <span class="glyphicon glyphicon-ok real"></span>
+                                            <span class="glyphicon glyphicon-remove fake"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>刘德华</td>
+                                    <td>18530983738</td>
+                                    <td>
+                                        <div>
+                                            <span class="glyphicon glyphicon-ok real"></span>
+                                            <span class="glyphicon glyphicon-remove fake"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>刘德华</td>
+                                    <td>18530983738</td>
+                                    <td>
+                                        <div>
+                                            <span class="glyphicon glyphicon-ok real"></span>
+                                            <span class="glyphicon glyphicon-remove fake"></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>刘德华</td>
+                                    <td>18530983738</td>
+                                    <td>
+                                        <div>
+                                            <span class="real-person label label-success">真实员工</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td>刘德华</td>
+                                    <td>18530983738</td>
+                                    <td>
+                                        <div>
+                                            <span class="fake-person label label-warning">虚假员工
+                                            </span>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+        $(".navbar-expand-toggle").bind('click', function () {
+            $("#navbar").toggleClass('navbar-expand');
+            $(".left-menu").toggleClass('left-menu-expand');
+            $(this).toggleClass('toggle-90');
+            $('.side-body').toggleClass('side-body-expand')
+        });
+
+    });
+    $('.real-person,.fake-person').bind('mouseover', function () {
+        var menuTag = $('<div class="edit-menu"><span class="edit-person label label-default">点击修改 </span></div>');
+        console.log(menuTag);
+        $(this).append(menuTag)
+    }).mouseleave(function () {
+        $('.edit-menu').remove()
+    });
+    $('.real').click(function () {
+        var realTag = $('<span class="real-person label label-success">真实员工</span>');
+        $(this).parent().empty().append(realTag);
+    })
+
+</script>
+
+
+</body>
+</html>

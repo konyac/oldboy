@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/commons.css" rel="stylesheet">
+    <link href="/static/css/userinfo.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+        <script src="/static/js/respond.min.js"></script>
+        <script src="/static/js/html5shiv.min.js"></script>
+    <![endif]-->
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="header clearfix">
+    <nav class="navbar navbar-default col-sm-10 col-sm-offset-1">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Logo</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/index">首页</a></li>
+                    <li class=""><a href="#">上报历史</a></li>
+                    <li><a href="#">积分查看</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">当前积分：2200</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">{{user_info[0]}}<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/userinfo">个人信息</a></li>
+                            <li><a href="/reset">重置密码</a></li>
+                            <!--<li><a href="#">Something else here</a></li>-->
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/login">退出系统</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</div>
+<div class="main col-sm-offset-1 col-sm-10">
+    <div class="main-header">
+        <h3>个人信息</h3>
+    </div>
+    <div class="userinfo-box">
+        <form class="form-horizontal">
+            <div class="form-group name">
+                <label class="col-sm-2 control-label">姓名：</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{user_info[0]}}</p>
+                </div>
+            </div>
+            <div class="form-group gender">
+                <label class="col-sm-2 control-label">性别：</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{user_info[1]}}</p>
+                </div>
+            </div>
+            <div class="form-group birth">
+                <label class="col-sm-2 control-label">出生日期：</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{user_info[2]}}</p>
+                </div>
+            </div>
+            <div class="form-group unit">
+                <label class="col-sm-2 control-label">本部/营业机构：</label>
+                <div class="col-sm-10">
+                    <select class="form-control selector">
+                        {% if user_info[3]==1 %}
+                            <option value="1" selected = "selected">本部</option>
+                            <option value="2" >营业机构</option>
+                        {% else %}
+                            <option value="1">本部</option>
+                            <option value="2" selected = "selected">营业机构</option>
+
+                        {% end %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group department">
+                <label class="col-sm-2 control-label">所在单位：</label>
+                <div class="col-sm-10">
+                    <select class="form-control selector">
+                        {% for i in department_info %}
+                        {% if i[0] == user_info[6] %}
+                            <option selected = "selected" value="{{ department_info.index(i)+1 }}" >{{i[0]}}</option>
+                        {% else %}
+                            <option value="{{ department_info.index(i)+1 }}" >{{i[0]}}</option>
+                        {% end %}
+                        {% end %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group position">
+                <label class="col-sm-2 control-label">岗位：</label>
+                <div class="col-sm-10">
+                    <select class="form-control selector">
+                        <option value="1">请选择</option>
+                        {% for i in position_info_fl %}
+                        <optgroup label="{{i[0]}}">
+                            {% for item in position_info %}
+                            {% if item[1]==user_info[3] and item[2]==i[0] %}
+                            <option value="{{position_info.index(item)+1}}">{{item[0]}}</option>
+                            {%end%}
+                            {%end%}
+                        </optgroup>
+                        {%end%}
+
+
+
+                        <!--<optgroup label="管理岗位">-->
+                            <!--<option value="1">经营部门正职</option>-->
+                            <!--<option value="2">经营部门副职</option>-->
+                            <!--<option value="3">支持保障部门正职</option>-->
+                            <!--<option value="4">支持保障部门副职</option>-->
+                        <!--</optgroup>-->
+                        <!--<optgroup label="专业技术岗位">-->
+                            <!--<option value="5">对公条线客户经理</option>-->
+                            <!--<option value="6">对公条线产品经理</option>-->
+                            <!--<option value="7">个人条线客户经理</option>-->
+                            <!--<option value="8">个人条线产品经理</option>-->
+                            <!--<option value="9">支持保障部门专业技术岗位</option>-->
+                        <!--</optgroup>-->
+                        <!--<optgroup label="经办岗位">-->
+                            <!--<option value="10">支持保障部门经办岗位</option>-->
+                        <!--</optgroup>-->
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <div style="text-align: center;margin: 20px 0" class="col-sm-4">
+                    <button style="margin: 0 10px" type="button" class="btn btn-default">取消</button>
+                    <button type="submit" class="btn btn-info">保存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+</div>
+</body>
+</html>

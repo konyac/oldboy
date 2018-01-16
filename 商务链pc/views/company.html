@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Title</title>
+    <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+    <script src="/static/js/jquery-3.2.1.min.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+</head>
+<body>
+<nav id="navbar" class="navbar navbar-default navbar-fixed-top navbar-top">
+    <div class="nav-container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-expand-toggle">
+                <i class="fa fa-bars icon"></i>
+            </button>
+            <ol class="breadcrumb navbar-breadcrumb">
+                <li>UI Kits</li>
+                <li class="active">Theming</li>
+            </ol>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="/renzheng">未认证</a>
+
+            </li>
+            <li class="dropdown profile">
+                <a href="#">Emily
+                    Hart </a>
+            </li>
+            <li class="dropdown">
+                <a href="#"><i
+                        class="fa fa-sign-out"></i></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="left-menu">
+    <div class="menu-header" onclick="show('/renzheng1');">
+        <a class="brand" href="#">
+            <div class="header-icon icon fa fa-paper-plane"></div>
+            <div class="header-title">商务链</div>
+        </a>
+    </div>
+    <ul class="menu-item">
+        <li>
+            <a href="/index">
+                <span class="icon fa fa-life-ring"></span><span class="li-title">首页</span>
+            </a>
+        </li>
+        <li>
+            <a href="/company">
+                <span class="icon fa fa-cubes"></span><span class="li-title">企业信息</span>
+            </a>
+        </li>
+        <li class="active">
+            <a href="/product">
+                <span class="icon fa fa-users"></span><span class="li-title">产品信息</span>
+            </a>
+        </li>
+         <li>
+            <a href="/group">
+                <span class="icon fa fa-life-ring"></span><span class="li-title">人员</span>
+            </a>
+        </li>
+
+    </ul>
+</div>
+<div id="main_content" class="container-fluid">
+    <div class="side-body">
+        <div class="page-title">
+            <span class="title">企业信息</span>
+        </div>
+        <div style="margin-left: 0" class="row">
+            <div class="col-xs-12">
+                <div class="card">
+                    <div class="card-header clearfix">
+                        <div class="card-title">
+                            <div class="title">企业基本信息</div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">企业名称</label>
+                                    <label style="margin-bottom: 0;text-align: left;font-weight: normal"
+                                           class="col-sm-2 control-label">郑州浩方科贸有限公司</label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">企业logo</label>
+                                    <div class="col-sm-2">
+                                        <img id="show_logo" class="show_logo hide" src="">
+                                        <div style="margin-top: 0;position: relative" class="fake-logo-upload">
+                                            <span>上传</span>
+                                            <input type="file" id="logo" name="logo"/>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">企业简介</label>
+                                    <div class="col-sm-6">
+                                        <textarea class="form-control" rows="4"></textarea>
+                                    </div>
+
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">业务标签</label>
+                                    <div class="col-sm-6 labelbox">
+                                        <label style="font-weight: normal;padding-left: 0"
+                                               class="col-sm-12">帮助客户快速了解企业的业务经营范围，最多可添加10个</label>
+
+                                        <span class="label label-primary">Default
+                                        </span>
+                                        <span class="label label-primary">Primary</span>
+                                        <span class="label label-primary">Success</span>
+                                        <span class="label label-primary">Info</span>
+                                        <span class="label label-primary">Warning</span>
+                                        <!--<span class="label label-primary">Danger</span>-->
+                                        <!--<span class="label label-primary">Default</span>-->
+                                        <!--<span class="label label-primary">Primary</span>-->
+                                        <!--<span class="label label-primary">Success</span>-->
+                                        <!--<span class="label label-primary">Info</span>-->
+                                        <div class="col-sm-12" style="padding-left: 0">
+                                            <div style="width: 200px;margin-top: 20px" class="input-group">
+                                                <input  type="text" class="form-control" placeholder="">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-default" type="button">添加</button>
+                                                  </span>
+                                            </div><!-- /input-group -->
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <button style="margin-top: 50px" type="submit"
+                                        class="col-sm-offset-2 btn btn-primary">
+                                    保存
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+    <script>
+        $('#logo').change(function () {
+            var fileObj = $("#logo")[0].files[0];
+            var form = new FormData();
+            form.append("img", fileObj);
+
+            $.ajax({
+                type: 'POST',
+                url: '/upload_image',
+                data: form,
+                processData: false,  // tell jQuery not to process the data
+                contentType: false,  // tell jQuery not to set contentType
+                success: function (arg) {
+                    var ret = JSON.parse(arg);
+                    $('#show_logo').removeClass('hide').attr({src: ret.data});
+                    $("#logo").prev().text('更改')
+                }
+            })
+        });
+        $('.label').bind('mouseenter ',function () {
+            var close = document.createElement("i");
+            $(close).addClass("fa fa-times-circle close_label");
+            $(this).append(close)
+            $(close).bind('click',function () {
+//            console.log(11111)
+            $(this).parent('span').remove()
+        })
+        }).bind("mouseleave ",function () {
+            $('.close_label').remove()
+        });
+
+
+    </script>
+</div>
+<script>
+    $(document).ready(function () {
+        $(".navbar-expand-toggle").bind('click', function () {
+            $("#navbar").toggleClass('navbar-expand');
+            $(".left-menu").toggleClass('left-menu-expand');
+            $(this).toggleClass('toggle-90');
+            $('.side-body').toggleClass('side-body-expand')
+
+        });
+    });
+
+
+</script>
+
+
+</body>
+</html>

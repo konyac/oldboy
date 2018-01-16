@@ -38,23 +38,21 @@ print(a)
 # lis = {"islogin":None,"user":[{"11":1234,"2222":22222,"33333":333333},{"11":1234,"2222":22222,"33333":333333},{"11":1234,"2222":22222,"33333":333333}]}
 # for i in lis.get("user"):
 #     print(i["2222"])\
-
-'''
-md5加密
-import hashlib
-obj = hashlib.md5()
-obj.update(bytes("jdsalfkjalsfj",encoding="utf-8"))
-print(obj.hexdigest())
-'''
-
-class Father:
-    def __init__(self):
-        self.gz()
-    def gz(self):
-        print("father gz")
-
-class Son(Father):
-    def gz(self):
-        print("son gz")
-
-
+#
+# '''
+# md5加密
+# import hashlib
+# obj = hashlib.md5()
+# obj.update(bytes("jdsalfkjalsfj",encoding="utf-8"))
+# print(obj.hexdigest())
+# '''
+#
+# class Father:
+#     def __init__(self):
+#         self.gz()
+#     def gz(self):
+#         print("father gz")
+#
+# class Son(Father):
+#     def gz(self):
+#         print("son gz")

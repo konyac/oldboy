@@ -5,7 +5,7 @@ import tornado.ioloop
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("index.html")
+        self.render("login.html")
 
     def post(self, *args, **kwargs):
         self.write("t1.ajax")

@@ -1,0 +1,32 @@
+
+
+
+/*上报*/
+.upload{
+    padding: 30px 20px;
+}
+.upload-btn,.manage-btn{
+    width: 200px;
+    height: 60px;
+    margin: 20px 0;
+    margin-right: 20px;
+}
+
+/*最近上报*/
+.recent-box label{
+    margin-bottom: 20px;
+}
+/*上报模态框*/
+.user-info{
+    border-bottom: 1px solid #e5e5e5;
+}
+.user-info{
+    padding-bottom: 10px;
+}
+.form-horizontal .plus-minus{
+    padding: 10px 0;
+    margin: 0;
+}
+.form-horizontal .control-label{
+    text-align: left;
+}

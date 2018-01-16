@@ -20,14 +20,14 @@ application = tornado.web.Application(
      (r"/login", account.LoginHandler),
      (r"/send_cond", account.SendCodeHandler),
      (r"/register", account.RegisterHandler),
-    (r"/upload_image", home.UploadImageHandler),
+     (r"/upload_image", home.UploadImageHandler),
      (r"/check_code", account.CheckCodeHandler),
-(r"/comment", home.CommentHandler),
-    (r"/favor", home.FavorHandler),
+     (r"/comment", home.CommentHandler),
+     (r"/favor", home.FavorHandler),
 
      ],
     **settings)  # 创建一个对象
 
 if __name__ == "__main__":
-    application.listen(8000)
+    application.listen(8001)
     tornado.ioloop.IOLoop.instance().start()
