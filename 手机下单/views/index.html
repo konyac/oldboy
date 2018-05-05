@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>郑州浩方科贸有限公司</title>
+    <link rel="stylesheet" href="/statics/weui.css">
+    <link rel="stylesheet" href="/statics/main.css">
+
+    <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp&key=PTUBZ-BUSCD-W7E45-HJDDA-ZQ5NV-B5FYU"></script>
+    <script charset="utf-8"-->
+    src="http://map.qq.com/api/js?v=2.exp&key=PTUBZ-BUSCD-W7E45-HJDDA-ZQ5NV-B5FYU&libraries=drawing,geometry,autocomplete,convertor"></script>
+    <!--<script src="https://3gimg.qq.com/lightmap/components/geolocation/geolocation.min.js "></script>-->
+    <script type="text/javascript"
+            src="https://apis.map.qq.com/tools/geolocation/min?key=PTUBZ-BUSCD-W7E45-HJDDA-ZQ5NV-B5FYU&referer=myapp&effect=zoom"></script>
+    <script src="/statics/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+
+<div class="company-card">
+    <div class="card-top">
+        <div class="logo-box">
+            <img class="com-logo" src="/statics/logo.jpg">
+        </div>
+        <div class="com-name">郑州浩方科贸有限公司</div>
+        <div class="com-show">
+            <span class="eng-number">工程师：20人</span>
+            <span class="ser-time">预计上门时间：30分钟</span>
+        </div>
+        <div class="show-icon" id="show-icon">
+            <img class="show-com" src="/statics/show.png">
+        </div>
+    </div>
+
+    <div class="com-container hide">
+        <div class="introduce">
+            <div class="in-title">公司介绍</div>
+            <p class="in-text">如果你无法简洁的表达你的想法，那只说明你还不够了解它。
+                -- 阿尔伯特·爱因斯坦</p>
+
+        </div>
+        <div class="services">
+            <div class="ser-title">服务范围</div>
+            <p class="ser-text">如果你无法简洁的表达你的想法，那只说明你还不够了解它。
+                -- 阿尔伯特·爱因斯坦</p>
+        </div>
+
+    </div>
+    <div class="hide-icon hide" id="hide-icon">
+        <img class="hide-com" src="/statics/hide.png">
+    </div>
+
+
+</div>
+
+<div class="order-card">
+    <div class="card-title clearfix">
+        <span style="font-size: 14px">当前工单</span>
+        <span class="showmore">更多</span>
+    </div>
+    <div class="card-container">
+
+        <div class="jiedain-title">
+            <ul>
+                <li class="detail-active">
+                    <div class="line"></div>
+                    <p><span><img style="width:1rem" src="/statics/progress_on.png">			</span></p>
+                    <p class="jindu">创建工单</p>
+                    <div class="time"> 09-05 11:33:35</div>
+                </li>
+                <li class="detail-active">
+                    <div class="line"></div>
+                    <p><span><img style="width:1rem" src="/statics/progress_on.png">			</span></p>
+                    <p class="jindu">工单受理</p>
+                    <div class="time"> 09-05 11:33:35</div>
+                </li>
+                <li class="">
+                    <div class="line"></div>
+                    <p><span><img style="width:1rem" src="/statics/progress_off.png">			</span></p>
+                    <p class="jindu">服务完成</p>
+                    <div class="time"></div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="current-text-create hide">
+            <span>您的工单已经通知服务公司（郑州浩方科贸有限公司），请您等待接单或客服联系</span>
+        </div>
+        <div class="current-text-jd">
+            <div class="staff">
+                <span class="lab nomft">服务人员</span>
+                <span class="staff-name nomft">崔建新</span>
+            </div>
+            <div class="tel">
+                <span class="lab nomft">电话</span>
+                <span class="tel-name nomft">18530983738</span>
+            </div>
+            <div class="juli">
+                <span class="lab nomft">距离您</span>
+                <span class="juli-name nomft">10Km</span>
+            </div>
+            <div class="stime">
+                <span class="lab nomft">预计上门</span>
+                <span class="time-name nomft">20分钟</span>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<div class="banner hide"></div>
+<div id="map-box">
+
+
+</div>
+<div class="options">
+    <div class="dw">
+        <img style="width: 24px;margin-top: 6px" src="/statics/dw.png">
+    </div>
+    <div class="create-order">立即下单</div>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        <!--收起 展开-->
+        $('#hide-icon').click(function () {//收起
+            $(this).hide('slow');
+            $('.com-container').slideUp('normal');
+            $('#show-icon').slideDown('slow');
+            $('#map-box').show();
+            $('.order-card').show();
+            $('.options').show();
+            $('.company-card').css('height', 'auto')
+
+
+        });
+        $('#show-icon').click(function () { //展开
+            $(this).hide();
+            $('.com-container').slideDown('normal');
+            $('#hide-icon').slideDown('slow');
+            $('#map-box').hide();
+            $('.options').hide();
+            $('.order-card').hide();
+            $('.company-card').css('height', '100%')
+
+        });
+
+
+    });
+
+    function getLocation() { //获取定位
+        //判断是否支持 获取本地位置
+        if (navigator.geolocation) {
+//                navigator.geolocation.getCurrentPosition(showPosition);
+            var options = {timeout: 9000};
+            var geolocation = new qq.maps.Geolocation();
+            geolocation.getLocation(showPosition, options);
+        }
+        else {
+            x.innerHTML = "浏览器不支持定位.";
+        }
+    }
+
+    function showPosition(position) {
+        var lat = position.lat;
+        var lng = position.lng;
+
+        var center = new qq.maps.LatLng(lat, lng);
+        var map = new qq.maps.Map(document.getElementById("map-box"), {
+            center: center,
+            zoom: 13,
+            disableDefaultUI: true
+
+        });
+//            设置marker标记
+        var marker = new qq.maps.Marker({
+            map: map,
+            position: center
+        });
+        var w = new qq.maps.Size()
+
+        var markerlable = new qq.maps.Label({
+            position: center,
+            map: map,
+            content: position.addr,
+            offset: new qq.maps.Size(-90, -60)
+
+
+        });
+
+
+    }
+
+    getLocation();
+    $('.dw').click(function () {
+        getLocation();
+    })
+
+
+</script>
+
+</body>
+</html>

@@ -17,17 +17,17 @@ class IndexHandler(tornado.web.RequestHandler):
         for meta in file:
             # file_name 是上次的文件名
             file_name = meta["filename"]
-            with open(os.path.join("static", "img", file_name), "wb") as up:  # 保存文件
+            with open(os.path.join("statics", "img", file_name), "wb") as up:  # 保存文件
                 # 保存文件
                 up.write(meta["body"])
-            img_path=os.path.join("static", "img", file_name)
+            img_path=os.path.join("statics", "img", file_name)
         self.write(img_path)
 
 
 settings = {
-    "static_path": "static",#这里的名字如果改动的话，必须和文件目录名字一同改，并且，只能使用{{static_url('css/index.css')}}来访问了。
+    "static_path": "statics",#这里的名字如果改动的话，必须和文件目录名字一同改，并且，只能使用{{static_url('css/index.css')}}来访问了。
     "template_path": "views",
-    # "static_url_prefix": "/static/",#想要用别名的话，前提还得保证静态文件的目录名字叫static，static_path 还是static。也就是前提都是默认的才能用。
+    # "static_url_prefix": "/statics/",#想要用别名的话，前提还得保证静态文件的目录名字叫static，static_path 还是static。也就是前提都是默认的才能用。
 
 }
 

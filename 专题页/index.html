@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+    <link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+    <link rel="stylesheet" href="statics/css/bootsnav.css"/>
+
+    <link rel="stylesheet" href="statics/css/onepage-scroll.css"/>
+
+    <link href="statics/css/index.css" rel="stylesheet" type="text/css">
+    <script src="statics/js/jquery-1.11.0.min.js"></script>
+    <script src="statics/js/jquery.onepage-scroll.js"></script>
+    <!--[if lt IE 9]>
+    <script src="statics/js/respond-1.1.0.min.js"></script>
+    <script src="statics/js/html5shiv.js"></script>
+    <script src="statics/js/html5element.js"></script>
+    <![endif]-->
+
+
+    <style>
+
+
+        .page1 {
+            background-color: #1bbc9b;
+        }
+
+        .page2 {
+            background-color: #FF7F50;
+        }
+
+        .page3 {
+            background-color: #4BBFC3;
+        }
+
+        .page4 {
+            background-color: #f90;
+        }
+
+    </style>
+    <script>
+        $(function () {
+
+            $('.main').onepage_scroll({
+
+                sectionContainer: '.page'
+
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+
+<div class="nav-box">
+    <div class="demo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-default navbar-mobile bootsnav">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target="#navbar-menu">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbar-menu">
+                            <div class="logo-box">
+                                <img style="max-height: 40px" src="statics/img/logo.png">
+                            </div>
+                            <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+                                <li><a data-index="1" href="#">首页</a></li>
+                                <li><a data-index="2" href="#">易维客</a></li>
+
+                                <li><a data-index="3" href="#">平台优点</a></li>
+                                <li><a data-index="4" href="#">联系我们</a></li>
+                            </ul>
+                            <div class="login-box">
+                                <span class="login">登陆</span>
+                                <span class="reg">注册</span>
+                                <span>帮助中心</span>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main">
+    <div class="page page1">
+        <div class="banner" id="b06">
+            <ul>
+                <li>
+                    <img class="sliderimg" src="statics/img/beijing123.png" alt="" width="100%">
+                    <div class="banner-content">
+                        <p style="font-size: 85px;font-weight: 700">会员招募</p>
+                        <p style="font-size: 24px;font-weight: 500">MEMBERSHIP RECRUITMENT </p>
+                        <p style="font-size: 36px;font-weight: 500">开通会员即送价值600元大礼包 </p>
+                        <p style="font-size: 28px;font-weight: 500">定制小程序、小程序码贴纸、短信提醒包、营销现金红包 </p>
+
+                    </div>
+                </li>
+                <li>
+                    <img class="sliderimg" src="statics/img/beijing132.png" alt="" width="100%">
+                    <div class="banner-content">
+                        <!--<p style="font-size: 85px;font-weight: 700"></p>-->
+                        <p style="font-size: 36px;font-weight: 500;margin-top: 100px">服务营销小程序 </p>
+                        <p style="font-size: 28px;font-weight: 500">微信流量 更多入口 </p>
+                        <p style="font-size: 28px;font-weight: 500">挖掘新客户、锁住老客户</p>
+                    </div>
+                </li>
+                <li>
+                    <img class="sliderimg" src="statics/img/beijing321.png" alt="" width="100%">
+                    <div class="banner-content">
+                        <p style="font-size: 85px;font-weight: 700"></p>
+                        <p style="font-size: 36px;font-weight: 500;margin-top: 100px">易维客 </p>
+                        <p style="font-size: 28px;font-weight: 500">专注上门服务行业、免费使用</p>
+
+                        <p style="font-size: 28px;font-weight: 500">注册即送10元短信包+10元标签贴纸</p>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+    <div class="page page2">
+
+        <!--<img src="statics/img/beijing.png">-->
+        <img src="statics/img/beijing123.png">
+
+    </div>
+
+    <div class="page page3">
+
+        <img src="statics/img/beijin.png">
+
+    </div>
+
+    <div class="page page4">
+
+        <img src="statics/img/beijing4.png">
+
+    </div>
+
+</div>
+
+
+<script src="statics/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="statics/js/bootsnav.js"></script>
+<script src="statics/js/unslider.min.js"></script>
+<script>
+    function imgReload() {
+        var imgHeight = 0;
+        var wtmp = $("body").width();
+        $("#b06 ul li").each(function () {
+            $(this).css({width: wtmp + "px"});
+        });
+        $(".sliderimg").each(function () {
+            $(this).css({width: wtmp + "px"});
+            imgHeight = $(this).height();
+        });
+    }
+
+    $(window).resize(function () {
+        imgReload();
+    });
+
+    $(document).ready(function (e) {
+        imgReload();
+        var unslider06 = $('#b06').unslider({
+                dots: true,
+                fluid: true,
+//            delay:1000000
+            }),
+            data06 = unslider06.data('unslider');
+
+        $('.unslider-arrow06').click(function () {
+            var fn = this.className.split(' ')[1];
+            data06[fn]();
+        });
+    });
+</script>
+</body>
+</html>

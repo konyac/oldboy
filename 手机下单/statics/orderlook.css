@@ -1,0 +1,283 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+ul {
+    list-style: none;
+    overflow: hidden;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.hide {
+    display: none;
+}
+
+.title {
+    background-color: white;
+    border-bottom: 1px solid #E3E3E3;
+}
+
+.title ul {
+    list-style: none;
+    overflow: hidden;
+}
+
+.title ul li {
+    float: left;
+    width: 50%;
+    text-align: center;
+    line-height: 3.5rem;
+    font-size: 1.2rem;
+    /*border-right: 1px solid #E3E3E3;*/
+}
+
+.title ul li {
+    line-height: 2rem;
+    /*padding: 0 0.8rem;*/
+    border-right: none;
+    border-bottom: none;
+    color: #333;
+}
+
+.title ul li .active {
+    border-bottom: 4px solid #3CCBA6;
+}
+
+.title ul .active {
+    color: #3BCBA7;
+}
+
+.title ul li div {
+    padding: 0.6rem 0 0.4rem;
+}
+
+.title ul div {
+    padding: 0.6rem 0 0.4rem;
+    width: 80%;
+    display: inline-block;
+}
+
+/*工单卡*/
+.content {
+    width: 92%;
+    background: #fff;
+    margin: 0 auto;
+    margin-top: 1.4rem;
+    padding: 1.2rem 1.5rem 0 1.5rem;
+    border-radius: 0.4rem;
+    box-shadow: 1px 1px 1px #e3e3e3;
+    position: relative;
+}
+
+.orderNub {
+    /*font-size: 0.8rem;*/
+    color: #999;
+    line-height: 1.2rem;
+    padding-top: 0.2rem;
+    font-size: 0.9rem;
+}
+
+.content .serverone {
+    overflow: hidden;
+    height: 2.6rem;
+    line-height: 2.6rem;
+}
+
+.content .serverone .server-icon, .content .serverone .server-middle, .content .serverone .server-r {
+    float: left;
+}
+
+.content .serverone .server-middle {
+    font-size: 1.4rem;
+    color: #3ccba6;
+    max-width: 15rem;
+}
+
+.content .name {
+    color: #c3bebe;
+    font-size: 1.1rem;
+    line-height: 2.2rem;
+}
+
+.content .name {
+    color: #777;
+}
+
+.content .name img {
+    width: 1.2rem;
+    vertical-align: sub;
+    margin-right: 1rem;
+}
+
+.content .address {
+    max-height: 4rem;
+    overflow: hidden;
+    /* white-space: nowrap; */
+    text-overflow: ellipsis;
+    line-height: 2rem;
+}
+
+/*暂无数据*/
+.none-date {
+    text-align: center;
+    padding: 10rem 0;
+}
+
+.none-date img {
+    width: 10rem;
+    margin-left: 2rem;
+}
+
+.none-date p {
+    line-height: 3rem;
+    font-size: 1.2rem;
+    color: #c9caca;
+}
+
+.content .recerve {
+    overflow: hidden;
+    border-top: 1px solid #E3E3E3;
+    padding: 0.8rem 0;
+}
+
+.content .gps {
+    text-align: center;
+}
+
+.content .gps a {
+    text-decoration: none;
+    color: #383636;
+    font-size: 1.2rem;
+}
+
+.content .gps img {
+    width: 1.36rem;
+    margin-right: 1rem;
+    padding: 0;
+}
+
+/*模态框遮罩*/
+.zhezhao {
+    background: #000;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 10;
+    display: none;
+}
+
+/*取消工单模态框*/
+.m-time {
+    position: fixed;
+    width: 24rem;
+    left: 50%;
+    margin-left: -12rem;
+    top: 15rem;
+    background: #fff;
+    padding: 2rem 1.2rem;
+    box-sizing: border-box;
+    display: none;
+    z-index: 20;
+    border-radius: 0.4rem;
+    color: #676767;
+}
+
+.m-time {
+    padding: 0;
+    display: none;
+    overflow: hidden;
+}
+
+.m-time h5 {
+    font-size: 1.4rem;
+    text-align: center;
+    line-height: 4rem;
+    color: #3ccba6;
+}
+
+.m-time h5 {
+    font-weight: 400;
+    font-size: 1.28rem;
+}
+
+.m-time .textaere textarea {
+    width: 100%;
+    height: 6rem;
+    /*padding: 0.4rem;*/
+    border: 1px solid #ccc;
+    border-radius: 0.4rem;
+    color: #999;
+    font-size: 1.12rem;
+    outline: none;
+    resize: none;
+}
+
+.m-time .textaere {
+    padding: 0 1rem;
+}
+
+ul {
+    list-style: none;
+}
+
+.m-time ul {
+    overflow: hidden;
+    padding: 1rem 0;
+}
+
+.m-time ul {
+    padding: 0;
+}
+
+.m-time .m-time-save {
+    border-top: 1px solid #ccc;
+    margin-top: 0.6rem;
+}
+
+.m-time ul li {
+    float: left;
+    width: 45%;
+    text-align: center;
+    line-height: 2rem;
+    background: #3CCBA6;
+    border-radius: 0.4rem;
+    color: #fff;
+}
+
+.m-time ul li {
+    width: 50%;
+    background: #fff;
+    color: #3CCBA6;
+    padding: 1rem 0;
+    border-radius: 0;
+    font-size: 1.44rem;
+}
+
+.m-time ul li:first-child {
+    border-right: 1px solid #CCCCCC;
+}
+
+/*加载更多*/
+.weui-loadmore {
+    width: 65%;
+    margin: 1.5em auto;
+    line-height: 1.6em;
+    font-size: 14px;
+    text-align: center;
+}
+
+.foot-none {
+    height: 7rem;
+}
+
+

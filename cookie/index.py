@@ -50,7 +50,7 @@ class ManagerHandler(tornado.web.RequestHandler):
 
 settings = {
     "template_path": "views",#模板路径
-    "static_path":"static",
+    "static_path":"statics",
     "cookie_secret": "alex"  # cookie加密要添加的
 }
 # 路由映射

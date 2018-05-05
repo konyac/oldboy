@@ -50,7 +50,7 @@ class Indexhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
 
 settings = {
     "template_path": "views",  # 模板路径的配置
-    "static_path": "static",  # 静态文件的位置
+    "static_path": "statics",  # 静态文件的位置
     'static_url_prefix': '/statics/',  # 静态文件地址别名
 
 }

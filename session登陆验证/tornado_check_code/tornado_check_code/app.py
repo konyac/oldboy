@@ -21,8 +21,8 @@ class MainHandler(tornado.web.RequestHandler):
 
 settings = {
     'template_path': 'template',
-    'static_path': 'static',
-    'static_url_prefix': '/static/',
+    'static_path': 'statics',
+    'static_url_prefix': '/statics/',
     'cookie_secret': 'aiuasdhflashjdfoiuashdfiuh',
 }
 

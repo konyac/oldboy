@@ -37,7 +37,7 @@ for i in range(2, nrows):  # 从第三行开始
             for k in range(0, len(each_row)):
                 sheet1.write(head, k, each_row[k])
             head += 1
-            path = os.path.join(base_path, 'static', str(cell_value_before) + '.xls')
+            path = os.path.join(base_path, 'statics', str(cell_value_before) + '.xls')
             print(path)
             f.save(path)
         row_list = []

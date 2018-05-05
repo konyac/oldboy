@@ -187,7 +187,7 @@ class CheckboxHandler(tornado.web.RequestHandler):
 
 settings = {
     'template_path': 'views',
-    'static_path': 'static',
+    'static_path': 'statics',
     'static_url_prefix': '/statics/',
 }
 

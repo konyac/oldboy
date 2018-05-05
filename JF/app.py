@@ -2,12 +2,12 @@
 # _*_ coding:utf-8 _*_
 import tornado.web
 import tornado.ioloop
-from JF.controllers import account,home
+from controllers import account,home
 
 
 class IndexHandler(tornado.web.RequestHandler):  # 继承类RequestHandler
     def get(self, *args, **kwargs):
-        self.render("index.html")
+        self.render("manager.html")
 
     def post(self, *args, **kwargs):
         pass
@@ -64,7 +64,7 @@ class setHandler(tornado.web.RequestHandler):  # 继承类RequestHandler
 
 settings = {
     "template_path": "views",  # 模板路径的配置
-    "static_path": "static",  # 静态文件的位置
+    "static_path": "statics",  # 静态文件的位置
     # 'static_url_prefix': '/statics/',#静态文件地址别名
 
 }

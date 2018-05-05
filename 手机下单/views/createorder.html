@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>郑州浩方科贸有限公司</title>
+    <link rel="stylesheet" href="/statics/weui.css">
+    <link rel="stylesheet" href="/statics/createorder.css">
+    <script src="/statics/jquery-2.1.4.min.js"></script>
+
+</head>
+<body>
+<div class="order-type">
+    <div class="title">
+        工单选择
+    </div>
+    <div class="order-list clearfix">
+        <span class="ord-name selected">默认
+        <img class="sle-img" src="/statics/select.png">
+        </span>
+        <span class="ord-name">维修</span>
+        <span class="ord-name">现场维保</span>
+        <span class="ord-name">维修</span>
+
+    </div>
+</div>
+
+<div class="order-info">
+    <div class="title ">工单信息</div>
+    <div class="order-container new_pd">
+        <p class="info">
+            <span>
+                <!--<b style="color:red">* </b>-->
+
+                客户名称</span>
+            <input class="getf" type="text" name="title" placeholder="请输入您的单位名称" value="">
+        </p>
+        <p class="info">
+            <span>
+                <!--<b style="color:red">* </b>-->
+                联系人</span>
+            <input class="getf" type="text" name="title" placeholder="请输入工单联系人" value="">
+        </p>
+        <p class="info">
+            <span>
+                <!--<b style="color:red">* </b>-->
+                手机</span>
+            <input class="getf" type="text" name="title" placeholder="请输入联系人手机" value="">
+        </p>
+        <p class="info">
+            <span>
+                <!--<b style="color:red">* </b>-->
+                地址</span>
+            <input style="width: 60%" class="getf" type="text" name="addr" placeholder="输入地址" value="">
+            <button onclick="showmap()" class="chose-addr">选择地址</button>
+        </p>
+    </div>
+
+</div>
+
+<div class="order-detail">
+    <div class="title">工单描述</div>
+    <div class="detailbox">
+
+        <textarea class="detail-inp nomft" placeholder="输入">
+
+
+        </textarea>
+    </div>
+
+</div>
+<div class="foot-none">
+
+</div>
+
+<div class="create-btn">
+    <a href="javascript:" class="btn">现在下单</a>
+</div>
+<iframe id="mapPage" class="hide" src="https://m.amap.com/picker/?keywords=写字楼,学校&zoom=15&center=&radius=1000&total=20&key=965df3909c29ba00549b223080512b43
+"></iframe>
+
+<!--<span class="sysm">使用说明</span>-->
+
+<!--<script src="https://m.amap.com/picker/?keywords=写字楼,小区,学校&zoom=15&center=&radius=1000&total=20&key=965df3909c29ba00549b223080512b43-->
+<!--"></script>-->
+<script>
+    $('.ord-name').click(function () {
+        var sel = $(this).text();
+        if ($(this).hasClass('selected')) {
+            return;
+        } else {
+            $(this).siblings('.selected').removeClass('selected').children().remove();
+            var simg = document.createElement('img');
+            simg.setAttribute('src', '/statics/select.png');
+            simg.setAttribute('class', "sle-img");
+            $(this).addClass('selected').append(simg)
+        }
+        console.log(sel)
+
+    });
+
+    function showmap() {
+        $('#mapPage').show()
+    }
+     (function () {
+        var iframe = document.getElementById('mapPage').contentWindow;
+        document.getElementById('mapPage').onload = function () {
+            iframe.postMessage('hello', 'https://m.amap.com/picker/');
+        };
+        window.addEventListener("message", function (e) {
+            $('input[name="addr"]').val(e.data.address);
+            $('#mapPage').hide();
+        }, false);
+        window.addEventListener("back", function (e) {
+            console.log("back")
+        }, false);
+    }())
+</script>
+
+</body>
+</html>

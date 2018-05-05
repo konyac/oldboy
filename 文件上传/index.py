@@ -17,9 +17,9 @@ class IndexHandler(tornado.web.RequestHandler):
         self.redirect("/index")
 
 settings = {
-    "static_path": "static",
+    "static_path": "statics",
     "template_path": "views",
-    "static_url_prefix": "static",
+    "static_url_prefix": "statics",
 }
 
 app = tornado.web.Application([("/index", IndexHandler),

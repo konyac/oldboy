@@ -1,0 +1,314 @@
+html {
+    height: 100%;
+}
+
+.clearfix {
+    overflow: auto;
+    _height: 1%
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+    height: 100%;
+    color: #666;
+}
+
+#geoPage, #markPage {
+    position: relative;
+}
+
+.hide {
+    display: none;
+}
+
+/*公司选项卡*/
+
+/*.company-box{*/
+/*height: 100%;*/
+/*}*/
+.company-card {
+    /*margin-top: 60px;*/
+    background-color: white;
+    position: relative;
+    /*height: 100%;*/
+}
+
+.logo-box {
+    position: relative;
+    height: 40px;
+    background-color: #f4f4f4;
+}
+
+.com-logo {
+    position: absolute;
+    width: 180px;
+    height: 46px;
+    bottom: 0;
+    left: 50%;
+    margin-bottom: -23px;
+    margin-left: -90px;
+}
+
+.com-name {
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    padding-top: 35px;
+    position: relative;
+
+}
+
+.com-show {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.eng-number, .ser-time {
+    font-size: 12px;
+    display: inline-block;
+    width: 45%;
+    text-align: center;
+    /*padding: 10px 0;*/
+}
+
+.show-icon {
+    text-align: center;
+    height: 20px;
+}
+
+.show-com {
+    height: 20px;
+}
+
+.card-top {
+    height: 130px;
+}
+
+/*公司介绍*/
+
+.com-container {
+    /*height: 70%;*/
+    /*position: relative;*/
+    /*background-color: white;*/
+}
+
+.introduce, .services {
+    padding: 10px 0;
+}
+
+.in-title, .ser-title {
+    text-align: center;
+    width: 33.33%;
+    margin: 0 auto;
+    border-bottom: dashed 2px #f4f4f4;
+    padding: 5px 0;
+}
+
+.in-text, .ser-text {
+    padding: 10px;
+}
+
+.hide-com {
+    width: 32px;
+}
+
+.hide-icon {
+    position: absolute;
+    height: 32px;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -16px;
+}
+
+/*地图box*/
+#map-box {
+    width: 100%;
+    position: absolute;
+    /*没有工单卡*/
+    /*top: 150px;*/
+    /*有工单卡*/
+    top: 260px;
+    bottom: 0;
+    left: 0;
+}
+
+.options {
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.dw {
+    position: absolute;
+    left: 20px;
+    bottom: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    /* line-height: 26px; */
+    background-color: white;
+    /* text-align: center; */
+}
+
+.create-order {
+    width: 40%;
+    background-color: #3CCBA6;
+    color: white;
+    font-size: 1rem;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+}
+
+/*去掉自带的到这里*/
+.tonav, .downloadBtn {
+    display: none;
+}
+
+/*隐藏地图信息*/
+#map-info {
+    display: none;
+}
+
+.cbutton {
+    margin: 20px;
+}
+
+/*当前工单卡*/
+.order-card {
+    height: 130px;
+    background-color: white;
+    border-top: 1px solid #f4f4f4;
+
+}
+
+.card-title {
+    padding: 3px;
+}
+
+.showmore {
+    float: right;
+    font-size: 12px;
+    margin: 2px 5px;
+    color: #3CCBA6;
+}
+
+.jiedain-title ul {
+    overflow: hidden;
+    list-style: none;
+}
+
+.jiedain-title ul li {
+    float: left;
+    width: 33.33%;
+    text-align: center;
+    position: relative;
+}
+
+.jiedain-title ul li.detail-active .line {
+    background: #3ccba6;
+}
+
+.jiedain-title ul li .line {
+    width: 100%;
+    height: 1px;
+    background: #999;
+    position: absolute;
+    top: 0.5rem;
+    left: 50%;
+}
+
+.jiedain-title ul li:last-child .line {
+    display: none;
+}
+
+.jiedain-title ul li.detail-active p {
+    color: #3ccba6;
+}
+
+.jiedain-title ul li p {
+    line-height: 1;
+    font-size: 0.5rem;
+    color: #666;
+}
+
+.jiedain-title ul li span {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #fff;
+    position: relative;
+}
+
+.jiedain-title .time {
+    font-size: 0.5rem;
+    color: #999;
+    line-height: 1.5;
+}
+
+.jindu {
+    padding: 0.2rem;
+}
+
+.current-text-jd {
+    padding: 0.1rem 1rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    color: #868686
+}
+
+.current-text-create {
+    font-size: 0.8rem;
+    padding: 0 1rem;
+}
+
+.staff, .tel, .juli, .stime {
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.lab {
+    width: 50%;
+}
+
+.list-box {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: -19px;
+    background-color: white;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    line-height: 31px;
+    border: 1px solid #ccc;
+    border-radius: 18px;
+    box-shadow: 0 0 3px #ccc;
+}
+.list{
+    width: 20px;
+    vertical-align: middle;
+}
+.tel-box{
+    position: absolute;
+    top: -45px;
+    right: 20px;
+    /*margin-top: -3px;*/
+    background-color: white;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #ccc;
+    border-radius: 18px;
+    box-shadow: 0 0 3px #ccc;
+}

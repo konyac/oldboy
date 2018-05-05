@@ -43,7 +43,7 @@ class LoginHandler(tornado.web.RequestHandler):
 
 setting = {
     "template_path":"views",
-    "static_path":"static",
+    "static_path":"statics",
 }
 
 application = tornado.web.Application([

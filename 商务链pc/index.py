@@ -10,7 +10,7 @@ rep = {"status": False, "data": "", "summary": ""}
 
 class Indexhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
     def get(self, *args, **kwargs):
-        self.render("index.html")
+        self.render("manager.html")
 
     def post(self, *args, **kwargs):
         pass
@@ -67,7 +67,7 @@ class UploadHandler(tornado.web.RequestHandler):
             file_metas = self.request.files["img"]
             for meta in file_metas:
                 file_name = meta['filename']
-                file_path = os.path.join('static', 'upload', file_name)
+                file_path = os.path.join('statics', 'upload', file_name)
                 with open(file_path, 'wb') as up:
                     up.write(meta['body'])
             rep['status'] = True
@@ -79,7 +79,7 @@ class UploadHandler(tornado.web.RequestHandler):
 
 settings = {
     "template_path": "views",  # 模板路径的配置
-    "static_path": "static",  # 静态文件的位置
+    "static_path": "statics",  # 静态文件的位置
     # 'static_url_prefix': '/statics/',#静态文件地址别名
 
 }
@@ -96,5 +96,5 @@ application = tornado.web.Application([(r"/index", Indexhandler),
                                       **settings)  # 创建一个对象
 
 if __name__ == "__main__":
-    application.listen(8000)
+    application.listen(8001)
     tornado.ioloop.IOLoop.instance().start()

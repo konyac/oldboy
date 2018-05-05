@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>郑州浩方科贸有限公司</title>
+    <link rel="stylesheet" href="/statics/weui.css">
+    <link rel="stylesheet" href="/statics/orderlook.css">
+    <link rel="stylesheet" href="/statics/mescroll.min.css">
+    <link rel="stylesheet" href="/statics/mescroll-option.css">
+    <script src="/statics/jquery-2.1.4.min.js"></script>
+
+</head>
+<body>
+<div class="title">
+    <ul>
+        <li>
+            <div class="active" name="fwz">
+                <p style="font-size: 1.7rem;" id="servicedOrderCount">0</p>
+                <p style="font-size: 1.1rem;">服务中</p>
+            </div>
+        </li>
+        <li>
+            <div name="lsgd">
+                <p style="font-size: 1.7rem;" id="allOrderCount">0</p>
+                <p style="font-size: 1.1rem;">历史工单</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="tab1 mescroll" id="orderList1">
+    <ul id="List1">
+        <li class="content" orderid="">
+            <p class="orderNub">工单号:10002</p>
+            <div class="details" orderid="">
+                <div class="serverone servertype">
+                    <span class="server-middle">维修</span>
+                    <span style="color: #3ccba6;float: right;">服务中</span>
+                </div>
+                <p style="color: #E57474;line-height:2.5rem;overflow: hidden;text-align: right;"><span
+                        style="float: left;color: #444;text-align: left">维修单详情维修单详情维修单详情</span></p>
+                <p class="name"><img src="/statics/card_time.png">2017-09-05 13:00</p>
+                <div style="padding:0.16rem 0 0.6rem;"><p class="name address"><img
+                        src="/statics/card_address.png" alt="">河南省郑州市金水区文化路街道正弘·蓝堡湾一期正弘蓝堡湾1期 </p>
+                </div>
+            </div>
+            <div class="recerve gps"><a href="" class="js_cancel" orderid=""><img
+                    src="/statics/cancel.png">取消预约</a></div>
+        </li>
+        <li class="content" orderid="">
+            <p class="orderNub">工单号:10002</p>
+            <div class="details" orderid="">
+                <div class="serverone servertype">
+                    <span class="server-middle">维修</span>
+                    <span style="color: #3ccba6;float: right;">服务中</span>
+                </div>
+                <p style="color: #E57474;line-height:2.5rem;overflow: hidden;text-align: right;"><span
+                        style="float: left;color: #444;text-align: left">维修单详情</span></p>
+                <p class="name"><img src="/statics/card_time.png">2017-09-05 13:00</p>
+                <div style="padding:0.16rem 0 0.6rem;"><p class="name address"><img
+                        src="/statics/card_address.png" alt="">河南省郑州市金水区文化路街道正弘·蓝堡湾一期正弘蓝堡湾1期 </p>
+                </div>
+            </div>
+            <div class="recerve gps">
+                <a href="" class="js_cancel" orderid=""><img src="/statics/cancel.png">取消预约</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="tab1 hide mescroll" id="orderList2">
+    <ul>
+        <li class="content" orderid="">
+            <p class="orderNub">工单号:10003</p>
+            <div class="details" orderid="">
+                <div class="serverone servertype">
+                    <span class="server-middle">维修</span>
+                    <span style="color: #3ccba6;float: right;">服务中</span>
+                </div>
+                <p style="color: #E57474;line-height:2.5rem;overflow: hidden;text-align: right;"><span
+                        style="float: left;color: #444;text-align: left">维修单详情维修单详情维修单详情</span></p>
+                <p class="name"><img src="/statics/card_time.png">2017-09-05 13:00</p>
+                <div style="padding:0.16rem 0 0.6rem;"><p class="name address"><img
+                        src="/statics/card_address.png" alt="">河南省郑州市金水区文化路街道正弘·蓝堡湾一期正弘蓝堡湾1期 </p>
+                </div>
+            </div>
+            <div class="recerve gps"><a href="" class="js_cancel" orderid=""><img
+                    src="/statics/cancel.png">取消预约</a></div>
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!--zanwushuju-->
+<div class="tab1 hide" id="">
+    <div class="none-date"><img src="/statics/icon-24.png">
+        <p>暂无数据</p></div>
+</div>
+
+<div class="foot-none">
+</div>
+
+
+<!--取消工单遮罩-->
+<div class="zhezhao"></div>
+<!--取消工单模态-->
+<div class="m-time cancel_ok" style="">
+    <h5>确定要取消预约吗</h5>
+    <div class="textaere">
+        <textarea id="cancelreason" rows="" cols="" placeholder="请输入取消原因..."></textarea>
+    </div>
+    <ul class="m-time-save">
+        <li class="cinfrimone">确定</li>
+        <li class="cancelone">关闭</li>
+    </ul>
+</div>
+
+<script src="/statics/mescroll.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/statics/mescroll-option.js" type="text/javascript" charset="utf-8"></script>
+
+
+<script>
+    $('.title div[name="fwz"]').click(function () {
+        if (!$(this).hasClass('active')) {
+            $(this).addClass('active')
+            $('.title div[name="lsgd"]').removeClass("active")
+            $('#orderList1').show()
+            $('#orderList2').hide()
+        }
+    })
+    $('.title div[name="lsgd"]').click(function () {
+        if (!$(this).hasClass('active')) {
+            $(this).addClass('active')
+            $('.title div[name="fwz"]').removeClass("active")
+            $('#orderList1').hide()
+            $('#orderList2').show()
+        }
+    })
+
+    $(function () {
+        //创建MeScroll对象
+        var mescroll = initMeScroll("orderList1", {
+            down: {
+                auto: false,//是否在初始化完毕之后自动执行下拉回调callback; 默认true
+                callback: downCallback, //下拉刷新的回调
+            },
+            up: {
+                auto: true,//初始化完毕,是否自动触发上拉加载的回调
+                isBoth: true, //上拉加载时,如果滑动到列表顶部是否可以同时触发下拉刷新;默认false,两者不可同时触发; 这里为了演示改为true,不必等列表加载完毕才可下拉;
+                isBounce: false, //此处禁止ios回弹,解析(务必认真阅读,特别是最后一点): http://www.mescroll.com/qa.html#q10
+                callback: upCallback, //上拉加载的回调
+                toTop: { //配置回到顶部按钮
+                    src: "/statics/mescroll-totop.png", //默认滚动到1000px显示,可配置offset修改
+                    //offset : 1000
+                }
+            }
+        });
+
+        /*下拉刷新的回调 */
+        function downCallback() {
+            //加载轮播数据..
+            //...
+            //加载列表数据
+            getListDataFromNet(0, 1, function (data) {
+                //联网成功的回调,隐藏下拉刷新的状态
+                mescroll.endSuccess();
+                //设置列表数据
+                setListData(data, false);
+                //显示提示
+                $("#downloadTip").css("top", "44px");
+                setTimeout(function () {
+                    $("#downloadTip").css("top", "20px");
+                }, 2000);
+            }, function () {
+                //联网失败的回调,隐藏下拉刷新的状态
+                mescroll.endErr();
+            });
+        }
+
+        /*上拉加载的回调 page = {num:1, size:10}; num:当前页 从1开始, size:每页数据条数 */
+        function upCallback(page) {
+            //联网加载数据
+            getListDataFromNet(page.num, page.size, function (curPageData) {
+                //联网成功的回调,隐藏下拉刷新和上拉加载的状态;
+                //mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
+                console.log("page.num=" + page.num + ", page.size=" + page.size + ", curPageData.length=" + curPageData.length);
+
+                //方法一(推荐): 后台接口有返回列表的总页数 totalPage
+                //mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
+
+                //方法二(推荐): 后台接口有返回列表的总数据量 totalSize
+                mescroll.endBySize(curPageData.length, 30); //必传参数(当前页的数据个数, 总数据量)
+
+                //方法三(推荐): 您有其他方式知道是否有下一页 hasNext
+                //mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
+
+                //方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据,如果传了hasNext,则翻到第二页即可显示无更多数据.
+//                mescroll.endSuccess(curPageData.length);
+
+                //设置列表数据
+                setListData(curPageData, true);
+            }, function () {
+                //联网失败的回调,隐藏上拉加载的状态
+                mescroll.endErr();
+            });
+        }
+
+        /*设置列表数据*/
+        function setListData(curPageData, isAppend) {
+            var listDom = document.getElementById("List1");
+            for (var i = 0; i < curPageData.length; i++) {
+                var newObj = curPageData[i];
+
+                var str = '<p>' + newObj.title + '</p>';
+                str += '<p class="new-content">' + newObj.content + '</p>';
+                var liDom = document.createElement("li");
+                liDom.innerHTML = str;
+
+                if (isAppend) {
+                    listDom.appendChild(liDom);//加在列表的后面,上拉加载
+                } else {
+                    listDom.insertBefore(liDom, listDom.firstChild);//加在列表的前面,下拉刷新
+                }
+            }
+        }
+
+        /*联网加载列表数据
+         在您的实际项目中,请参考官方写法: http://www.mescroll.com/api.html#tagUpCallback
+         请忽略getListDataFromNet的逻辑,这里仅仅是在本地模拟分页数据,本地演示用
+         实际项目以您服务器接口返回的数据为准,无需本地处理分页.
+         * */
+        var downIndex = 0;
+
+        function getListDataFromNet(pageNum, pageSize, successCallback, errorCallback) {
+            //延时一秒,模拟联网
+            setTimeout(function () {
+                try {
+                    var newArr = [];
+                    if (pageNum == 0) {
+                        //此处模拟下拉刷新返回的数据
+                        downIndex++;
+                        var newObj = {title: "【新增话题" + downIndex + "】 新增话题", content: "新增话题的内容"};
+                        newArr.push(newObj);
+                    } else {
+                        //此处模拟上拉加载返回的数据
+                        for (var i = 0; i < pageSize; i++) {
+                            var upIndex = (pageNum - 1) * pageSize + i + 1;
+                            var newObj = {title: "【话题" + upIndex + "】 标题标题标题标题标题标题", content: "内容内容内容内容内容内容内容内容内容内容"};
+                            newArr.push(newObj);
+                        }
+                    }
+                    //联网成功的回调
+                    successCallback && successCallback(newArr);
+                } catch (e) {
+                    //联网失败的回调
+                    errorCallback && errorCallback();
+                }
+            }, 2000)
+        }
+
+    });
+
+
+</script>
+
+</body>
+</html>

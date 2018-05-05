@@ -45,7 +45,7 @@ class IndexHandler(request_handler.BaseRequestHandler):
         # str_page = obj.string_pager('/index/')
         # print(result)
 
-        self.render('home/index.html', uploaded=result, username=current_user, item_fl=item_fl,item_info=item_info,item_ej=item_ej,extra_info=extra_info )
+        self.render('home/manager.html', uploaded=result, username=current_user, item_fl=item_fl,item_info=item_info,item_ej=item_ej,extra_info=extra_info )
 
     @decrator.auth_login_json
     def post(self, *args, **kwargs):

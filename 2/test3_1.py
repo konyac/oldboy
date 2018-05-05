@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 # hey='lajlfakf'
-he='ad ddjkjl\tad static'
+he='ad ddjkjl\tad statics'
 # hey_t=hey.upper()
 # hey_l=hey.lower()
 # print hey

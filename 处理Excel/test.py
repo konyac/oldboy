@@ -36,6 +36,6 @@ for i in range(count + 1):
         for k in range(0, len(each_row)):
             sheet1.write(head, k, each_row[k])
         head += 1
-    path =os.path.join(os.path.dirname(__file__),'static',str(i)+'.xls')
+    path =os.path.join(os.path.dirname(__file__),'statics',str(i)+'.xls')
     print(path)
     f.save(path)

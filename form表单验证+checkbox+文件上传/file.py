@@ -176,7 +176,7 @@ class FileFiled:
                     else:
                         self.value.append(file_name)  # 成功一个加一个。
 
-    def save(self, request, path='static'):#一般path=static
+    def save(self, request, path='statics'):#一般path=statics
         # 获取所有的文件列表，
         file_metas = request.files.get(self.name)  # self.name = fafafa
         temp_list = []
@@ -267,7 +267,7 @@ class fileHandler(tornado.web.RequestHandler):
 
 settings = {
     'template_path': 'views',
-    'static_path': 'static',
+    'static_path': 'statics',
     'static_url_prefix': '/statics/',
 }
 

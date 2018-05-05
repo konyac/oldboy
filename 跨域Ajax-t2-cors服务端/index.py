@@ -23,7 +23,7 @@ class CorsHandler(tornado.web.RequestHandler):
 
 settings = {
     "template_path": "views",
-    "static_path": "static",
+    "static_path": "statics",
 
 }
 
