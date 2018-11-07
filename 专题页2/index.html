@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, maximum-scale=1">
+    <title>易维客，专注上门服务行业的互联网应用</title>
+    <meta name="keywords" content="EWEIC，易维客，CRM，上门服务，O2O，设备维修，标签化，报修小程序 ，工单管理，客户营销">
+    <meta name="description"
+          content="易维客是专注上门服务行业的互联网应用，采用服务+营销+互联网的运营理念，为上门服务人员和企业提供服务营销解决方案，由河南易企尚信息科技有限公司开发运营，目前包括基础版和行业版，满足大部分上门服务企业的营销需求。">
+    <link rel="icon" href="statics/img/elogo.png" type="image/x-ico">
+
+    <link href="statics/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">-->
+    <link rel="stylesheet" href="statics/css/bootsnav.css"/>
+
+    <link rel="stylesheet" href="statics/css/jquery.fullPage.css">
+    <link href="statics/css/animate.css" rel="stylesheet" type="text/css">
+
+    <link href="statics/css/index.css" rel="stylesheet" type="text/css">
+    <script src="statics/js/jquery-1.11.0.min.js"></script>
+    <script src="statics/js/jquery.fullPage.js"></script>
+    <!--[if lt IE 9]>
+    <script src="statics/js/respond-1.1.0.min.js"></script>
+    <script src="statics/js/html5shiv.js"></script>
+    <script src="statics/js/html5element.js"></script>
+    <![endif]-->
+    <script>
+        $(document).ready(function () {
+            if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+                console.log('手机端')
+            } else {
+                console.log('PC端')
+//            window.location.href = "https://www.baidu.com/";
+            }
+            $('#main').fullpage({
+                sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', '#f90'],
+                anchors: ['page1', 'page2', 'page3', 'page4'],
+                menu: '.navbar-nav',
+                'navigation': true,
+                scrollBar: true,
+                afterRender: function () {
+                    var wow = new WOW({
+                        boxClass: 'wow',
+                        animateClass: 'animated',
+                        mobile: true,
+                        live: true
+                    });
+                    wow.init();
+                }
+            });
+        })
+    </script>
+</head>
+<body>
+
+<div class="nav-box">
+    <div class="demo">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-default navbar-mobile bootsnav">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                    data-target="#navbar-menu">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbar-menu">
+                            <div class="logo-box">
+                                <img style="max-height: 40px" src="statics/img/logo.png">
+                            </div>
+                            <ul class="nav navbar-nav" data-in="fadeInDown" data-out="fadeOutUp">
+                                <li data-menuanchor="page1" class="active"><a href="#page1">首页</a></li>
+                                <li data-menuanchor="page2"><a href="#page2">易维客</a></li>
+
+                                <li data-menuanchor="page3"><a href="#page3">平台优点</a></li>
+                                <li data-menuanchor="page4"><a href="#page4">联系我们</a></li>
+                            </ul>
+                            <div class="login-box">
+                                <span class="login">登陆</span>
+                                <span class="reg">注册</span>
+                                <span>帮助中心</span>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main" id="main">
+    <div class="page section page1">
+        <div class="banner" id="b06">
+            <ul>
+                <li>
+                    <img class="sliderimg" src="statics/img/beijing123.png" alt="" width="100%">
+                    <div class="banner-content">
+                        <p style="font-size: 85px;font-weight: 700">会员招募</p>
+                        <p style="font-size: 24px;font-weight: 500">MEMBERSHIP RECRUITMENT </p>
+                        <p style="font-size: 36px;font-weight: 500">开通会员即送价值600元大礼包 </p>
+                        <p style="font-size: 28px;font-weight: 500">定制小程序、小程序码贴纸、短信提醒包、营销现金红包 </p>
+
+                    </div>
+                </li>
+                <li>
+                    <img class="sliderimg" src="statics/img/beijing132.png" alt="" width="100%">
+                    <div class="banner-content">
+                        <!--<p style="font-size: 85px;font-weight: 700"></p>-->
+                        <p style="font-size: 36px;font-weight: 500;margin-top: 100px">服务营销小程序 </p>
+                        <p style="font-size: 28px;font-weight: 500">微信流量 更多入口 </p>
+                        <p style="font-size: 28px;font-weight: 500">挖掘新客户、锁住老客户</p>
+                    </div>
+                </li>
+                <li>
+                    <img class="sliderimg" src="statics/img/beijing321.png" alt="" width="100%">
+                    <div class="banner-content">
+                        <p style="font-size: 85px;font-weight: 700"></p>
+                        <p style="font-size: 36px;font-weight: 500;margin-top: 100px">易维客 </p>
+                        <p style="font-size: 28px;font-weight: 500">专注上门服务行业、免费使用</p>
+
+                        <p style="font-size: 28px;font-weight: 500">注册即送10元短信包+10元标签贴纸</p>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+    </div>
+
+    <div class="page section page2">
+
+        <img class="bgimg" src="statics/img/beijing.png">
+        <!--<img src="statics/img/beijing123.png">-->
+        <div class="page2-title">
+            <p style="font-size: 32px;font-weight: 700">易维客平台功能</p>
+            <p style="font-size: 14px;font-weight: 500">MEMBERSHIP RECRUITMENT </p>
+        </div>
+        <div class="page2-content">
+            <ul>
+                <li>
+                    <div class="li-imgbox">
+                        <img src="statics/img/1-0.png">
+                    </div>
+
+                    <div class="page2-lab">
+                        <p class="li-title">工单管理</p>
+                        <p style="margin-top:10px">提高服务效率</p>
+                        <p>提升服务质量</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="li-imgbox">
+                        <img src="statics/img/2-0.png">
+                    </div>
+                    <div class="page2-lab">
+                        <p class="li-title">团队管理</p>
+                        <p style="margin-top:10px">一键邀请</p>
+                        <p>实时把控</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="li-imgbox">
+                        <img src="statics/img/3-0.png">
+                    </div>
+                    <div class="page2-lab">
+                        <p class="li-title">消息通知</p>
+                        <p style="margin-top:10px">微信+短信双通知</p>
+                        <p>员工/客户双重通知</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="li-imgbox">
+                        <img src="statics/img/4-0.png">
+                    </div>
+                    <div class="page2-lab">
+                        <p class="li-title">客户营销</p>
+                        <p style="margin-top:10px">H5宣传</p>
+                        <p>现金红包/标签贴纸</p>
+                    </div>
+                </li>
+                <li>
+                    <div class="li-imgbox">
+                        <img src="statics/img/5-0.png">
+                    </div>
+                    <div class="page2-lab">
+                        <p class="li-title">服务营销小程序</p>
+                        <p style="margin-top:10px">挖掘新客户</p>
+                        <p>锁住老客户</p>
+                    </div>
+                </li>
+
+
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="page section page3">
+
+        <img class="bgimg" src="statics/img/page3.png">
+        <div class="page3-title">
+            <p style="font-size: 32px;font-weight: 700">平台优势</p>
+            <p style="font-size: 14px;font-weight: 500">ADVANTAGE</p>
+        </div>
+        <div class="page3-content">
+            <div class="page3-1 wow bounceInRight" data-wow-duration="2s">
+                <p class="p3-title">免费注册使用</p>
+                <p class="p3-text">易维客免费向服务商提供使用平台</p>
+            </div>
+            <div class="page3-2 wow bounceInLeft" data-wow-duration="2s">
+                <p class="p3-title">营销功能</p>
+                <!--<p class="p3-text">现金红包、标签贴纸、H5传单，多种营销方式，多种宣传渠道</p>-->
+                <p class="p3-text">把服务推广给更多的用户</p>
+            </div>
+            <div class="page3-3 wow bounceInRight" data-wow-duration="2s">
+                <p class="p3-title">轻松帮你锁住客户</p>
+                <!--<p class="p3-text">易维客平台、为每一个服务商创建属于自己的客户端小程序</p>-->
+                <!--<p class="p3-text">客户打开即使用。让客户发现你、使用你、赖上你</p>-->
+                <p class="p3-text">无需再为如何留住客户黯然神伤</p>
+            </div>
+            <div class="page3-4 wow bounceInLeft" data-wow-duration="2s">
+                <p class="p3-title">智能工单管理</p>
+                <!--<p class="p3-text">易维客服务平台能够帮助服务商实现从客户发单到服务商接单</p>-->
+
+                <!--<p class="p3-text">工单派发、工单改派、工单完成等一系列流程，客户能够实时查看工单状态，了解服务流程</p>-->
+                <p class="p3-text">可视化操作，随时随地查询工单</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page section page4">
+
+        <img class="bgimg" src="statics/img/beijing4.png">
+
+        <div class="row page4-content wow animated bounceInLeft">
+            <div class="col-lg-12 about-us">
+                <div class="row">
+                    <div style="text-align: center" class="col-md-6">
+
+
+                        <img style="width: 150px" src="statics/img/xiaochengxu.png">
+
+                        <h4 class="erweimatex">易维客小程序二维码</h4>
+                        <img style="width: 150px" src="statics/img/weixin.png">
+                        <h4 class="erweimatex">扫一扫关注微信公众号</h4>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="about-us-list">
+                            <li class="points">
+                                <img src="statics/img/dianhua.png">
+                                <span class="lx-lab">联系电话：</span>
+                                <span class="lx-text">0371-67584219</span>
+                            </li>
+                            <li class="points">
+                                <img src="statics/img/youxiang.png">
+                                <span class="lx-lab">邮&emsp;&emsp;箱：</span>
+                                <span class="lx-text">eweic@eweic.com</span>
+                            </li>
+                            <li class="points">
+                                <img src="statics/img/wangzhi.png">
+                                <span class="lx-lab">网&emsp;&emsp;址：</span>
+                                <span class="lx-text">www.eweic.com</span>
+                            </li>
+                            <li class="points">
+                                <img src="statics/img/dizhi.png">
+                                <span class="lx-lab">地&emsp;&emsp;址：</span>
+                                <span class="lx-text">郑州市东风路28号蓝堡湾1期6号楼1单元501室</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script type="text/javascript" src="statics/js/wow.js"></script>
+
+<script src="statics/js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="statics/js/bootsnav.js"></script>
+<script src="statics/js/unslider.min.js"></script>
+
+<script>
+    function imgReload() {
+        var imgHeight = 0;
+        var wtmp = $("body").width();
+        var htmp = $(".page1").height();
+        $("#b06 ul li").each(function () {
+            $(this).css({width: wtmp + "px"});
+            $(this).css({height: htmp + "px"});
+        });
+        $(".sliderimg").each(function () {
+            $(this).css({width: wtmp + "px"});
+            $(this).css({height: htmp + "px"});
+            imgHeight = $(this).height();
+        });
+    }
+
+    $(window).resize(function () {
+        imgReload();
+    });
+
+    $(document).ready(function (e) {
+        imgReload();
+        var unslider06 = $('#b06').unslider({
+                dots: true,
+                fluid: true,
+//            delay:1000000
+            }),
+            data06 = unslider06.data('unslider');
+
+        $('.unslider-arrow06').click(function () {
+            var fn = this.className.split(' ')[1];
+            data06[fn]();
+        });
+    });
+    $(".page2-content li").mouseenter(function () {
+        $(this).css({"background-color": "#ff9a02", "color": "#fff"});
+        var ind = $(".page2-content li").index($(this)) + 1;
+        var sr = "statics/img/" + ind + "-1.png";
+        $(this).find("img").attr("src", sr)
+    });
+    $(".page2-content li").mouseleave(function () {
+        $(this).css({"background-color": "#fff", "color": "black"});
+        var ind = $(".page2-content li").index($(this)) + 1;
+        var sr = "statics/img/" + ind + "-0.png";
+        $(this).find("img").attr("src", sr)
+    });
+
+
+</script>
+</body>
+</html>

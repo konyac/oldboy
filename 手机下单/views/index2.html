@@ -9,46 +9,6 @@
     <script src="/statics/jquery-2.1.4.min.js"></script>
 </head>
 <body>
-
-<div class="company-card">
-    <div class="card-top">
-        <div class="logo-box">
-            <img class="com-logo" src="/statics/logo.jpg">
-        </div>
-        <div class="com-name">
-            郑州浩方科贸有限公司
-
-        </div>
-        <!--<div class="com-show">-->
-        <!--<span class="eng-number">工程师：20人</span>-->
-        <!--<span class="ser-time">预计上门时间：30分钟</span>-->
-        <!--</div>-->
-        <div class="show-icon" id="show-icon">
-            <img class="show-com" src="/statics/show.png">
-        </div>
-    </div>
-
-    <div class="com-container hide">
-        <div class="introduce">
-            <div class="in-title">公司介绍</div>
-            <p class="in-text">如果你无法简洁的表达你的想法，那只说明你还不够了解它。
-                -- 阿尔伯特·爱因斯坦</p>
-
-        </div>
-        <div class="services">
-            <div class="ser-title">服务范围</div>
-            <p class="ser-text">如果你无法简洁的表达你的想法，那只说明你还不够了解它。
-                -- 阿尔伯特·爱因斯坦</p>
-        </div>
-
-    </div>
-    <div class="hide-icon hide" id="hide-icon">
-        <img class="hide-com" src="/statics/hide.png">
-    </div>
-
-
-</div>
-
 <div class="order-card">
     <div class="card-title clearfix">
         <span style="font-size: 14px">当前工单</span>
@@ -80,10 +40,10 @@
         </div>
 
 
-        <div class="current-text-create">
+        <div class="current-text-create  hide">
             您的工单已经通知服务公司（郑州浩方科贸有限公司），请您等待接单或客服联系
         </div>
-        <div class="current-text-jd hide" style="display: none">
+        <div class="current-text-jd" style="">
             <div class="staff">
                 <span class="lab nomft">服务人员</span>
                 <span class="staff-name nomft">崔建新</span>
@@ -92,14 +52,14 @@
                 <span class="lab nomft">电话</span>
                 <span class="tel-name nomft">18530983738</span>
             </div>
-            <div class="juli">
-                <span class="lab nomft">距离您</span>
-                <span class="juli-name nomft">10Km</span>
-            </div>
-            <div class="stime">
-                <span class="lab nomft">预计上门</span>
-                <span class="time-name nomft">20分钟</span>
-            </div>
+            <!--<div class="juli">-->
+                <!--<span class="lab nomft">距离您</span>-->
+                <!--<span class="juli-name nomft">10Km</span>-->
+            <!--</div>-->
+            <!--<div class="stime">-->
+                <!--<span class="lab nomft">预计上门</span>-->
+                <!--<span class="time-name nomft">20分钟</span>-->
+            <!--</div>-->
 
         </div>
     </div>
@@ -125,6 +85,17 @@
     </a>
 
 
+</div>
+<!--遮罩-->
+<div class="zhezhao"></div>
+<!--红包活动展示图片-->
+<div class="show-box">
+    <img class="show-img" src="/statics/show-img.png">
+    <img class="close-b" src="/statics/close_b.png">
+</div>
+<!--活动图示-->
+<div class="showbtn-box">
+    <img class="show-btn" src="/statics/show-btn.png">
 </div>
 
 
@@ -252,7 +223,17 @@
     //        });
     //        positionPicker.start();
     //    });
-
+//    活动点击切换
+    $('.showbtn-box').click(function () {
+        $('.zhezhao').fadeIn("normal");
+        $('.show-box').fadeIn("normal");
+        $(this).css("display","none");
+    });
+     $('.close-b').click(function () {
+        $('.zhezhao').fadeOut("normal");
+        $('.show-box').fadeOut("normal");
+        $('.showbtn-box').css("display","block");
+    })
 
 </script>
 

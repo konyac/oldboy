@@ -6,41 +6,59 @@
     <script src="{{static_url('jquery-3.2.1.min.js')}}"></script>
 </head>
 <body>
-    <p><input type="button" value="Ajax" onclick="DoAjax();"><i>会报错</i></p>
-    <p><input type="button" value="JONSP" onclick="DoJONSP();"><i>script方式跨域</i></p>
-    <p><input type="button" value="JONSPAjax" onclick="DoJONSPAjax();"><i>Ajax跨域</i></p>
-    <img src="http://cuijianxin.com:8002/static/15.png">
-    <!--跨域<script> <img> <ifram>是不受限制的-->
-    <script>
-        function DoAjax() {
-             $.ajax({
-                url:"http://cuijianxin.com:8002/index",//跨域访问域名，本身域名是cuicui.com。会报错的。
-                type:"POST",
-                data:{"k1":"v1"},
-                success:function (callback) {
-                    console.log(callback)
-                }
-            })
-        }
-        function DoJONSP() {
-            var tag = document.createElement("script");//创建一个script标签
-            tag.src = "http://cuijianxin.com:8002/index";//给script的src属性添加地址
-            document.head.appendChild(tag);//将script标签添加到head下，添加载入就发生一个get请求
-            document.head.removeChild(tag); //执行完毕后再删除掉，避免一直添加
-            //script get之后回来的数据相当于创建一个script标签，将数据包进去了。
-        }
-        function func(args) {
-            console.log(args)
-        }
-        function DoJONSPAjax() {
-            $.ajax({
-                url:"http://cuijianxin.com:8002/index",//跨域访问
-                dataType:"jsonp",//数据类似，必须jsonp
-                jsonCallBack:"func"//回调的数据函数名
-            })
-        }
+<p><input type="button" value="Ajax" onclick="DoAjax();"><i>会报错</i></p>
+<p><input type="button" value="JONSP" onclick="DoJONSP();"><i>script方式跨域</i></p>
+<p><input type="button" value="JONSPAjax" onclick="DoJONSPAjax();"><i>Ajax跨域</i></p>
+<img src="http://cuijianxin.com:8004/static/15.png">
+<!--跨域<script> <img> <ifram>是不受限制的-->
+<script>
+    function DoAjax() {
+        $.ajax({
+            url: "http://cuijianxin.com:8004/index",//跨域访问域名，本身域名是cuicui.com。会报错的。
+            type: "POST",
+            data: {"k1": "v1"},
+            success: function (callback) {
+                console.log(callback)
+            }
+        })
+    }
 
-    </script>
+    function DoJONSP() {
+        var tag = document.createElement("script");//创建一个script标签
+        tag.src = "http://cuijianxin.com:8004/index";//给script的src属性添加地址
+        document.head.appendChild(tag);//将script标签添加到head下，添加载入就发生一个get请求
+        document.head.removeChild(tag); //执行完毕后再删除掉，避免一直添加
+        //script get之后回来的数据相当于创建一个script标签，将数据包进去了。
+    }
+
+    function getMessage(args) {
+        console.log(args)
+    }
+
+    function DoJONSPAjax() {
+        // $.ajax({
+        //     url:"http://cuijianxin.com:8004/index",//跨域访问
+        //     dataType:"jsonp",//数据类似，必须jsonp
+        //     jsonCallBack:"func"//回调的数据函数名,
+        // })
+        post_dict = {"Name": "cjx", "Addr": 'cjx2df', "Phone": "dfd"};
+        $.ajax({
+            url: "http://cuijianxin.com:8004/index",//跨域访问
+            data: post_dict,
+            dataType: "jsonp",//数据类似，必须jsonp
+            // jsonp: "callback",
+            jsonp:"callback",
+            jsonpCallback: "getMessage",//回调的数据函数名,
+            // success: function (json) {
+            //     alert(json);
+            // },
+            // error: function (data) {
+            //     alert(data);
+            // }
+        })
+    }
+
+</script>
 
 </body>
 </html>

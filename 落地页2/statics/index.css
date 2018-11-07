@@ -1,0 +1,164 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.bg {
+    pointer-events: none;
+}
+
+.view {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.top {
+    position: relative;
+}
+
+.bg {
+    width: 100%;
+
+}
+
+.btn {
+    display: inline-block;
+    position: absolute;
+    bottom: 20%;
+    width: 30%;
+    left: 50%;
+
+    margin-left: -15%;
+
+}
+
+.btn-img {
+    width: 100%;
+}
+
+.feature-box {
+    position: relative;
+}
+
+.left-btn {
+    display: inline-block;
+    width: 25%;
+    position: absolute;
+    left: 25%;
+    margin-left: -12.5%;
+    bottom: 1%;
+}
+
+.right-btn {
+    display: inline-block;
+    width: 25%;
+    position: absolute;
+    right: 25%;
+    margin-right: -12.5%;
+    bottom: 1%;
+}
+
+.footer2, .footer1 {
+    position: relative;
+    overflow: hidden;
+}
+
+.qr {
+    position: absolute;
+    top: 120px;
+    left: 0;
+    width: 100px;
+    padding: 0 1000px 220px 50px;
+    z-index: 100;
+
+}
+
+/*表单*/
+.form {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5.75rem;;
+}
+
+.form-box {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.form-box input {
+    width: 100%;
+    border: 1px solid #f1f1f1;
+    height: 2.375rem;
+    /*line-height: 2.375rem;*/
+    padding: 0 17px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 0.75rem;
+}
+
+.inp-title {
+    text-align: left;
+    color: white;
+    font-size: 28px;
+    margin-bottom: 1.75rem;
+}
+
+.sub-btn {
+    width: 100%;
+    background-color: #ff6d39;
+    color: white;
+    border: none;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    font-size: .875rem;
+}
+
+/*拨打电话*/
+.tel-btn {
+    position: fixed;
+    width: 100%;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-decoration: none;
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #fec73f;
+    color: white;
+    z-index: 101;
+}
+
+.zhezhao {
+    background: #000;
+    opacity: 0.5;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 102;
+    display: none;
+}
+
+.mina , .mina2 {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    margin-left: -100px;
+    /*margin-top: -500px;*/
+    width: 200px;
+    height: 200px;
+    z-index: 103;
+    display: none;
+}

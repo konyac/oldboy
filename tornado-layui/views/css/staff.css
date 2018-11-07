@@ -1,0 +1,81 @@
+form input.layui-input[disabled]{ background:#f2f2f2; color:#595963!important; }
+.user_left{ width:45%; float: left; margin:20px 0 0 5%; }
+.user_right{ width:25%; float: left; margin:20px 0 0 5%; text-align: center; }
+.user_right p{ margin:10px 0 25px; font-size: 12px; text-align: center; color: #FF5722;}
+.user_right img#userFace{ width:200px; height:200px; }
+.layui-table,.layui-table th{ text-align:center; }
+
+/*用户列表*/
+.news_list .layui-btn,.news_list .layui-btn+.layui-btn{ margin:2px 5px; }
+#page{ text-align:right; }
+
+/*修改密码*/
+.changePwd{ width:30%; margin:3% 0 0 5%; }
+
+
+/*适配*/
+@media screen and (max-width:1050px){
+	/*用户信息*/
+	.user_left,.user_right,.changePwd{ width:100%; float:none; margin-left: 0; }
+	.user_right{ margin-bottom: 20px; }
+}
+@media screen and (max-width: 750px){
+	/*用户信息*/
+	.user_left,.user_right,.changePwd{ width:100%; float:none; margin-left: 0; }
+	.user_right{ margin-bottom: 20px; }
+}
+@media screen and (max-width:432px){
+	/*用户信息*/
+	.user_left,.user_right,.changePwd{ width:100%; float:none; margin-left: 0; }
+	.user_right{ margin-bottom: 20px; }
+}
+
+
+
+/*标题栏*/
+.s-btn{
+    float: right;
+}
+.s-info-lable{
+    font-weight: bold;
+     font-size: 16px;
+
+}
+
+.s-btn {
+    float: right;
+    margin: 5px 10px;
+}
+
+
+.s-info-text{
+    font-size: 16px;
+}
+
+/*标题栏*/
+.s-title {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+
+    background: white;
+    z-index: 1;
+    white-space: nowrap;
+
+    border-bottom: 1px solid #e2e2e2;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+}
+
+/*页面标题名字*/
+.page-tile {
+    height: 38px;
+    line-height: 38px;
+    margin: 5px 10px;
+    display: inline-block;
+}
+
+.s-Framebody {
+    padding-top: 50px;
+}

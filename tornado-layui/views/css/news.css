@@ -1,0 +1,57 @@
+.news_search {
+    padding: 10px 10px;
+}
+
+.news_search .layui-inline {
+    margin: 5px 5px 5px 0;
+}
+
+.layui-table, .layui-table th {
+    text-align: center;
+}
+
+.news_list .layui-btn, .news_list .layui-btn + .layui-btn {
+    margin: 2px 5px;
+}
+
+.news_list .layui-form-switch {
+    margin-top: 0;
+}
+
+/*分页*/
+#page {
+    text-align: right;
+}
+
+.s-btn{
+    float: right;
+}
+.s-info-lable{
+    font-weight: bold;
+     font-size: 16px;
+
+}
+
+.s-info-text{
+    font-size: 16px;
+}
+.c-logo{
+    width: 100px;
+    height: 100px;
+}
+
+.s-link-item{
+    padding-top:8px ;
+}
+.com-detail{
+    width: 100%;
+    min-height: 500px;
+}
+.c-logo{
+    width: 100px;
+    height: 100px;
+    display: block;
+}
+.s-upload{
+    margin-top: 10px;
+}

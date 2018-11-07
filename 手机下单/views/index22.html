@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>郑州浩方科贸有限公司</title>
+    <link rel="stylesheet" href="/statics/weui.css">
+    <link rel="stylesheet" href="/statics/main.css">
+    <script src="/statics/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+<div class="order-card">
+    <div class="card-title clearfix">
+        <span style="font-size: 14px">当前工单</span>
+        <span class="showmore">更多</span>
+    </div>
+    <div class="card-container">
+
+        <div class="jiedain-title">
+            <ul>
+                <li class="">
+                    <div class="line"></div>
+                    <p><span><img style="width:1rem" src="/statics/progress_off.png">			</span></p>
+                    <p class="jindu">创建工单</p>
+                    <div class="time"> </div>
+                </li>
+                <li class="">
+                    <div class="line"></div>
+                    <p><span><img style="width:1rem" src="/statics/progress_off.png">			</span></p>
+                    <p class="jindu">工单受理</p>
+                    <div class="time"></div>
+                </li>
+                <li class="">
+                    <div class="line"></div>
+                    <p><span><img style="width:1rem" src="/statics/progress_off.png">			</span></p>
+                    <p class="jindu">服务完成</p>
+                    <div class="time"></div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div class="current-text-create">
+            当前暂无工单，点击下单按钮，立即下单。
+        </div>
+        <div class="current-text-jd hide" style="display: none">
+            <div class="staff">
+                <span class="lab nomft">服务人员</span>
+                <span class="staff-name nomft">崔建新</span>
+            </div>
+            <div class="tel">
+                <span class="lab nomft">电话</span>
+                <span class="tel-name nomft">18530983738</span>
+            </div>
+            <div class="juli">
+                <span class="lab nomft">距离您</span>
+                <span class="juli-name nomft">10Km</span>
+            </div>
+            <div class="stime">
+                <span class="lab nomft">预计上门</span>
+                <span class="time-name nomft">20分钟</span>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<div class="banner hide"></div>
+<div id="map-box">
+
+
+</div>
+<div class="options">
+    <!--<div class="dw">-->
+    <!--<img style="width: 24px;margin-top: 6px" src="/statics/dw.png">-->
+    <!--</div>-->
+    <div class="create-order">立即下单</div>
+    <div class="list-box">
+        <img class="list" src="/statics/list.png">
+    </div>
+    <a class="tel-box">
+        <img style="width: 30px;
+    margin-top: 2px;" src="/statics/tel.png">
+    </a>
+
+
+</div>
+
+
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.4&key=965df3909c29ba00549b223080512b43"></script>
+<!--引入UI组件库异步版本main-async.js（1.0版本） -->
+<script src="//webapi.amap.com/ui/1.0/main.js?v=1.0.11"></script>
+
+<script>
+
+    $(document).ready(function () {
+        <!--收起 展开-->
+        $('#hide-icon').click(function () {//收起
+            $(this).hide('slow');
+            $('.com-container').slideUp('normal');
+            $('#show-icon').slideDown('slow');
+            $('#map-box').show();
+            $('.order-card').show();
+            $('.options').show();
+            $('.company-card').css('height', 'auto')
+
+
+        });
+        $('#show-icon').click(function () { //展开
+            $(this).hide();
+            $('.com-container').slideDown('normal');
+            $('#hide-icon').slideDown('slow');
+            $('#map-box').hide();
+            $('.options').hide();
+            $('.order-card').hide();
+            $('.company-card').css('height', '100%')
+
+        });
+    });
+
+
+    //构造地图
+    var map = new AMap.Map('map-box', {
+        resizeEnable: true,
+//        zoom: 13，
+        showIndoorMap: false
+    });
+
+
+    //标记商户位置
+    var server = new AMap.Marker({
+        map: map,
+        icon: "/statics/gs.png",
+        position: [113.66288, 34.755854],
+        offset: new AMap.Pixel(10, 20)
+    });
+    server.setLabel({
+        offset: new AMap.Pixel(-40, -25),
+        content: "郑州浩方科贸有限公司"
+    });
+
+    //获取当前定位
+    map.plugin('AMap.Geolocation', function () {
+        geolocation = new AMap.Geolocation({
+            enableHighAccuracy: true,//是否使用高精度定位，默认:true
+            timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+//            maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+//            convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+//            showButton: true,        //显示定位按钮，默认：true
+            buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+            buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+            showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
+//            showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
+            panToLocation: false    //定位成功后将定位到的位置作为地图中心点，默认：true
+//            zoomToAccuracy: true     //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+//            markerOptions:{
+//              autoRotation:true
+//            }
+        });
+        map.addControl(geolocation);
+        geolocation.getCurrentPosition();
+        AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+        AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+    });
+
+    var marker;//自己所在位置标记
+    //回调定位
+    function onComplete(data) {
+//        var lat = data.position.getLat();
+//        var lng = data.position.getLng();
+        var current_po = data.position;
+        var addr = data.regeocode;
+        console.log(addr, data, current_po)
+//        var currentPosition = new AMap.LngLat(lng, lat);
+        if (marker) {
+            marker.setPosition(current_po); //更新点标记位置
+            map.setFitView();
+            return;
+        }
+        marker = new AMap.Marker({
+            icon: "http://webapi.amap.com/theme/v1.3/markers/n/mark_b.png",
+            position: current_po
+        });
+        // 设置鼠标划过点标记显示的文字提示
+        marker.setLabel({
+            offset: new AMap.Pixel(20, 20),
+            content: addr
+        });
+
+
+        marker.setMap(map);
+        map.setFitView();
+
+    }
+    //    alert(2222)
+    //
+    //    AMapUI.loadUI(['misc/PositionPicker'], function (PositionPicker) {
+    //        var positionPicker = new PositionPicker({
+    //            mode: 'dragMap',//设定为拖拽地图模式，可选'dragMap'、'dragMarker'，默认为'dragMap'
+    //            map: map//依赖地图对象
+    //        });
+    //        positionPicker.on('success', function (positionResult) {
+    //            var lnglat = positionResult.position;
+    //            var address = positionResult.address;
+    //            console.log(lnglat);
+    //            console.log(1111)
+    //
+    //        });
+    //        positionPicker.on('fail', function (positionResult) {
+    //
+    //        });
+    //        positionPicker.start();
+    //    });
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+[
+  {
+    "groupsId": "1",
+    "groupName": "贤心",
+    "groupdetail": "xianxin@layui.com",
+    "groupcount": "30",
+    "groupCreatTime": "2017-05-14 15:35"
+  },
+  {
+    "groupsId": "2",
+    "groupName": "纸飞机",
+    "groupdetail": "fly@layui.com",
+    "groupcount": "20",
+    "groupCreatTime": "2017-05-14 16:25"
+  },
+  {
+    "groupsId": "3",
+    "groupName": "请叫我马哥",
+    "groupdetail": "mage@layui.com",
+    "groupcount": "20",
+    "groupCreatTime": "2017-05-10 10:30"
+  }
+]

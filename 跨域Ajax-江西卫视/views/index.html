@@ -10,12 +10,12 @@
     <p><input type="button" value="JONSP" onclick="DoJONSP();"><i>script方式跨域</i></p>
     <p><input type="button" value="JONSPAjax" onclick="DoJONSPAjax();"><i>Ajax跨域</i></p>
     <p><input type="button" value="DoJONSPAjax_JX" onclick="DoJONSPAjax_JX();"><i>江西卫视列表</i></p>
-    <img src="http://cuijianxin.com:8002/static/15.png">
+    <img src="http://cuijianxin.com:8004/static/15.png">
     <!--跨域<script> <img> <ifram>是不受限制的-->
     <script>
         function DoAjax() {
              $.ajax({
-                url:"http://cuijianxin.com:8002/index",//跨域访问域名，本身域名是cuicui.com。会报错的。
+                url:"http://cuijianxin.com:8004/index",//跨域访问域名，本身域名是cuicui.com。会报错的。
                 type:"POST",
                 data:{"k1":"v1"},
                 success:function (callback) {
@@ -25,7 +25,7 @@
         }
         function DoJONSP() {
             var tag = document.createElement("script");//创建一个script标签
-            tag.src = "http://cuijianxin.com:8002/index";//给script的src属性添加地址
+            tag.src = "http://cuijianxin.com:8004/index";//给script的src属性添加地址
             document.head.appendChild(tag);//将script标签添加到head下，添加载入就发生一个get请求
             document.head.removeChild(tag); //执行完毕后再删除掉，避免一直添加
             //script get之后回来的数据相当于创建一个script标签，将数据包进去了。
@@ -35,16 +35,16 @@
         }
         function list(args) {
             console.log(args);
-              $.each(args["data"],function (k,v) {
-                $.each(v["list"],function (item,val) {
-                    console.log(v["week"],val);
-                    $.each(val,function (n,m) {
-                        $("#i1").text();
-                        console.log(n,m)
-                    })
-                })
+              // $.each(args["data"],function (k,v) {
+              //   $.each(v["list"],function (item,val) {
+              //       console.log(v["week"],val);
+              //       $.each(val,function (n,m) {
+              //           $("#i1").text();
+              //           console.log(n,m)
+              //       })
+              //   })
 
-            })
+            // })
         }
         function DoJONSPAjax() {
             $.ajax({

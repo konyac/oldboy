@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .re{
+            position: relative;
+            top: 30%;
+            left: 0;
+            width: 33%;
+            height: 120px;
+            background-color:red ;
+        }
+        .cover {
+            display: block;
+            position: absolute;
+            /* left: 0; *//* top: 0; */
+            top: 0;
+            left: 0;
+            border: 0 solid #000;
+            opacity: 0.55;
+            filter: alpha(opacity=55);
+            z-index: 9;
+            /* 边缘闪动问题fix *//* box-shadow: 0 0 0 100px #000; */
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .cover::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 400px solid #000;
+            position: absolute;
+            right: -400px;
+            bottom: -400px;
+            /* box-shadow: inset 0 0 5px 2px rgba(0, 0, 0, 0.75);  */
+        }
+    </style>
+</head>
+<body>
+
+<div class="re">
+
+
+    <div class="cover"></div>
+</div>
+
+
+</body>
+</html>

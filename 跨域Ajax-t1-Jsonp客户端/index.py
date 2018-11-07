@@ -5,7 +5,7 @@ import tornado.ioloop
 
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, *args, **kwargs):
-        self.render("login.html")
+        self.render("index.html")
 
     def post(self, *args, **kwargs):
         self.write("t1.ajax")
@@ -21,5 +21,5 @@ app = tornado.web.Application([("/index", IndexHandler),
                                ], **settings)
 
 if __name__ == "__main__":
-    app.listen(8001)
+    app.listen(8005)
     tornado.ioloop.IOLoop.instance().start()

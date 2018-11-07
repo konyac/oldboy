@@ -7,12 +7,12 @@
     <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
 </head>
 <body>
-        <input id="user" type="text" name="username">
-        <input id="pwd" type="password" name="pwd">
-        <button onclick="Submit_form();">登陆</button>
+<input id="user" type="text" name="username">
+<input id="pwd" type="password" name="pwd">
+<button onclick="Submit_form();">登陆</button>
 <script>
     function Submit_form() {
-        $.post("/login",{"username":$("#user").val(),"password":$("#pwd").val()},function (callback) {
+        $.post("/login", {"username": $("#user").val(), "password": $("#pwd").val()}, function (callback) {
             console.log(callback)
         })
     }

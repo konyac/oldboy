@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>积分竞赛</title>
+    <link rel="stylesheet" type="text/css" href="/statics/css/style.css">
+    <script src="/statics/js/jquery-2.1.1.min.js"></script>
+    <script src="/statics/js/layer_mobile/layer.js"></script>
+    <style>
+        body {
+            background-color: #ff9037;
+        }
+
+        .in-cxx ul {
+            list-style: none;
+        }
+
+        .in-cxx ul li {
+            height: 38px;
+            border-bottom: 1px solid #d9d9d9;
+        }
+
+        .in-cxx ul li :last-child {
+            border-bottom: none;
+        }
+
+        .in-cxx li{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .layui-m-layercont {
+            padding: 20px;
+            line-height: normal;
+            /* text-align: center; */
+
+        }
+    </style>
+</head>
+<body>
+<div class="jf-title">
+    <div class="jf-t">月度积分竞赛</div>
+    <div class="zjcx" style="text-align: right;padding-right: 1em;color: red;font-size: 13px;">中奖查询
+    </div>
+    <img src="/statics/img/hb.png">
+</div>
+<div class="md-box">
+    <div class="md-show">
+        <div class="md-title">
+            <img src="/statics/img/ydj.png">
+        </div>
+    </div>
+    <div class="md-outer">
+        <div class="md-inner">
+            <ul>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="md-box">
+    <div class="md-show">
+        <div class="md-title">
+            <img src="/statics/img/edj.png">
+        </div>
+    </div>
+    <div class="md-outer">
+        <div class="md-inner">
+            <ul>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="md-box">
+    <div class="md-show">
+        <div class="md-title">
+            <img src="/statics/img/sdj.png">
+        </div>
+    </div>
+    <div class="md-outer">
+        <div class="md-inner">
+            <ul>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+                <li>
+                    <span>健康啦圣诞节疯了</span>
+                    <span>1867837878</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="in-cx" style="display: none">
+    <div class="in-cxx">
+        <ul>
+            <li><span>6月</span><span>一等奖</span><span>兑换奖品</span></li>
+            <li><span>6月</span><span>一等奖</span><span>兑换奖品</span></li>
+            <li><span>6月</span><span>一等奖</span><span>兑换奖品</span></li>
+            <li><span>6月</span><span>一等奖</span><span>兑换奖品</span></li>
+        </ul>
+    </div>
+
+</div>
+<script>
+    //弹出一个iframe层
+
+    $('.zjcx').on('click', function () {
+        var cx = document.getElementsByClassName('in-cx')
+        console.log(cx[0])
+        layer.open({
+            title: [
+                '中奖记录',
+                'background-color: #ff9037; color:#fff;'
+            ]
+            , content: cx[0].innerHTML
+        });
+    });
+</script>
+
+</body>
+</html>

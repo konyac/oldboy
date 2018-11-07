@@ -130,7 +130,7 @@ body {
     /*没有工单卡*/
     /*top: 150px;*/
     /*有工单卡*/
-    top: 260px;
+    top: 130px;
     bottom: 0;
     left: 0;
 }
@@ -196,6 +196,10 @@ body {
     font-size: 12px;
     margin: 2px 5px;
     color: #3CCBA6;
+}
+
+.jiedain-title {
+    height: 55px;
 }
 
 .jiedain-title ul {
@@ -295,11 +299,13 @@ body {
     border-radius: 18px;
     box-shadow: 0 0 3px #ccc;
 }
-.list{
-    width: 20px;
+
+.list {
+    width: 28px;
     vertical-align: middle;
 }
-.tel-box{
+
+.tel-box {
     position: absolute;
     top: -45px;
     right: 20px;
@@ -311,4 +317,45 @@ body {
     border: 1px solid #ccc;
     border-radius: 18px;
     box-shadow: 0 0 3px #ccc;
+}
+
+/*模态框遮罩*/
+.zhezhao {
+    background: #000000;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    position: fixed;
+    z-index: 10000;
+     display: none;
+}
+
+.show-box {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    z-index: 10001;
+    display: none;
+}
+
+.show-img ,.show-btn{
+    width: 100%;
+}
+
+.close-b {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    width: 48px;
+    margin-left: -24px;
+}
+.showbtn-box{
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    width: 64px;
+    z-index: 10001;
 }

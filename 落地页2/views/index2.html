@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>两个二维码同时的问题</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <link href="/statics/index.css" rel="stylesheet">
+    <style>
+        * {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-selcet: none;
+        }
+
+        /*.img1{
+            width: 260px;
+            height: 390px;
+        }
+
+        .sp1{
+            width: 260px;
+            height: 390px;
+        }
+
+        .img2,.sp2{
+            width: 200px;
+            height: 300px;
+        }
+
+        .img3,.sp3{
+            width: 100px;
+            height: 150px;
+        }
+
+        div{
+            position: relative;
+            height: 750px;
+        }
+
+        .img3,.img2,.img1{
+            position: absolute;
+            top: 100px;
+            left: 100px;
+            /*box-shadow: 0 0 0 1px green;*/
+
+        /*}
+
+        .clear{
+            clear: both;
+        }
+
+        span{
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 36px;
+                box-shadow: 0 0 0 1px red;
+
+        }*/
+
+
+    </style>
+</head>
+<body>
+
+两（多）张两张二维码无法在同一屏幕视窗中共存，否则会导致识别错误。<br><br>
+
+页面一共有六个二维码，两两分组为三组，每组的二维码的信息分别是指向qq.com、baidu.com 的url。<br><br>
+
+查看文章 <a href="http://devework.com/weixin-qrcode-bug2.html">http://devework.com/weixin-qrcode-bug2.html</a> 了解更多。
+
+
+<br>
+<br>
+
+<img src="http://pan.baidu.com/share/qrcode?w=200&amp;h=200&amp;url=http://www.qq.com" alt="">
+
+<br>
+
+<img src="http://pan.baidu.com/share/qrcode?w=200&amp;h=200&amp;url=http://www.baidu.com" alt="">
+
+
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
+
+<div class="footer1 item">
+    <img class="bg" src="/statics/44-2.png">
+    <img class="qr" src=" /statics/qr.jpg">
+</div>
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
+
+
+<div style="display:inline-block">
+
+    <img src="http://pan.baidu.com/share/qrcode?w=150&amp;h=150&amp;url=http://www.qq.com" alt="">
+
+    <img src="http://pan.baidu.com/share/qrcode?w=150&amp;h=150&amp;url=http://www.baidu.com" alt="">
+</div>
+
+<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
+
+
+<br><br><br>
+
+<img src="http://pan.baidu.com/share/qrcode?w=200&amp;h=200&amp;url=http://www.qq.com" alt="">
+
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+
+<img src="http://pan.baidu.com/share/qrcode?w=200&amp;h=200&amp;url=http://www.baidu.com" alt="">
+
+<br><br><br>
+<br><br><br>
+
+<br><br><br>
+<br><br><br>
+<br><br><br><br><br><br>
+<br><br><br>
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+</body>
+</html>

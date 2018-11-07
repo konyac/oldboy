@@ -1,0 +1,97 @@
+.news_search {
+    padding: 10px 10px;
+}
+
+.news_search .layui-inline {
+    margin: 5px 5px 5px 0;
+}
+
+.layui-table, .layui-table th {
+    text-align: center;
+}
+
+.news_list .layui-btn, .news_list .layui-btn + .layui-btn {
+    margin: 2px 5px;
+}
+
+.news_list .layui-form-switch {
+    margin-top: 0;
+}
+
+/*分页*/
+#page {
+    text-align: right;
+}
+
+.s-btn {
+    float: right;
+    margin: 5px 10px;
+}
+
+.s-info-lable {
+    font-weight: bold;
+    font-size: 16px;
+
+}
+
+.s-info-text {
+    font-size: 16px;
+}
+
+.c-logo {
+    width: 100px;
+    height: 100px;
+}
+
+.s-link-item {
+    padding-top: 8px;
+}
+
+.com-detail {
+    width: 100%;
+    min-height: 500px;
+}
+
+.c-logo {
+    width: 100px;
+    height: 100px;
+    display: block;
+
+}
+
+.s-upload {
+    margin-top: 10px;
+}
+
+
+/*标题栏*/
+.s-title {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+
+    background: white;
+    z-index: 1;
+    white-space: nowrap;
+
+    border-bottom: 1px solid #e2e2e2;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+}
+
+/*页面标题名字*/
+.page-tile {
+    height: 38px;
+    line-height: 38px;
+    margin: 5px 10px;
+    display: inline-block;
+}
+
+.s-Framebody {
+    padding-top: 50px;
+}
+
+.s-tel{
+    margin-bottom: 15px;
+}

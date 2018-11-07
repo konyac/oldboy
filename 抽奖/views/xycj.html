@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+    <title>积分竞赛</title>
+    <link rel="stylesheet" type="text/css" href="/statics/css/style.css">
+    <script src="/statics/js/jquery-2.1.1.min.js"></script>
+
+    <style>
+        body {
+            background-color: #ff9037;
+        }
+
+        .top-bg img {
+            width: 100%;
+            display: block;
+        }
+
+        .zp-box {
+            height: 270px;
+            background-color: #ffd9c5;
+        }
+
+        .zp-hb {
+            background-color: #ffd9c5;
+        }
+
+        .zp-hb img {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="top-bg">
+    <img src="/statics/img/bg.jpg">
+</div>
+<div class="zp-box">
+    jklj
+</div>
+<div class="zp-md">
+    <div class="zp-hb">
+        <img src="/statics/img/hb.png">
+    </div>
+
+    <div class="md-box">
+        <div class="md-show">
+            <div class="md-title">
+                <img src="/statics/img/md.png">
+            </div>
+        </div>
+        <div class="md-outer">
+            <div class="md-inner md-scroll">
+                <ul id="ulContent">
+                    <li>
+                        <span>我是第一行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第二行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第三行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第四行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第无行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第留行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第期行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第吧行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第就行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第是行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第事宜行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第事儿行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第十三行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第十四行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第十无行</span>
+                        <span>1867837878</span>
+                    </li>
+                    <li>
+                        <span>我是第十六行</span>
+                        <span>1867837878</span>
+                    </li><li>
+                        <span>我是第十期行</span>
+                        <span>1867837878</span>
+                    </li>
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="/statics/js/l-slide.js"></script>
+<script>
+    $(function () {
+        <!--获取li每行的高度，动画移动的高度-->
+        var liHeight = $('#ulContent li').height();
+        <!--调用插件-->
+        $('#ulContent').lSlide({nTop: liHeight});
+    })
+</script>
+</body>
+</html>
