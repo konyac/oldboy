@@ -22,6 +22,6 @@ for i in range(1,100):
     else:
         sum2 = sum2 + i
 sum = sum1-sum2
-print (sum)
+print(sum)
 
 

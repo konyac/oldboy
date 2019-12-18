@@ -3,9 +3,11 @@
 import tornado.web
 import tornado.ioloop
 
+
 class Indexhandler(tornado.web.RequestHandler):  # 继承类RequestHandler
     def get(self, *args, **kwargs):
         self.render("index.html")
+
     def post(self, *args, **kwargs):
         pass
 

@@ -4,4 +4,4 @@ sum=0
 while start<=100:
     sum+=start
     start+=2
-print sum
+print(sum)

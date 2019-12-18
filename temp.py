@@ -56,3 +56,13 @@ print(a)
 # class Son(Father):
 #     def gz(self):
 #         print("son gz")
+
+#!/usr/bin/env python
+# -*- coding:utf8 -*-
+import re   #第一步，要引入re模块
+#也就是分组匹配，()里面的为一个组也可以理解成一个整体
+a = re.search("a(\d+)", "a466666664a4a4a4dg4g654gb")    #匹配 (a) (\d0-9的数字) (+可以是1个到多个0-9的数字)
+b = a.group()
+print(a.groups())
+print(b)
+#打印出 a466666664
